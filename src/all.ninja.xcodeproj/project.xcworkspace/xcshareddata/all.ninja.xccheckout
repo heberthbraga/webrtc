@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>45EE6C10-FE7E-4E20-86DE-4E24999620F2</string>
+	<key>IDESourceControlProjectName</key>
+	<string>all.ninja</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>8FFACF9194D48576A22F6F0C4F6B4F0BA1ABFC64</key>
+		<string>https://chromium.googlesource.com/external/webrtc</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>all.ninja.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>8FFACF9194D48576A22F6F0C4F6B4F0BA1ABFC64</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://chromium.googlesource.com/external/webrtc</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>8FFACF9194D48576A22F6F0C4F6B4F0BA1ABFC64</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8FFACF9194D48576A22F6F0C4F6B4F0BA1ABFC64</string>
+			<key>IDESourceControlWCCName</key>
+			<string>src</string>
+		</dict>
+	</array>
+</dict>
+</plist>

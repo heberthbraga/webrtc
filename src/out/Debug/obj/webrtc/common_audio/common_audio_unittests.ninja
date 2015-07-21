@@ -1,0 +1,172 @@
+build obj/webrtc/common_audio/common_audio_unittests.actions_depends.stamp: $
+    stamp libcommon_audio.a libtest_support_main.a libgmock.a libgtest.a $
+    libsystem_wrappers.a libwebrtc_common.a librtc_base_approved.a $
+    libopenmax_dl.a libcommon_audio_sse2.a libfield_trial.a libhistogram.a $
+    libtest_support.a libgflags.a
+
+defines = -DV8_DEPRECATION_WARNINGS $
+    -D__ASSERT_MACROS_DEFINE_VERSIONS_WITHOUT_UNDERSCORE=0 -DCHROMIUM_BUILD $
+    -DCR_CLANG_REVISION=239765-1 -DUSE_LIBJPEG_TURBO=1 $
+    -DENABLE_ONE_CLICK_SIGNIN -DENABLE_PRE_SYNC_BACKUP -DENABLE_REMOTING=1 $
+    -DENABLE_WEBRTC=1 -DENABLE_MEDIA_ROUTER=1 -DENABLE_PEPPER_CDMS $
+    -DENABLE_CONFIGURATION_POLICY -DENABLE_NOTIFICATIONS -DENABLE_HIDPI=1 $
+    -DSYSTEM_NATIVELY_SIGNALS_MEMORY_PRESSURE -DDONT_EMBED_BUILD_METADATA $
+    -DENABLE_TASK_MANAGER=1 -DENABLE_EXTENSIONS=1 $
+    -DENABLE_PLUGIN_INSTALLATION=1 -DENABLE_PLUGINS=1 $
+    -DENABLE_SESSION_SERVICE=1 -DENABLE_THEMES=1 -DENABLE_AUTOFILL_DIALOG=1 $
+    -DENABLE_BACKGROUND=1 -DENABLE_GOOGLE_NOW=1 -DCLD_VERSION=2 $
+    -DENABLE_PRINTING=1 -DENABLE_BASIC_PRINTING=1 -DENABLE_PRINT_PREVIEW=1 $
+    -DENABLE_SPELLCHECK=1 -DENABLE_CAPTIVE_PORTAL_DETECTION=1 $
+    -DENABLE_APP_LIST=1 -DENABLE_SETTINGS_APP=1 -DENABLE_SUPERVISED_USERS=1 $
+    -DENABLE_SERVICE_DISCOVERY=1 -DENABLE_WIFI_BOOTSTRAPPING=1 $
+    -DV8_USE_EXTERNAL_STARTUP_DATA -DFULL_SAFE_BROWSING -DSAFE_BROWSING_CSD $
+    -DSAFE_BROWSING_DB_LOCAL -DSAFE_BROWSING_SERVICE -DEXPAT_RELATIVE_PATH $
+    -DWEBRTC_POSIX -DWEBRTC_MAC -DWEBRTC_INCLUDE_INTERNAL_AUDIO_DEVICE $
+    -DRTC_USE_OPENMAX_DL -DGTEST_HAS_POSIX_RE=0 -DGTEST_LANG_CXX11=0 $
+    -DUNIT_TEST -DGTEST_HAS_RTTI=0 -DUSE_LIBPCI=1 -DUSE_OPENSSL=1 $
+    -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS $
+    -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DWTF_USE_DYNAMIC_ANNOTATIONS=1 -D_DEBUG
+includes = -Igen -I../.. -I../../webrtc/common_audio/resampler/include $
+    -I../../webrtc/common_audio/signal_processing/include $
+    -I../../webrtc/common_audio/vad/include $
+    -I../../chromium/src/testing/gmock/include $
+    -I../../chromium/src/testing/gtest/include
+cflags = -isysroot $
+    /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk $
+    -O0 -gdwarf-2 -fvisibility=hidden -Werror -Wnewline-eof $
+    -mmacosx-version-min=10.6 -arch x86_64 -Wall -Wendif-labels -Wextra $
+    -Wno-unused-parameter -Wno-missing-field-initializers $
+    -Wno-selector-type-mismatch -Wpartial-availability -Wheader-hygiene $
+    -Wno-char-subscripts -Wno-unneeded-internal-declaration $
+    -Wno-covered-switch-default -Wstring-conversion -Wno-c++11-narrowing $
+    -Wno-deprecated-register -Wno-inconsistent-missing-override
+cflags_c = -std=c99 -fcolor-diagnostics -fno-strict-aliasing $
+    -fstack-protector-all -Wno-undefined-bool-conversion $
+    -Wno-tautological-undefined-compare
+cflags_cc = -std=c++11 -fno-rtti -fno-exceptions $
+    -fvisibility-inlines-hidden -fno-threadsafe-statics -fcolor-diagnostics $
+    -fno-strict-aliasing -fstack-protector-all $
+    -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare
+cflags_objc = $cflags_c -Wobjc-missing-property-synthesis
+cflags_objcc = $cflags_cc -Wobjc-missing-property-synthesis $
+    -fobjc-call-cxx-cdtors
+arflags = 
+
+build $
+    obj/webrtc/common_audio/common_audio_unittests.audio_converter_unittest.o: $
+    cxx ../../webrtc/common_audio/audio_converter_unittest.cc
+build $
+    obj/webrtc/common_audio/common_audio_unittests.audio_ring_buffer_unittest.o: $
+    cxx ../../webrtc/common_audio/audio_ring_buffer_unittest.cc
+build obj/webrtc/common_audio/common_audio_unittests.audio_util_unittest.o: $
+    cxx ../../webrtc/common_audio/audio_util_unittest.cc
+build obj/webrtc/common_audio/common_audio_unittests.blocker_unittest.o: $
+    cxx ../../webrtc/common_audio/blocker_unittest.cc
+build obj/webrtc/common_audio/common_audio_unittests.fir_filter_unittest.o: $
+    cxx ../../webrtc/common_audio/fir_filter_unittest.cc
+build $
+    obj/webrtc/common_audio/common_audio_unittests.lapped_transform_unittest.o: $
+    cxx ../../webrtc/common_audio/lapped_transform_unittest.cc
+build $
+    obj/webrtc/common_audio/common_audio_unittests.real_fourier_unittest.o: $
+    cxx ../../webrtc/common_audio/real_fourier_unittest.cc
+build $
+    obj/webrtc/common_audio/resampler/common_audio_unittests.resampler_unittest.o: $
+    cxx ../../webrtc/common_audio/resampler/resampler_unittest.cc
+build $
+    obj/webrtc/common_audio/resampler/common_audio_unittests.push_resampler_unittest.o: $
+    cxx ../../webrtc/common_audio/resampler/push_resampler_unittest.cc
+build $
+    obj/webrtc/common_audio/resampler/common_audio_unittests.push_sinc_resampler_unittest.o: $
+    cxx ../../webrtc/common_audio/resampler/push_sinc_resampler_unittest.cc
+build $
+    obj/webrtc/common_audio/resampler/common_audio_unittests.sinc_resampler_unittest.o: $
+    cxx ../../webrtc/common_audio/resampler/sinc_resampler_unittest.cc
+build $
+    obj/webrtc/common_audio/resampler/common_audio_unittests.sinusoidal_linear_chirp_source.o: $
+    cxx ../../webrtc/common_audio/resampler/sinusoidal_linear_chirp_source.cc
+build $
+    obj/webrtc/common_audio/common_audio_unittests.ring_buffer_unittest.o: $
+    cxx ../../webrtc/common_audio/ring_buffer_unittest.cc
+build $
+    obj/webrtc/common_audio/signal_processing/common_audio_unittests.real_fft_unittest.o: $
+    cxx ../../webrtc/common_audio/signal_processing/real_fft_unittest.cc
+build $
+    obj/webrtc/common_audio/signal_processing/common_audio_unittests.signal_processing_unittest.o: $
+    cxx $
+    ../../webrtc/common_audio/signal_processing/signal_processing_unittest.cc
+build $
+    obj/webrtc/common_audio/common_audio_unittests.sparse_fir_filter_unittest.o: $
+    cxx ../../webrtc/common_audio/sparse_fir_filter_unittest.cc
+build $
+    obj/webrtc/common_audio/vad/common_audio_unittests.vad_core_unittest.o: $
+    cxx ../../webrtc/common_audio/vad/vad_core_unittest.cc
+build $
+    obj/webrtc/common_audio/vad/common_audio_unittests.vad_filterbank_unittest.o: $
+    cxx ../../webrtc/common_audio/vad/vad_filterbank_unittest.cc
+build $
+    obj/webrtc/common_audio/vad/common_audio_unittests.vad_gmm_unittest.o: $
+    cxx ../../webrtc/common_audio/vad/vad_gmm_unittest.cc
+build obj/webrtc/common_audio/vad/common_audio_unittests.vad_sp_unittest.o: $
+    cxx ../../webrtc/common_audio/vad/vad_sp_unittest.cc
+build obj/webrtc/common_audio/vad/common_audio_unittests.vad_unittest.o: $
+    cxx ../../webrtc/common_audio/vad/vad_unittest.cc
+build obj/webrtc/common_audio/common_audio_unittests.wav_header_unittest.o: $
+    cxx ../../webrtc/common_audio/wav_header_unittest.cc
+build obj/webrtc/common_audio/common_audio_unittests.wav_file_unittest.o: $
+    cxx ../../webrtc/common_audio/wav_file_unittest.cc
+build $
+    obj/webrtc/common_audio/common_audio_unittests.window_generator_unittest.o: $
+    cxx ../../webrtc/common_audio/window_generator_unittest.cc
+
+ldflags = -Wl,-search_paths_first -Wl,-pie -mmacosx-version-min=10.6 $
+    -isysroot $
+    /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk $
+    -arch x86_64 -L.
+libs = -framework ApplicationServices -framework Foundation
+build common_audio_unittests: link $
+    obj/webrtc/common_audio/common_audio_unittests.audio_converter_unittest.o $
+    obj/webrtc/common_audio/common_audio_unittests.audio_ring_buffer_unittest.o $
+    obj/webrtc/common_audio/common_audio_unittests.audio_util_unittest.o $
+    obj/webrtc/common_audio/common_audio_unittests.blocker_unittest.o $
+    obj/webrtc/common_audio/common_audio_unittests.fir_filter_unittest.o $
+    obj/webrtc/common_audio/common_audio_unittests.lapped_transform_unittest.o $
+    obj/webrtc/common_audio/common_audio_unittests.real_fourier_unittest.o $
+    obj/webrtc/common_audio/resampler/common_audio_unittests.resampler_unittest.o $
+    obj/webrtc/common_audio/resampler/common_audio_unittests.push_resampler_unittest.o $
+    obj/webrtc/common_audio/resampler/common_audio_unittests.push_sinc_resampler_unittest.o $
+    obj/webrtc/common_audio/resampler/common_audio_unittests.sinc_resampler_unittest.o $
+    obj/webrtc/common_audio/resampler/common_audio_unittests.sinusoidal_linear_chirp_source.o $
+    obj/webrtc/common_audio/common_audio_unittests.ring_buffer_unittest.o $
+    obj/webrtc/common_audio/signal_processing/common_audio_unittests.real_fft_unittest.o $
+    obj/webrtc/common_audio/signal_processing/common_audio_unittests.signal_processing_unittest.o $
+    obj/webrtc/common_audio/common_audio_unittests.sparse_fir_filter_unittest.o $
+    obj/webrtc/common_audio/vad/common_audio_unittests.vad_core_unittest.o $
+    obj/webrtc/common_audio/vad/common_audio_unittests.vad_filterbank_unittest.o $
+    obj/webrtc/common_audio/vad/common_audio_unittests.vad_gmm_unittest.o $
+    obj/webrtc/common_audio/vad/common_audio_unittests.vad_sp_unittest.o $
+    obj/webrtc/common_audio/vad/common_audio_unittests.vad_unittest.o $
+    obj/webrtc/common_audio/common_audio_unittests.wav_header_unittest.o $
+    obj/webrtc/common_audio/common_audio_unittests.wav_file_unittest.o $
+    obj/webrtc/common_audio/common_audio_unittests.window_generator_unittest.o $
+    libcommon_audio.a libtest_support_main.a libgmock.a libgtest.a $
+    libsystem_wrappers.a libwebrtc_common.a librtc_base_approved.a $
+    libopenmax_dl.a libcommon_audio_sse2.a libfield_trial.a libhistogram.a $
+    libtest_support.a libgflags.a
+  ld = $ldxx
+  postbuilds = $ && (export $
+      BUILT_PRODUCTS_DIR=/Users/heberthbraga/Workspace/quimbik/webrtc/src/out/Debug; $
+      export CONFIGURATION=Debug; export $
+      EXECUTABLE_NAME=common_audio_unittests; export $
+      EXECUTABLE_PATH=common_audio_unittests; export $
+      FULL_PRODUCT_NAME=common_audio_unittests; export $
+      PRODUCT_NAME=common_audio_unittests; export $
+      PRODUCT_TYPE=com.apple.product-type.tool; export $
+      SDKROOT=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk; $
+      export $
+      SRCROOT=/Users/heberthbraga/Workspace/quimbik/webrtc/src/out/Debug/../../webrtc/common_audio; $
+      export SOURCE_ROOT="$${SRCROOT}"; export $
+      TARGET_BUILD_DIR=/Users/heberthbraga/Workspace/quimbik/webrtc/src/out/Debug; $
+      export TEMP_DIR="$${TMPDIR}"; (cd ../../webrtc/common_audio && $
+      ../../chromium/src/build/mac/change_mach_o_flags_from_xcode.sh); $
+      G=$$?; ((exit $$G) || rm -rf common_audio_unittests) && exit $$G)

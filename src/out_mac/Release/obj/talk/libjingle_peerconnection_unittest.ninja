@@ -1,0 +1,249 @@
+build obj/talk/libjingle_peerconnection_unittest.actions_depends.stamp: $
+    stamp libgmock.a librtc_base_tests_utils.a libwebrtc_common.a $
+    obj/talk/libjingle.actions_depends.stamp libjingle_p2p.a $
+    libjingle_peerconnection.a libjingle_unittest_main.a libgtest.a $
+    librtc_base.a librtc_base_approved.a libjsoncpp.a libboringssl.a $
+    libexpat.a libjingle_media.a libvideo_render_module.a $
+    libwebrtc_utility.a libaudio_coding_module.a libcng.a libcommon_audio.a $
+    libsystem_wrappers.a libopenmax_dl.a libcommon_audio_sse2.a $
+    libaudio_encoder_interface.a libg711.a libg722.a libilbc.a libisac.a $
+    libaudio_decoder_interface.a libisac_fix.a libpcm16b.a libred.a $
+    libwebrtc_opus.a libopus.a libneteq.a libmedia_file.a libcommon_video.a $
+    libyuv.a libjpeg_turbo.a libwebrtc.a libbitrate_controller.a $
+    librtp_rtcp.a libpaced_sender.a libremote_bitrate_estimator.a $
+    libvideo_capture_module.a libvideo_processing.a $
+    libvideo_processing_sse2.a libwebrtc_video_coding.a libwebrtc_i420.a $
+    libvideo_coding_utility.a libwebrtc_vp8.a libvpx.a $
+    libvpx_intrinsics_mmx.a libvpx_intrinsics_sse2.a $
+    libvpx_intrinsics_ssse3.a libvpx_intrinsics_sse4_1.a $
+    libvpx_intrinsics_avx2.a libwebrtc_vp9.a libvoice_engine.a $
+    libaudio_conference_mixer.a libaudio_processing.a $
+    libaudioproc_debug_proto.a libprotobuf_lite.a $
+    libaudio_processing_sse2.a libaudio_device.a librtc_sound.a $
+    libfield_trial_default.a libmetrics_default.a librtc_xmllite.a $
+    librtc_xmpp.a librtc_p2p.a libusrsctplib.a $
+    libvideo_capture_module_internal_impl.a $
+    libvideo_render_module_internal_impl.a libsrtp.a
+
+build obj/talk/libjingle_peerconnection_unittest.compile_depends.stamp: $
+    stamp $
+    obj/chromium/src/third_party/libjpeg_turbo/libjpeg.actions_rules_copies.stamp $
+    obj/chromium/src/third_party/libvpx/libvpx.actions_rules_copies.stamp $
+    obj/webrtc/modules/audioproc_debug_proto.actions_rules_copies.stamp $
+    obj/webrtc/modules/audioproc_debug_proto.actions_rules_copies.stamp
+
+defines = -DV8_DEPRECATION_WARNINGS -DEXPAT_RELATIVE_PATH $
+    -DFEATURE_ENABLE_VOICEMAIL -DGTEST_RELATIVE_PATH $
+    -DJSONCPP_RELATIVE_PATH -DLOGGING=1 -DSRTP_RELATIVE_PATH $
+    -DFEATURE_ENABLE_SSL -DFEATURE_ENABLE_PSTN -DHAVE_SCTP -DHAVE_SRTP $
+    -DHAVE_WEBRTC_VIDEO -DHAVE_WEBRTC_VOICE $
+    -D__ASSERT_MACROS_DEFINE_VERSIONS_WITHOUT_UNDERSCORE=0 -DCHROMIUM_BUILD $
+    -DCR_CLANG_REVISION=239765-1 -DUSE_LIBJPEG_TURBO=1 $
+    -DENABLE_ONE_CLICK_SIGNIN -DENABLE_PRE_SYNC_BACKUP -DENABLE_REMOTING=1 $
+    -DENABLE_WEBRTC=1 -DENABLE_MEDIA_ROUTER=1 -DENABLE_PEPPER_CDMS $
+    -DENABLE_CONFIGURATION_POLICY -DENABLE_NOTIFICATIONS -DENABLE_HIDPI=1 $
+    -DSYSTEM_NATIVELY_SIGNALS_MEMORY_PRESSURE -DDONT_EMBED_BUILD_METADATA $
+    -DENABLE_TASK_MANAGER=1 -DENABLE_EXTENSIONS=1 $
+    -DENABLE_PLUGIN_INSTALLATION=1 -DENABLE_PLUGINS=1 $
+    -DENABLE_SESSION_SERVICE=1 -DENABLE_THEMES=1 -DENABLE_AUTOFILL_DIALOG=1 $
+    -DENABLE_BACKGROUND=1 -DENABLE_GOOGLE_NOW=1 -DCLD_VERSION=2 $
+    -DENABLE_PRINTING=1 -DENABLE_BASIC_PRINTING=1 -DENABLE_PRINT_PREVIEW=1 $
+    -DENABLE_SPELLCHECK=1 -DENABLE_CAPTIVE_PORTAL_DETECTION=1 $
+    -DENABLE_APP_LIST=1 -DENABLE_SETTINGS_APP=1 -DENABLE_SUPERVISED_USERS=1 $
+    -DENABLE_SERVICE_DISCOVERY=1 -DENABLE_WIFI_BOOTSTRAPPING=1 $
+    -DV8_USE_EXTERNAL_STARTUP_DATA -DFULL_SAFE_BROWSING -DSAFE_BROWSING_CSD $
+    -DSAFE_BROWSING_DB_LOCAL -DSAFE_BROWSING_SERVICE -DOSX -DWEBRTC_MAC $
+    -DCARBON_DEPRECATED=YES -DHASH_NAMESPACE=__gnu_cxx -DWEBRTC_POSIX $
+    -DDISABLE_DYNAMIC_CAST -D_REENTRANT -DGTEST_HAS_POSIX_RE=0 $
+    -DGTEST_LANG_CXX11=0 -DUNIT_TEST -DGTEST_HAS_RTTI=0 -DXML_STATIC $
+    -DUSE_LIBPCI=1 -DUSE_OPENSSL=1 -DNDEBUG -DNVALGRIND $
+    -DDYNAMIC_ANNOTATIONS_ENABLED=0
+includes = -Igen -I../.. -I../.. -I../../third_party $
+    -I../../third_party/webrtc -I../../webrtc $
+    -I../../chromium/src/testing/gmock/include $
+    -I../../chromium/src/testing/gtest/include $
+    -I../../chromium/src/third_party/jsoncpp/overrides/include $
+    -I../../chromium/src/third_party/jsoncpp/source/include $
+    -I../../chromium/src/third_party/expat/files/lib $
+    -I../../testing/gtest/include -I../../third_party/libyuv/include $
+    -I../../testing/gtest
+cflags = -isysroot $
+    /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk $
+    -O2 -gdwarf-2 -fvisibility=hidden -Werror -Wnewline-eof $
+    -mmacosx-version-min=10.6 -arch x86_64 -Wendif-labels $
+    -Wno-unused-parameter -Wno-missing-field-initializers $
+    -Wno-selector-type-mismatch -Wpartial-availability -Wheader-hygiene $
+    -Wno-char-subscripts -Wno-unneeded-internal-declaration $
+    -Wno-covered-switch-default -Wstring-conversion -Wno-c++11-narrowing $
+    -Wno-deprecated-register -Wno-inconsistent-missing-override
+cflags_c = -std=c99 -fcolor-diagnostics -fno-strict-aliasing
+cflags_cc = -std=c++11 -fno-rtti -fno-exceptions $
+    -fvisibility-inlines-hidden -fno-threadsafe-statics -fcolor-diagnostics $
+    -fno-strict-aliasing
+cflags_objc = $cflags_c -Wobjc-missing-property-synthesis
+cflags_objcc = $cflags_cc -Wobjc-missing-property-synthesis $
+    -fobjc-call-cxx-cdtors
+arflags = 
+
+build $
+    obj/talk/app/webrtc/libjingle_peerconnection_unittest.datachannel_unittest.o: $
+    cxx ../../talk/app/webrtc/datachannel_unittest.cc || $
+    obj/talk/libjingle_peerconnection_unittest.compile_depends.stamp
+build $
+    obj/talk/app/webrtc/libjingle_peerconnection_unittest.dtlsidentitystore_unittest.o: $
+    cxx ../../talk/app/webrtc/dtlsidentitystore_unittest.cc || $
+    obj/talk/libjingle_peerconnection_unittest.compile_depends.stamp
+build $
+    obj/talk/app/webrtc/libjingle_peerconnection_unittest.dtmfsender_unittest.o: $
+    cxx ../../talk/app/webrtc/dtmfsender_unittest.cc || $
+    obj/talk/libjingle_peerconnection_unittest.compile_depends.stamp
+build $
+    obj/talk/app/webrtc/libjingle_peerconnection_unittest.jsepsessiondescription_unittest.o: $
+    cxx ../../talk/app/webrtc/jsepsessiondescription_unittest.cc || $
+    obj/talk/libjingle_peerconnection_unittest.compile_depends.stamp
+build $
+    obj/talk/app/webrtc/libjingle_peerconnection_unittest.localaudiosource_unittest.o: $
+    cxx ../../talk/app/webrtc/localaudiosource_unittest.cc || $
+    obj/talk/libjingle_peerconnection_unittest.compile_depends.stamp
+build $
+    obj/talk/app/webrtc/libjingle_peerconnection_unittest.mediastream_unittest.o: $
+    cxx ../../talk/app/webrtc/mediastream_unittest.cc || $
+    obj/talk/libjingle_peerconnection_unittest.compile_depends.stamp
+build $
+    obj/talk/app/webrtc/libjingle_peerconnection_unittest.mediastreamhandler_unittest.o: $
+    cxx ../../talk/app/webrtc/mediastreamhandler_unittest.cc || $
+    obj/talk/libjingle_peerconnection_unittest.compile_depends.stamp
+build $
+    obj/talk/app/webrtc/libjingle_peerconnection_unittest.mediastreamsignaling_unittest.o: $
+    cxx ../../talk/app/webrtc/mediastreamsignaling_unittest.cc || $
+    obj/talk/libjingle_peerconnection_unittest.compile_depends.stamp
+build $
+    obj/talk/app/webrtc/libjingle_peerconnection_unittest.peerconnection_unittest.o: $
+    cxx ../../talk/app/webrtc/peerconnection_unittest.cc || $
+    obj/talk/libjingle_peerconnection_unittest.compile_depends.stamp
+build $
+    obj/talk/app/webrtc/libjingle_peerconnection_unittest.peerconnectionendtoend_unittest.o: $
+    cxx ../../talk/app/webrtc/peerconnectionendtoend_unittest.cc || $
+    obj/talk/libjingle_peerconnection_unittest.compile_depends.stamp
+build $
+    obj/talk/app/webrtc/libjingle_peerconnection_unittest.peerconnectionfactory_unittest.o: $
+    cxx ../../talk/app/webrtc/peerconnectionfactory_unittest.cc || $
+    obj/talk/libjingle_peerconnection_unittest.compile_depends.stamp
+build $
+    obj/talk/app/webrtc/libjingle_peerconnection_unittest.peerconnectioninterface_unittest.o: $
+    cxx ../../talk/app/webrtc/peerconnectioninterface_unittest.cc || $
+    obj/talk/libjingle_peerconnection_unittest.compile_depends.stamp
+build $
+    obj/talk/app/webrtc/libjingle_peerconnection_unittest.remotevideocapturer_unittest.o: $
+    cxx ../../talk/app/webrtc/remotevideocapturer_unittest.cc || $
+    obj/talk/libjingle_peerconnection_unittest.compile_depends.stamp
+build obj/talk/app/webrtc/libjingle_peerconnection_unittest.sctputils.o: $
+    cxx ../../talk/app/webrtc/sctputils.cc || $
+    obj/talk/libjingle_peerconnection_unittest.compile_depends.stamp
+build $
+    obj/talk/app/webrtc/libjingle_peerconnection_unittest.statscollector_unittest.o: $
+    cxx ../../talk/app/webrtc/statscollector_unittest.cc || $
+    obj/talk/libjingle_peerconnection_unittest.compile_depends.stamp
+build $
+    obj/talk/app/webrtc/test/libjingle_peerconnection_unittest.fakeaudiocapturemodule.o: $
+    cxx ../../talk/app/webrtc/test/fakeaudiocapturemodule.cc || $
+    obj/talk/libjingle_peerconnection_unittest.compile_depends.stamp
+build $
+    obj/talk/app/webrtc/test/libjingle_peerconnection_unittest.fakeaudiocapturemodule_unittest.o: $
+    cxx ../../talk/app/webrtc/test/fakeaudiocapturemodule_unittest.cc || $
+    obj/talk/libjingle_peerconnection_unittest.compile_depends.stamp
+build $
+    obj/talk/app/webrtc/test/libjingle_peerconnection_unittest.peerconnectiontestwrapper.o: $
+    cxx ../../talk/app/webrtc/test/peerconnectiontestwrapper.cc || $
+    obj/talk/libjingle_peerconnection_unittest.compile_depends.stamp
+build $
+    obj/talk/app/webrtc/libjingle_peerconnection_unittest.videosource_unittest.o: $
+    cxx ../../talk/app/webrtc/videosource_unittest.cc || $
+    obj/talk/libjingle_peerconnection_unittest.compile_depends.stamp
+build $
+    obj/talk/app/webrtc/libjingle_peerconnection_unittest.videotrack_unittest.o: $
+    cxx ../../talk/app/webrtc/videotrack_unittest.cc || $
+    obj/talk/libjingle_peerconnection_unittest.compile_depends.stamp
+build $
+    obj/talk/app/webrtc/libjingle_peerconnection_unittest.webrtcsdp_unittest.o: $
+    cxx ../../talk/app/webrtc/webrtcsdp_unittest.cc || $
+    obj/talk/libjingle_peerconnection_unittest.compile_depends.stamp
+build $
+    obj/talk/app/webrtc/libjingle_peerconnection_unittest.webrtcsession_unittest.o: $
+    cxx ../../talk/app/webrtc/webrtcsession_unittest.cc || $
+    obj/talk/libjingle_peerconnection_unittest.compile_depends.stamp
+
+ldflags = -framework Cocoa -framework Foundation -framework IOKit $
+    -framework Security -framework SystemConfiguration -weak_framework $
+    AVFoundation -framework CoreAudio -framework CoreVideo -framework $
+    OpenGL -framework QTKit -Wl,-search_paths_first -Wl,-pie $
+    -Wl,-dead_strip -mmacosx-version-min=10.6 -isysroot $
+    /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk $
+    -arch x86_64 -L.
+libs = -framework Foundation -framework ApplicationServices -lm -framework $
+    AudioToolbox -framework CoreAudio
+build libjingle_peerconnection_unittest: link $
+    obj/talk/app/webrtc/libjingle_peerconnection_unittest.datachannel_unittest.o $
+    obj/talk/app/webrtc/libjingle_peerconnection_unittest.dtlsidentitystore_unittest.o $
+    obj/talk/app/webrtc/libjingle_peerconnection_unittest.dtmfsender_unittest.o $
+    obj/talk/app/webrtc/libjingle_peerconnection_unittest.jsepsessiondescription_unittest.o $
+    obj/talk/app/webrtc/libjingle_peerconnection_unittest.localaudiosource_unittest.o $
+    obj/talk/app/webrtc/libjingle_peerconnection_unittest.mediastream_unittest.o $
+    obj/talk/app/webrtc/libjingle_peerconnection_unittest.mediastreamhandler_unittest.o $
+    obj/talk/app/webrtc/libjingle_peerconnection_unittest.mediastreamsignaling_unittest.o $
+    obj/talk/app/webrtc/libjingle_peerconnection_unittest.peerconnection_unittest.o $
+    obj/talk/app/webrtc/libjingle_peerconnection_unittest.peerconnectionendtoend_unittest.o $
+    obj/talk/app/webrtc/libjingle_peerconnection_unittest.peerconnectionfactory_unittest.o $
+    obj/talk/app/webrtc/libjingle_peerconnection_unittest.peerconnectioninterface_unittest.o $
+    obj/talk/app/webrtc/libjingle_peerconnection_unittest.remotevideocapturer_unittest.o $
+    obj/talk/app/webrtc/libjingle_peerconnection_unittest.sctputils.o $
+    obj/talk/app/webrtc/libjingle_peerconnection_unittest.statscollector_unittest.o $
+    obj/talk/app/webrtc/test/libjingle_peerconnection_unittest.fakeaudiocapturemodule.o $
+    obj/talk/app/webrtc/test/libjingle_peerconnection_unittest.fakeaudiocapturemodule_unittest.o $
+    obj/talk/app/webrtc/test/libjingle_peerconnection_unittest.peerconnectiontestwrapper.o $
+    obj/talk/app/webrtc/libjingle_peerconnection_unittest.videosource_unittest.o $
+    obj/talk/app/webrtc/libjingle_peerconnection_unittest.videotrack_unittest.o $
+    obj/talk/app/webrtc/libjingle_peerconnection_unittest.webrtcsdp_unittest.o $
+    obj/talk/app/webrtc/libjingle_peerconnection_unittest.webrtcsession_unittest.o $
+    libgmock.a librtc_base_tests_utils.a libwebrtc_common.a libjingle_p2p.a $
+    libjingle_peerconnection.a libjingle_unittest_main.a libgtest.a $
+    librtc_base.a librtc_base_approved.a libjsoncpp.a libboringssl.a $
+    libexpat.a libjingle_media.a libvideo_render_module.a $
+    libwebrtc_utility.a libaudio_coding_module.a libcng.a libcommon_audio.a $
+    libsystem_wrappers.a libopenmax_dl.a libcommon_audio_sse2.a $
+    libaudio_encoder_interface.a libg711.a libg722.a libilbc.a libisac.a $
+    libaudio_decoder_interface.a libisac_fix.a libpcm16b.a libred.a $
+    libwebrtc_opus.a libopus.a libneteq.a libmedia_file.a libcommon_video.a $
+    libyuv.a libjpeg_turbo.a libwebrtc.a libbitrate_controller.a $
+    librtp_rtcp.a libpaced_sender.a libremote_bitrate_estimator.a $
+    libvideo_capture_module.a libvideo_processing.a $
+    libvideo_processing_sse2.a libwebrtc_video_coding.a libwebrtc_i420.a $
+    libvideo_coding_utility.a libwebrtc_vp8.a libvpx.a $
+    libvpx_intrinsics_mmx.a libvpx_intrinsics_sse2.a $
+    libvpx_intrinsics_ssse3.a libvpx_intrinsics_sse4_1.a $
+    libvpx_intrinsics_avx2.a libwebrtc_vp9.a libvoice_engine.a $
+    libaudio_conference_mixer.a libaudio_processing.a $
+    libaudioproc_debug_proto.a libprotobuf_lite.a $
+    libaudio_processing_sse2.a libaudio_device.a librtc_sound.a $
+    libfield_trial_default.a libmetrics_default.a librtc_xmllite.a $
+    librtc_xmpp.a librtc_p2p.a libusrsctplib.a $
+    libvideo_capture_module_internal_impl.a $
+    libvideo_render_module_internal_impl.a libsrtp.a | $
+    obj/talk/libjingle.actions_depends.stamp
+  ld = $ldxx
+  postbuilds = $ && (export $
+      BUILT_PRODUCTS_DIR=/Users/heberthbraga/Workspace/quimbik/webrtc/src/out_mac/Release; $
+      export CONFIGURATION=Release; export $
+      EXECUTABLE_NAME=libjingle_peerconnection_unittest; export $
+      EXECUTABLE_PATH=libjingle_peerconnection_unittest; export $
+      FULL_PRODUCT_NAME=libjingle_peerconnection_unittest; export $
+      PRODUCT_NAME=libjingle_peerconnection_unittest; export $
+      PRODUCT_TYPE=com.apple.product-type.tool; export $
+      SDKROOT=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk; $
+      export $
+      SRCROOT=/Users/heberthbraga/Workspace/quimbik/webrtc/src/out_mac/Release/../../talk; $
+      export SOURCE_ROOT="$${SRCROOT}"; export $
+      TARGET_BUILD_DIR=/Users/heberthbraga/Workspace/quimbik/webrtc/src/out_mac/Release; $
+      export TEMP_DIR="$${TMPDIR}"; (cd ../../talk && $
+      ../chromium/src/build/mac/change_mach_o_flags_from_xcode.sh); G=$$?; $
+      ((exit $$G) || rm -rf libjingle_peerconnection_unittest) && exit $$G)

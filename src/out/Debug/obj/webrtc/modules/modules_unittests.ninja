@@ -1,0 +1,1023 @@
+build obj/webrtc/modules/modules_unittests.actions_depends.stamp: stamp $
+    libacm_receive_test.a libacm_send_test.a libaudio_coding_module.a $
+    libaudio_device.a libaudio_processing.a libaudioproc_test_utils.a $
+    libbitrate_controller.a libbwe_simulator.a libcng.a $
+    libdesktop_capture.a libisac.a libisac_fix.a libmedia_file.a libneteq.a $
+    libneteq_test_support.a libneteq_unittest_tools.a libpaced_sender.a $
+    libpcm16b.a libred.a libremote_bitrate_estimator.a librtp_rtcp.a $
+    libvideo_codecs_test_framework.a libvideo_processing.a $
+    libwebrtc_utility.a libwebrtc_video_coding.a libg711.a libg722.a $
+    libilbc.a libwebrtc_opus.a libcommon_audio.a libsystem_wrappers.a $
+    libaudio_decoder_interface.a libgmock.a libgtest.a libgflags.a $
+    libwebrtc_common.a libvideo_capture.a libwebrtc_vp8.a libwebrtc_vp9.a $
+    libframe_generator.a librtp_test_utils.a libtest_support_main.a $
+    libagc_test_utils.a libaudioproc_protobuf_utils.a $
+    libaudioproc_unittest_proto.a libvpx.a librtc_base_approved.a $
+    libopenmax_dl.a libcommon_audio_sse2.a libaudio_encoder_interface.a $
+    libopus.a libaudioproc_debug_proto.a libprotobuf_lite.a $
+    libaudio_processing_sse2.a librtc_base.a libjsoncpp.a libboringssl.a $
+    libdesktop_capture_differ_sse2.a libtest_support.a libcommon_video.a $
+    libyuv.a libjpeg_turbo.a libvideo_processing_sse2.a libwebrtc_i420.a $
+    libvideo_coding_utility.a libvpx_intrinsics_mmx.a $
+    libvpx_intrinsics_sse2.a libvpx_intrinsics_ssse3.a $
+    libvpx_intrinsics_sse4_1.a libvpx_intrinsics_avx2.a $
+    libvideo_capture_module.a libfield_trial.a libhistogram.a
+
+build obj/webrtc/modules/modules_unittests.compile_depends.stamp: stamp $
+    obj/webrtc/modules/audioproc_debug_proto.actions_rules_copies.stamp $
+    obj/webrtc/modules/audioproc_debug_proto.actions_rules_copies.stamp $
+    obj/webrtc/modules/audioproc_unittest_proto.actions_rules_copies.stamp $
+    obj/chromium/src/third_party/libvpx/libvpx.actions_rules_copies.stamp $
+    obj/webrtc/modules/audioproc_debug_proto.actions_rules_copies.stamp $
+    obj/chromium/src/third_party/libjpeg_turbo/libjpeg.actions_rules_copies.stamp
+
+defines = -DV8_DEPRECATION_WARNINGS -DEXPAT_RELATIVE_PATH -DWEBRTC_POSIX $
+    -DWEBRTC_MAC -DWEBRTC_INCLUDE_INTERNAL_AUDIO_DEVICE $
+    -D__ASSERT_MACROS_DEFINE_VERSIONS_WITHOUT_UNDERSCORE=0 -DCHROMIUM_BUILD $
+    -DCR_CLANG_REVISION=239765-1 -DUSE_LIBJPEG_TURBO=1 $
+    -DENABLE_ONE_CLICK_SIGNIN -DENABLE_PRE_SYNC_BACKUP -DENABLE_REMOTING=1 $
+    -DENABLE_WEBRTC=1 -DENABLE_MEDIA_ROUTER=1 -DENABLE_PEPPER_CDMS $
+    -DENABLE_CONFIGURATION_POLICY -DENABLE_NOTIFICATIONS -DENABLE_HIDPI=1 $
+    -DSYSTEM_NATIVELY_SIGNALS_MEMORY_PRESSURE -DDONT_EMBED_BUILD_METADATA $
+    -DENABLE_TASK_MANAGER=1 -DENABLE_EXTENSIONS=1 $
+    -DENABLE_PLUGIN_INSTALLATION=1 -DENABLE_PLUGINS=1 $
+    -DENABLE_SESSION_SERVICE=1 -DENABLE_THEMES=1 -DENABLE_AUTOFILL_DIALOG=1 $
+    -DENABLE_BACKGROUND=1 -DENABLE_GOOGLE_NOW=1 -DCLD_VERSION=2 $
+    -DENABLE_PRINTING=1 -DENABLE_BASIC_PRINTING=1 -DENABLE_PRINT_PREVIEW=1 $
+    -DENABLE_SPELLCHECK=1 -DENABLE_CAPTIVE_PORTAL_DETECTION=1 $
+    -DENABLE_APP_LIST=1 -DENABLE_SETTINGS_APP=1 -DENABLE_SUPERVISED_USERS=1 $
+    -DENABLE_SERVICE_DISCOVERY=1 -DENABLE_WIFI_BOOTSTRAPPING=1 $
+    -DV8_USE_EXTERNAL_STARTUP_DATA -DFULL_SAFE_BROWSING -DSAFE_BROWSING_CSD $
+    -DSAFE_BROWSING_DB_LOCAL -DSAFE_BROWSING_SERVICE -DWEBRTC_CODEC_OPUS $
+    -DBWE_TEST_LOGGING_COMPILE_TIME_ENABLE=0 $
+    -DWEBRTC_AUDIOPROC_FLOAT_PROFILE -DWEBRTC_AUDIOPROC_DEBUG_DUMP $
+    -DGTEST_HAS_POSIX_RE=0 -DGTEST_LANG_CXX11=0 -DUNIT_TEST $
+    -DGTEST_HAS_RTTI=0 -DGFLAGS_DLL_DECL= -DGFLAGS_DLL_DECLARE_FLAG= $
+    -DGFLAGS_DLL_DEFINE_FLAG= -DPROTOBUF_USE_DLLS -DGOOGLE_PROTOBUF_NO_RTTI $
+    -DGOOGLE_PROTOBUF_NO_STATIC_INITIALIZER -DUSE_LIBPCI=1 -DUSE_OPENSSL=1 $
+    -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS $
+    -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DWTF_USE_DYNAMIC_ANNOTATIONS=1 -D_DEBUG
+includes = -Igen -I../.. -I../../webrtc/modules/audio_coding/main/interface $
+    -I../../webrtc/modules/interface -I../../webrtc $
+    -I../../webrtc/modules/audio_device/include $
+    -I../../webrtc/modules/audio_coding/codecs/cng/include $
+    -I../../webrtc/modules/audio_coding/codecs/isac/main/interface $
+    -I../../webrtc/modules/audio_coding/codecs/isac/fix/interface $
+    -I../../webrtc/modules/audio_coding/neteq/tools $
+    -I../../webrtc/modules/audio_coding/codecs/pcm16b/include $
+    -I../../webrtc/modules/audio_coding/codecs/red/include $
+    -I../../webrtc/modules/audio_coding/codecs/g711/include $
+    -I../../webrtc/modules/audio_coding/codecs/g722/include $
+    -I../../webrtc/modules/audio_coding/codecs/ilbc/interface $
+    -I../../third_party/opus/src/src -I../../third_party/opus/src/celt $
+    -I../../chromium/src/third_party/opus/src/include $
+    -I../../webrtc/common_audio/resampler/include $
+    -I../../webrtc/common_audio/signal_processing/include $
+    -I../../webrtc/common_audio/vad/include $
+    -I../../chromium/src/testing/gmock/include $
+    -I../../chromium/src/testing/gtest/include $
+    -I../../third_party/gflags/gen/posix/include $
+    -I../../third_party/gflags/src -Igen/protoc_out $
+    -I../../chromium/src/third_party/protobuf $
+    -I../../chromium/src/third_party/protobuf/src $
+    -I../../chromium/src/third_party/libvpx/source/libvpx
+cflags = -isysroot $
+    /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk $
+    -O0 -gdwarf-2 -fvisibility=hidden -Werror -Wnewline-eof $
+    -mmacosx-version-min=10.6 -arch x86_64 -Wall -Wendif-labels -Wextra $
+    -Wno-unused-parameter -Wno-missing-field-initializers $
+    -Wno-selector-type-mismatch -Wpartial-availability -Wheader-hygiene $
+    -Wno-char-subscripts -Wno-unneeded-internal-declaration $
+    -Wno-covered-switch-default -Wstring-conversion -Wno-c++11-narrowing $
+    -Wno-deprecated-register -Wno-inconsistent-missing-override
+cflags_c = -std=c99 -fcolor-diagnostics -fno-strict-aliasing $
+    -fstack-protector-all -Wno-undefined-bool-conversion $
+    -Wno-tautological-undefined-compare
+cflags_cc = -std=c++11 -fno-rtti -fno-exceptions $
+    -fvisibility-inlines-hidden -fno-threadsafe-statics -fcolor-diagnostics $
+    -fno-strict-aliasing -fstack-protector-all $
+    -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare
+cflags_objc = $cflags_c -Wobjc-missing-property-synthesis
+cflags_objcc = $cflags_cc -Wobjc-missing-property-synthesis $
+    -fobjc-call-cxx-cdtors
+arflags = 
+
+build $
+    obj/webrtc/modules/audio_coding/codecs/cng/modules_unittests.audio_encoder_cng_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_coding/codecs/cng/audio_encoder_cng_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/codecs/opus/modules_unittests.audio_encoder_mutable_opus_test.o: $
+    cxx $
+    ../../webrtc/modules/audio_coding/codecs/opus/audio_encoder_mutable_opus_test.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/main/acm2/modules_unittests.acm_receiver_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_coding/main/acm2/acm_receiver_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/main/acm2/modules_unittests.acm_receiver_unittest_oldapi.o: $
+    cxx $
+    ../../webrtc/modules/audio_coding/main/acm2/acm_receiver_unittest_oldapi.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/main/acm2/modules_unittests.audio_coding_module_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_coding/main/acm2/audio_coding_module_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/main/acm2/modules_unittests.audio_coding_module_unittest_oldapi.o: $
+    cxx $
+    ../../webrtc/modules/audio_coding/main/acm2/audio_coding_module_unittest_oldapi.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/main/acm2/modules_unittests.call_statistics_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_coding/main/acm2/call_statistics_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/main/acm2/modules_unittests.codec_owner_unittest.o: $
+    cxx ../../webrtc/modules/audio_coding/main/acm2/codec_owner_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/main/acm2/modules_unittests.initial_delay_manager_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_coding/main/acm2/initial_delay_manager_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/main/acm2/modules_unittests.nack_unittest.o: $
+    cxx ../../webrtc/modules/audio_coding/main/acm2/nack_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/codecs/cng/modules_unittests.cng_unittest.o: $
+    cxx ../../webrtc/modules/audio_coding/codecs/cng/cng_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/codecs/isac/fix/source/modules_unittests.filters_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_coding/codecs/isac/fix/source/filters_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/codecs/isac/fix/source/modules_unittests.filterbanks_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_coding/codecs/isac/fix/source/filterbanks_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/codecs/isac/fix/source/modules_unittests.lpc_masking_model_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_coding/codecs/isac/fix/source/lpc_masking_model_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/codecs/isac/fix/source/modules_unittests.transform_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_coding/codecs/isac/fix/source/transform_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/codecs/isac/main/source/modules_unittests.audio_encoder_isac_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_coding/codecs/isac/main/source/audio_encoder_isac_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/codecs/isac/main/source/modules_unittests.isac_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_coding/codecs/isac/main/source/isac_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/codecs/opus/modules_unittests.audio_encoder_opus_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_coding/codecs/opus/audio_encoder_opus_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/codecs/opus/modules_unittests.opus_unittest.o: $
+    cxx ../../webrtc/modules/audio_coding/codecs/opus/opus_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/codecs/red/modules_unittests.audio_encoder_copy_red_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_coding/codecs/red/audio_encoder_copy_red_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.audio_classifier_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_coding/neteq/audio_classifier_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.audio_multi_vector_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_coding/neteq/audio_multi_vector_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.audio_vector_unittest.o: $
+    cxx ../../webrtc/modules/audio_coding/neteq/audio_vector_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.background_noise_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_coding/neteq/background_noise_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.buffer_level_filter_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_coding/neteq/buffer_level_filter_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.comfort_noise_unittest.o: $
+    cxx ../../webrtc/modules/audio_coding/neteq/comfort_noise_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.decision_logic_unittest.o: $
+    cxx ../../webrtc/modules/audio_coding/neteq/decision_logic_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.decoder_database_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_coding/neteq/decoder_database_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.delay_manager_unittest.o: $
+    cxx ../../webrtc/modules/audio_coding/neteq/delay_manager_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.delay_peak_detector_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_coding/neteq/delay_peak_detector_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.dsp_helper_unittest.o: $
+    cxx ../../webrtc/modules/audio_coding/neteq/dsp_helper_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.dtmf_buffer_unittest.o: $
+    cxx ../../webrtc/modules/audio_coding/neteq/dtmf_buffer_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.dtmf_tone_generator_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_coding/neteq/dtmf_tone_generator_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.expand_unittest.o: $
+    cxx ../../webrtc/modules/audio_coding/neteq/expand_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.merge_unittest.o: $
+    cxx ../../webrtc/modules/audio_coding/neteq/merge_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.neteq_external_decoder_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_coding/neteq/neteq_external_decoder_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.neteq_impl_unittest.o: $
+    cxx ../../webrtc/modules/audio_coding/neteq/neteq_impl_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.neteq_network_stats_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_coding/neteq/neteq_network_stats_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.neteq_stereo_unittest.o: $
+    cxx ../../webrtc/modules/audio_coding/neteq/neteq_stereo_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.neteq_unittest.o: $
+    cxx ../../webrtc/modules/audio_coding/neteq/neteq_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.normal_unittest.o: $
+    cxx ../../webrtc/modules/audio_coding/neteq/normal_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.packet_buffer_unittest.o: $
+    cxx ../../webrtc/modules/audio_coding/neteq/packet_buffer_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.payload_splitter_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_coding/neteq/payload_splitter_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.post_decode_vad_unittest.o: $
+    cxx ../../webrtc/modules/audio_coding/neteq/post_decode_vad_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.random_vector_unittest.o: $
+    cxx ../../webrtc/modules/audio_coding/neteq/random_vector_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.sync_buffer_unittest.o: $
+    cxx ../../webrtc/modules/audio_coding/neteq/sync_buffer_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.timestamp_scaler_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_coding/neteq/timestamp_scaler_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.time_stretch_unittest.o: $
+    cxx ../../webrtc/modules/audio_coding/neteq/time_stretch_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/neteq/tools/modules_unittests.input_audio_file_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_coding/neteq/tools/input_audio_file_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_coding/neteq/tools/modules_unittests.packet_unittest.o: $
+    cxx ../../webrtc/modules/audio_coding/neteq/tools/packet_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_processing/aec/modules_unittests.echo_cancellation_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_processing/aec/echo_cancellation_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_processing/aec/modules_unittests.system_delay_unittest.o: $
+    cxx ../../webrtc/modules/audio_processing/aec/system_delay_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_processing/agc/modules_unittests.agc_audio_proc_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_processing/agc/agc_audio_proc_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_processing/agc/modules_unittests.circular_buffer_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_processing/agc/circular_buffer_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_processing/agc/modules_unittests.gmm_unittest.o: $
+    cxx ../../webrtc/modules/audio_processing/agc/gmm_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_processing/agc/modules_unittests.histogram_unittest.o: $
+    cxx ../../webrtc/modules/audio_processing/agc/histogram_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_processing/agc/modules_unittests.pitch_based_vad_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_processing/agc/pitch_based_vad_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_processing/agc/modules_unittests.pitch_internal_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_processing/agc/pitch_internal_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_processing/agc/modules_unittests.pole_zero_filter_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_processing/agc/pole_zero_filter_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_processing/agc/modules_unittests.standalone_vad_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_processing/agc/standalone_vad_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_processing/beamformer/modules_unittests.complex_matrix_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_processing/beamformer/complex_matrix_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_processing/beamformer/modules_unittests.covariance_matrix_generator_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_processing/beamformer/covariance_matrix_generator_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_processing/beamformer/modules_unittests.matrix_unittest.o: $
+    cxx ../../webrtc/modules/audio_processing/beamformer/matrix_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_processing/beamformer/modules_unittests.mock_nonlinear_beamformer.o: $
+    cxx $
+    ../../webrtc/modules/audio_processing/beamformer/mock_nonlinear_beamformer.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_processing/modules_unittests.echo_cancellation_impl_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_processing/echo_cancellation_impl_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_processing/modules_unittests.splitting_filter_unittest.o: $
+    cxx ../../webrtc/modules/audio_processing/splitting_filter_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_processing/transient/modules_unittests.dyadic_decimator_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_processing/transient/dyadic_decimator_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_processing/transient/modules_unittests.file_utils.o: $
+    cxx ../../webrtc/modules/audio_processing/transient/file_utils.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_processing/transient/modules_unittests.file_utils_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_processing/transient/file_utils_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_processing/transient/modules_unittests.moving_moments_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_processing/transient/moving_moments_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_processing/transient/modules_unittests.transient_detector_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_processing/transient/transient_detector_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_processing/transient/modules_unittests.transient_suppressor_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_processing/transient/transient_suppressor_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_processing/transient/modules_unittests.wpd_node_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_processing/transient/wpd_node_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_processing/transient/modules_unittests.wpd_tree_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_processing/transient/wpd_tree_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_processing/utility/modules_unittests.delay_estimator_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_processing/utility/delay_estimator_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/bitrate_controller/modules_unittests.bitrate_allocator_unittest.o: $
+    cxx $
+    ../../webrtc/modules/bitrate_controller/bitrate_allocator_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/bitrate_controller/modules_unittests.bitrate_controller_unittest.o: $
+    cxx $
+    ../../webrtc/modules/bitrate_controller/bitrate_controller_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/bitrate_controller/modules_unittests.send_side_bandwidth_estimation_unittest.o: $
+    cxx $
+    ../../webrtc/modules/bitrate_controller/send_side_bandwidth_estimation_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/bitrate_controller/modules_unittests.send_time_history_unittest.o: $
+    cxx $
+    ../../webrtc/modules/bitrate_controller/send_time_history_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/desktop_capture/modules_unittests.desktop_and_cursor_composer_unittest.o: $
+    cxx $
+    ../../webrtc/modules/desktop_capture/desktop_and_cursor_composer_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/desktop_capture/modules_unittests.desktop_region_unittest.o: $
+    cxx ../../webrtc/modules/desktop_capture/desktop_region_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/desktop_capture/modules_unittests.differ_block_unittest.o: $
+    cxx ../../webrtc/modules/desktop_capture/differ_block_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/desktop_capture/modules_unittests.differ_unittest.o: $
+    cxx ../../webrtc/modules/desktop_capture/differ_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/desktop_capture/modules_unittests.mouse_cursor_monitor_unittest.o: $
+    cxx $
+    ../../webrtc/modules/desktop_capture/mouse_cursor_monitor_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/desktop_capture/modules_unittests.screen_capturer_helper_unittest.o: $
+    cxx $
+    ../../webrtc/modules/desktop_capture/screen_capturer_helper_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/desktop_capture/modules_unittests.screen_capturer_mac_unittest.o: $
+    cxx $
+    ../../webrtc/modules/desktop_capture/screen_capturer_mac_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/desktop_capture/modules_unittests.screen_capturer_unittest.o: $
+    cxx ../../webrtc/modules/desktop_capture/screen_capturer_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/desktop_capture/modules_unittests.window_capturer_unittest.o: $
+    cxx ../../webrtc/modules/desktop_capture/window_capturer_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/media_file/source/modules_unittests.media_file_unittest.o: $
+    cxx ../../webrtc/modules/media_file/source/media_file_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build obj/webrtc/modules/modules_unittests.module_common_types_unittest.o: $
+    cxx ../../webrtc/modules/module_common_types_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/pacing/modules_unittests.bitrate_prober_unittest.o: $
+    cxx ../../webrtc/modules/pacing/bitrate_prober_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build obj/webrtc/modules/pacing/modules_unittests.paced_sender_unittest.o: $
+    cxx ../../webrtc/modules/pacing/paced_sender_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build obj/webrtc/modules/pacing/modules_unittests.packet_router_unittest.o: $
+    cxx ../../webrtc/modules/pacing/packet_router_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/remote_bitrate_estimator/modules_unittests.bwe_simulations.o: $
+    cxx ../../webrtc/modules/remote_bitrate_estimator/bwe_simulations.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/remote_bitrate_estimator/modules_unittests.inter_arrival_unittest.o: $
+    cxx $
+    ../../webrtc/modules/remote_bitrate_estimator/inter_arrival_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/remote_bitrate_estimator/modules_unittests.overuse_detector_unittest.o: $
+    cxx $
+    ../../webrtc/modules/remote_bitrate_estimator/overuse_detector_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/remote_bitrate_estimator/modules_unittests.rate_statistics_unittest.o: $
+    cxx $
+    ../../webrtc/modules/remote_bitrate_estimator/rate_statistics_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/remote_bitrate_estimator/modules_unittests.remote_bitrate_estimator_abs_send_time_unittest.o: $
+    cxx $
+    ../../webrtc/modules/remote_bitrate_estimator/remote_bitrate_estimator_abs_send_time_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/remote_bitrate_estimator/modules_unittests.remote_bitrate_estimator_single_stream_unittest.o: $
+    cxx $
+    ../../webrtc/modules/remote_bitrate_estimator/remote_bitrate_estimator_single_stream_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/remote_bitrate_estimator/modules_unittests.remote_bitrate_estimator_unittest_helper.o: $
+    cxx $
+    ../../webrtc/modules/remote_bitrate_estimator/remote_bitrate_estimator_unittest_helper.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.byte_io_unittest.o: $
+    cxx ../../webrtc/modules/rtp_rtcp/source/byte_io_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.fec_receiver_unittest.o: $
+    cxx ../../webrtc/modules/rtp_rtcp/source/fec_receiver_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.fec_test_helper.o: $
+    cxx ../../webrtc/modules/rtp_rtcp/source/fec_test_helper.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.h264_sps_parser_unittest.o: $
+    cxx ../../webrtc/modules/rtp_rtcp/source/h264_sps_parser_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.nack_rtx_unittest.o: $
+    cxx ../../webrtc/modules/rtp_rtcp/source/nack_rtx_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.producer_fec_unittest.o: $
+    cxx ../../webrtc/modules/rtp_rtcp/source/producer_fec_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.receive_statistics_unittest.o: $
+    cxx ../../webrtc/modules/rtp_rtcp/source/receive_statistics_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.remote_ntp_time_estimator_unittest.o: $
+    cxx $
+    ../../webrtc/modules/rtp_rtcp/source/remote_ntp_time_estimator_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.rtcp_format_remb_unittest.o: $
+    cxx ../../webrtc/modules/rtp_rtcp/source/rtcp_format_remb_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.rtcp_packet_unittest.o: $
+    cxx ../../webrtc/modules/rtp_rtcp/source/rtcp_packet_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.rtcp_receiver_unittest.o: $
+    cxx ../../webrtc/modules/rtp_rtcp/source/rtcp_receiver_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.rtcp_sender_unittest.o: $
+    cxx ../../webrtc/modules/rtp_rtcp/source/rtcp_sender_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.rtcp_utility_unittest.o: $
+    cxx ../../webrtc/modules/rtp_rtcp/source/rtcp_utility_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.rtp_fec_unittest.o: $
+    cxx ../../webrtc/modules/rtp_rtcp/source/rtp_fec_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.rtp_format_h264_unittest.o: $
+    cxx ../../webrtc/modules/rtp_rtcp/source/rtp_format_h264_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.rtp_format_vp8_unittest.o: $
+    cxx ../../webrtc/modules/rtp_rtcp/source/rtp_format_vp8_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.rtp_format_vp8_test_helper.o: $
+    cxx ../../webrtc/modules/rtp_rtcp/source/rtp_format_vp8_test_helper.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.rtp_packet_history_unittest.o: $
+    cxx ../../webrtc/modules/rtp_rtcp/source/rtp_packet_history_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.rtp_payload_registry_unittest.o: $
+    cxx $
+    ../../webrtc/modules/rtp_rtcp/source/rtp_payload_registry_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.rtp_rtcp_impl_unittest.o: $
+    cxx ../../webrtc/modules/rtp_rtcp/source/rtp_rtcp_impl_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.rtp_header_extension_unittest.o: $
+    cxx $
+    ../../webrtc/modules/rtp_rtcp/source/rtp_header_extension_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.rtp_sender_unittest.o: $
+    cxx ../../webrtc/modules/rtp_rtcp/source/rtp_sender_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.vp8_partition_aggregator_unittest.o: $
+    cxx $
+    ../../webrtc/modules/rtp_rtcp/source/vp8_partition_aggregator_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/rtp_rtcp/test/testAPI/modules_unittests.test_api.o: $
+    cxx ../../webrtc/modules/rtp_rtcp/test/testAPI/test_api.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/rtp_rtcp/test/testAPI/modules_unittests.test_api_audio.o: $
+    cxx ../../webrtc/modules/rtp_rtcp/test/testAPI/test_api_audio.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/rtp_rtcp/test/testAPI/modules_unittests.test_api_rtcp.o: $
+    cxx ../../webrtc/modules/rtp_rtcp/test/testAPI/test_api_rtcp.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/rtp_rtcp/test/testAPI/modules_unittests.test_api_video.o: $
+    cxx ../../webrtc/modules/rtp_rtcp/test/testAPI/test_api_video.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/utility/source/modules_unittests.audio_frame_operations_unittest.o: $
+    cxx $
+    ../../webrtc/modules/utility/source/audio_frame_operations_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/utility/source/modules_unittests.file_player_unittests.o: $
+    cxx ../../webrtc/modules/utility/source/file_player_unittests.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/utility/source/modules_unittests.process_thread_impl_unittest.o: $
+    cxx ../../webrtc/modules/utility/source/process_thread_impl_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/video_coding/codecs/test/modules_unittests.packet_manipulator_unittest.o: $
+    cxx $
+    ../../webrtc/modules/video_coding/codecs/test/packet_manipulator_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/video_coding/codecs/test/modules_unittests.stats_unittest.o: $
+    cxx ../../webrtc/modules/video_coding/codecs/test/stats_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/video_coding/codecs/test/modules_unittests.videoprocessor_unittest.o: $
+    cxx $
+    ../../webrtc/modules/video_coding/codecs/test/videoprocessor_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/video_coding/codecs/vp8/modules_unittests.default_temporal_layers_unittest.o: $
+    cxx $
+    ../../webrtc/modules/video_coding/codecs/vp8/default_temporal_layers_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/video_coding/codecs/vp8/modules_unittests.reference_picture_selection_unittest.o: $
+    cxx $
+    ../../webrtc/modules/video_coding/codecs/vp8/reference_picture_selection_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/video_coding/codecs/vp8/modules_unittests.screenshare_layers_unittest.o: $
+    cxx $
+    ../../webrtc/modules/video_coding/codecs/vp8/screenshare_layers_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/video_coding/codecs/vp8/modules_unittests.simulcast_encoder_adapter_unittest.o: $
+    cxx $
+    ../../webrtc/modules/video_coding/codecs/vp8/simulcast_encoder_adapter_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/video_coding/codecs/vp8/modules_unittests.simulcast_unittest.o: $
+    cxx ../../webrtc/modules/video_coding/codecs/vp8/simulcast_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/video_coding/main/source/modules_unittests.decoding_state_unittest.o: $
+    cxx $
+    ../../webrtc/modules/video_coding/main/source/decoding_state_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/video_coding/main/source/modules_unittests.jitter_buffer_unittest.o: $
+    cxx $
+    ../../webrtc/modules/video_coding/main/source/jitter_buffer_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/video_coding/main/source/modules_unittests.jitter_estimator_tests.o: $
+    cxx $
+    ../../webrtc/modules/video_coding/main/source/jitter_estimator_tests.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/video_coding/main/source/modules_unittests.media_optimization_unittest.o: $
+    cxx $
+    ../../webrtc/modules/video_coding/main/source/media_optimization_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/video_coding/main/source/modules_unittests.receiver_unittest.o: $
+    cxx ../../webrtc/modules/video_coding/main/source/receiver_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/video_coding/main/source/modules_unittests.session_info_unittest.o: $
+    cxx $
+    ../../webrtc/modules/video_coding/main/source/session_info_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/video_coding/main/source/modules_unittests.timing_unittest.o: $
+    cxx ../../webrtc/modules/video_coding/main/source/timing_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/video_coding/main/source/modules_unittests.video_coding_robustness_unittest.o: $
+    cxx $
+    ../../webrtc/modules/video_coding/main/source/video_coding_robustness_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/video_coding/main/source/modules_unittests.video_receiver_unittest.o: $
+    cxx $
+    ../../webrtc/modules/video_coding/main/source/video_receiver_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/video_coding/main/source/modules_unittests.video_sender_unittest.o: $
+    cxx $
+    ../../webrtc/modules/video_coding/main/source/video_sender_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/video_coding/main/source/modules_unittests.qm_select_unittest.o: $
+    cxx ../../webrtc/modules/video_coding/main/source/qm_select_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/video_coding/main/source/test/modules_unittests.stream_generator.o: $
+    cxx $
+    ../../webrtc/modules/video_coding/main/source/test/stream_generator.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/video_coding/utility/modules_unittests.quality_scaler_unittest.o: $
+    cxx $
+    ../../webrtc/modules/video_coding/utility/quality_scaler_unittest.cc || $
+    obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/video_processing/main/test/unit_test/modules_unittests.brightness_detection_test.o: $
+    cxx $
+    ../../webrtc/modules/video_processing/main/test/unit_test/brightness_detection_test.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/video_processing/main/test/unit_test/modules_unittests.content_metrics_test.o: $
+    cxx $
+    ../../webrtc/modules/video_processing/main/test/unit_test/content_metrics_test.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/video_processing/main/test/unit_test/modules_unittests.deflickering_test.o: $
+    cxx $
+    ../../webrtc/modules/video_processing/main/test/unit_test/deflickering_test.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/video_processing/main/test/unit_test/modules_unittests.video_processing_unittest.o: $
+    cxx $
+    ../../webrtc/modules/video_processing/main/test/unit_test/video_processing_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_processing/modules_unittests.audio_processing_impl_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_processing/audio_processing_impl_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+build $
+    obj/webrtc/modules/audio_processing/test/modules_unittests.audio_processing_unittest.o: $
+    cxx $
+    ../../webrtc/modules/audio_processing/test/audio_processing_unittest.cc $
+    || obj/webrtc/modules/modules_unittests.compile_depends.stamp
+
+ldflags = -framework Cocoa -framework Foundation -framework IOKit $
+    -framework Security -framework SystemConfiguration $
+    -Wl,-search_paths_first -Wl,-pie -mmacosx-version-min=10.6 -isysroot $
+    /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk $
+    -arch x86_64 -L.
+libs = -framework ApplicationServices -lm -framework Foundation -framework $
+    AudioToolbox -framework CoreAudio -framework AppKit -framework IOKit $
+    -framework OpenGL
+build modules_unittests: link $
+    obj/webrtc/modules/audio_coding/codecs/cng/modules_unittests.audio_encoder_cng_unittest.o $
+    obj/webrtc/modules/audio_coding/codecs/opus/modules_unittests.audio_encoder_mutable_opus_test.o $
+    obj/webrtc/modules/audio_coding/main/acm2/modules_unittests.acm_receiver_unittest.o $
+    obj/webrtc/modules/audio_coding/main/acm2/modules_unittests.acm_receiver_unittest_oldapi.o $
+    obj/webrtc/modules/audio_coding/main/acm2/modules_unittests.audio_coding_module_unittest.o $
+    obj/webrtc/modules/audio_coding/main/acm2/modules_unittests.audio_coding_module_unittest_oldapi.o $
+    obj/webrtc/modules/audio_coding/main/acm2/modules_unittests.call_statistics_unittest.o $
+    obj/webrtc/modules/audio_coding/main/acm2/modules_unittests.codec_owner_unittest.o $
+    obj/webrtc/modules/audio_coding/main/acm2/modules_unittests.initial_delay_manager_unittest.o $
+    obj/webrtc/modules/audio_coding/main/acm2/modules_unittests.nack_unittest.o $
+    obj/webrtc/modules/audio_coding/codecs/cng/modules_unittests.cng_unittest.o $
+    obj/webrtc/modules/audio_coding/codecs/isac/fix/source/modules_unittests.filters_unittest.o $
+    obj/webrtc/modules/audio_coding/codecs/isac/fix/source/modules_unittests.filterbanks_unittest.o $
+    obj/webrtc/modules/audio_coding/codecs/isac/fix/source/modules_unittests.lpc_masking_model_unittest.o $
+    obj/webrtc/modules/audio_coding/codecs/isac/fix/source/modules_unittests.transform_unittest.o $
+    obj/webrtc/modules/audio_coding/codecs/isac/main/source/modules_unittests.audio_encoder_isac_unittest.o $
+    obj/webrtc/modules/audio_coding/codecs/isac/main/source/modules_unittests.isac_unittest.o $
+    obj/webrtc/modules/audio_coding/codecs/opus/modules_unittests.audio_encoder_opus_unittest.o $
+    obj/webrtc/modules/audio_coding/codecs/opus/modules_unittests.opus_unittest.o $
+    obj/webrtc/modules/audio_coding/codecs/red/modules_unittests.audio_encoder_copy_red_unittest.o $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.audio_classifier_unittest.o $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.audio_multi_vector_unittest.o $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.audio_vector_unittest.o $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.background_noise_unittest.o $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.buffer_level_filter_unittest.o $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.comfort_noise_unittest.o $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.decision_logic_unittest.o $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.decoder_database_unittest.o $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.delay_manager_unittest.o $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.delay_peak_detector_unittest.o $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.dsp_helper_unittest.o $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.dtmf_buffer_unittest.o $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.dtmf_tone_generator_unittest.o $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.expand_unittest.o $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.merge_unittest.o $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.neteq_external_decoder_unittest.o $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.neteq_impl_unittest.o $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.neteq_network_stats_unittest.o $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.neteq_stereo_unittest.o $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.neteq_unittest.o $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.normal_unittest.o $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.packet_buffer_unittest.o $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.payload_splitter_unittest.o $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.post_decode_vad_unittest.o $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.random_vector_unittest.o $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.sync_buffer_unittest.o $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.timestamp_scaler_unittest.o $
+    obj/webrtc/modules/audio_coding/neteq/modules_unittests.time_stretch_unittest.o $
+    obj/webrtc/modules/audio_coding/neteq/tools/modules_unittests.input_audio_file_unittest.o $
+    obj/webrtc/modules/audio_coding/neteq/tools/modules_unittests.packet_unittest.o $
+    obj/webrtc/modules/audio_processing/aec/modules_unittests.echo_cancellation_unittest.o $
+    obj/webrtc/modules/audio_processing/aec/modules_unittests.system_delay_unittest.o $
+    obj/webrtc/modules/audio_processing/agc/modules_unittests.agc_audio_proc_unittest.o $
+    obj/webrtc/modules/audio_processing/agc/modules_unittests.circular_buffer_unittest.o $
+    obj/webrtc/modules/audio_processing/agc/modules_unittests.gmm_unittest.o $
+    obj/webrtc/modules/audio_processing/agc/modules_unittests.histogram_unittest.o $
+    obj/webrtc/modules/audio_processing/agc/modules_unittests.pitch_based_vad_unittest.o $
+    obj/webrtc/modules/audio_processing/agc/modules_unittests.pitch_internal_unittest.o $
+    obj/webrtc/modules/audio_processing/agc/modules_unittests.pole_zero_filter_unittest.o $
+    obj/webrtc/modules/audio_processing/agc/modules_unittests.standalone_vad_unittest.o $
+    obj/webrtc/modules/audio_processing/beamformer/modules_unittests.complex_matrix_unittest.o $
+    obj/webrtc/modules/audio_processing/beamformer/modules_unittests.covariance_matrix_generator_unittest.o $
+    obj/webrtc/modules/audio_processing/beamformer/modules_unittests.matrix_unittest.o $
+    obj/webrtc/modules/audio_processing/beamformer/modules_unittests.mock_nonlinear_beamformer.o $
+    obj/webrtc/modules/audio_processing/modules_unittests.echo_cancellation_impl_unittest.o $
+    obj/webrtc/modules/audio_processing/modules_unittests.splitting_filter_unittest.o $
+    obj/webrtc/modules/audio_processing/transient/modules_unittests.dyadic_decimator_unittest.o $
+    obj/webrtc/modules/audio_processing/transient/modules_unittests.file_utils.o $
+    obj/webrtc/modules/audio_processing/transient/modules_unittests.file_utils_unittest.o $
+    obj/webrtc/modules/audio_processing/transient/modules_unittests.moving_moments_unittest.o $
+    obj/webrtc/modules/audio_processing/transient/modules_unittests.transient_detector_unittest.o $
+    obj/webrtc/modules/audio_processing/transient/modules_unittests.transient_suppressor_unittest.o $
+    obj/webrtc/modules/audio_processing/transient/modules_unittests.wpd_node_unittest.o $
+    obj/webrtc/modules/audio_processing/transient/modules_unittests.wpd_tree_unittest.o $
+    obj/webrtc/modules/audio_processing/utility/modules_unittests.delay_estimator_unittest.o $
+    obj/webrtc/modules/bitrate_controller/modules_unittests.bitrate_allocator_unittest.o $
+    obj/webrtc/modules/bitrate_controller/modules_unittests.bitrate_controller_unittest.o $
+    obj/webrtc/modules/bitrate_controller/modules_unittests.send_side_bandwidth_estimation_unittest.o $
+    obj/webrtc/modules/bitrate_controller/modules_unittests.send_time_history_unittest.o $
+    obj/webrtc/modules/desktop_capture/modules_unittests.desktop_and_cursor_composer_unittest.o $
+    obj/webrtc/modules/desktop_capture/modules_unittests.desktop_region_unittest.o $
+    obj/webrtc/modules/desktop_capture/modules_unittests.differ_block_unittest.o $
+    obj/webrtc/modules/desktop_capture/modules_unittests.differ_unittest.o $
+    obj/webrtc/modules/desktop_capture/modules_unittests.mouse_cursor_monitor_unittest.o $
+    obj/webrtc/modules/desktop_capture/modules_unittests.screen_capturer_helper_unittest.o $
+    obj/webrtc/modules/desktop_capture/modules_unittests.screen_capturer_mac_unittest.o $
+    obj/webrtc/modules/desktop_capture/modules_unittests.screen_capturer_unittest.o $
+    obj/webrtc/modules/desktop_capture/modules_unittests.window_capturer_unittest.o $
+    obj/webrtc/modules/media_file/source/modules_unittests.media_file_unittest.o $
+    obj/webrtc/modules/modules_unittests.module_common_types_unittest.o $
+    obj/webrtc/modules/pacing/modules_unittests.bitrate_prober_unittest.o $
+    obj/webrtc/modules/pacing/modules_unittests.paced_sender_unittest.o $
+    obj/webrtc/modules/pacing/modules_unittests.packet_router_unittest.o $
+    obj/webrtc/modules/remote_bitrate_estimator/modules_unittests.bwe_simulations.o $
+    obj/webrtc/modules/remote_bitrate_estimator/modules_unittests.inter_arrival_unittest.o $
+    obj/webrtc/modules/remote_bitrate_estimator/modules_unittests.overuse_detector_unittest.o $
+    obj/webrtc/modules/remote_bitrate_estimator/modules_unittests.rate_statistics_unittest.o $
+    obj/webrtc/modules/remote_bitrate_estimator/modules_unittests.remote_bitrate_estimator_abs_send_time_unittest.o $
+    obj/webrtc/modules/remote_bitrate_estimator/modules_unittests.remote_bitrate_estimator_single_stream_unittest.o $
+    obj/webrtc/modules/remote_bitrate_estimator/modules_unittests.remote_bitrate_estimator_unittest_helper.o $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.byte_io_unittest.o $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.fec_receiver_unittest.o $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.fec_test_helper.o $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.h264_sps_parser_unittest.o $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.nack_rtx_unittest.o $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.producer_fec_unittest.o $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.receive_statistics_unittest.o $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.remote_ntp_time_estimator_unittest.o $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.rtcp_format_remb_unittest.o $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.rtcp_packet_unittest.o $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.rtcp_receiver_unittest.o $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.rtcp_sender_unittest.o $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.rtcp_utility_unittest.o $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.rtp_fec_unittest.o $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.rtp_format_h264_unittest.o $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.rtp_format_vp8_unittest.o $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.rtp_format_vp8_test_helper.o $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.rtp_packet_history_unittest.o $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.rtp_payload_registry_unittest.o $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.rtp_rtcp_impl_unittest.o $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.rtp_header_extension_unittest.o $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.rtp_sender_unittest.o $
+    obj/webrtc/modules/rtp_rtcp/source/modules_unittests.vp8_partition_aggregator_unittest.o $
+    obj/webrtc/modules/rtp_rtcp/test/testAPI/modules_unittests.test_api.o $
+    obj/webrtc/modules/rtp_rtcp/test/testAPI/modules_unittests.test_api_audio.o $
+    obj/webrtc/modules/rtp_rtcp/test/testAPI/modules_unittests.test_api_rtcp.o $
+    obj/webrtc/modules/rtp_rtcp/test/testAPI/modules_unittests.test_api_video.o $
+    obj/webrtc/modules/utility/source/modules_unittests.audio_frame_operations_unittest.o $
+    obj/webrtc/modules/utility/source/modules_unittests.file_player_unittests.o $
+    obj/webrtc/modules/utility/source/modules_unittests.process_thread_impl_unittest.o $
+    obj/webrtc/modules/video_coding/codecs/test/modules_unittests.packet_manipulator_unittest.o $
+    obj/webrtc/modules/video_coding/codecs/test/modules_unittests.stats_unittest.o $
+    obj/webrtc/modules/video_coding/codecs/test/modules_unittests.videoprocessor_unittest.o $
+    obj/webrtc/modules/video_coding/codecs/vp8/modules_unittests.default_temporal_layers_unittest.o $
+    obj/webrtc/modules/video_coding/codecs/vp8/modules_unittests.reference_picture_selection_unittest.o $
+    obj/webrtc/modules/video_coding/codecs/vp8/modules_unittests.screenshare_layers_unittest.o $
+    obj/webrtc/modules/video_coding/codecs/vp8/modules_unittests.simulcast_encoder_adapter_unittest.o $
+    obj/webrtc/modules/video_coding/codecs/vp8/modules_unittests.simulcast_unittest.o $
+    obj/webrtc/modules/video_coding/main/source/modules_unittests.decoding_state_unittest.o $
+    obj/webrtc/modules/video_coding/main/source/modules_unittests.jitter_buffer_unittest.o $
+    obj/webrtc/modules/video_coding/main/source/modules_unittests.jitter_estimator_tests.o $
+    obj/webrtc/modules/video_coding/main/source/modules_unittests.media_optimization_unittest.o $
+    obj/webrtc/modules/video_coding/main/source/modules_unittests.receiver_unittest.o $
+    obj/webrtc/modules/video_coding/main/source/modules_unittests.session_info_unittest.o $
+    obj/webrtc/modules/video_coding/main/source/modules_unittests.timing_unittest.o $
+    obj/webrtc/modules/video_coding/main/source/modules_unittests.video_coding_robustness_unittest.o $
+    obj/webrtc/modules/video_coding/main/source/modules_unittests.video_receiver_unittest.o $
+    obj/webrtc/modules/video_coding/main/source/modules_unittests.video_sender_unittest.o $
+    obj/webrtc/modules/video_coding/main/source/modules_unittests.qm_select_unittest.o $
+    obj/webrtc/modules/video_coding/main/source/test/modules_unittests.stream_generator.o $
+    obj/webrtc/modules/video_coding/utility/modules_unittests.quality_scaler_unittest.o $
+    obj/webrtc/modules/video_processing/main/test/unit_test/modules_unittests.brightness_detection_test.o $
+    obj/webrtc/modules/video_processing/main/test/unit_test/modules_unittests.content_metrics_test.o $
+    obj/webrtc/modules/video_processing/main/test/unit_test/modules_unittests.deflickering_test.o $
+    obj/webrtc/modules/video_processing/main/test/unit_test/modules_unittests.video_processing_unittest.o $
+    obj/webrtc/modules/audio_processing/modules_unittests.audio_processing_impl_unittest.o $
+    obj/webrtc/modules/audio_processing/test/modules_unittests.audio_processing_unittest.o $
+    libacm_receive_test.a libacm_send_test.a libaudio_coding_module.a $
+    libaudio_device.a libaudio_processing.a libaudioproc_test_utils.a $
+    libbitrate_controller.a libbwe_simulator.a libcng.a $
+    libdesktop_capture.a libisac.a libisac_fix.a libmedia_file.a libneteq.a $
+    libneteq_test_support.a libneteq_unittest_tools.a libpaced_sender.a $
+    libpcm16b.a libred.a libremote_bitrate_estimator.a librtp_rtcp.a $
+    libvideo_codecs_test_framework.a libvideo_processing.a $
+    libwebrtc_utility.a libwebrtc_video_coding.a libg711.a libg722.a $
+    libilbc.a libwebrtc_opus.a libcommon_audio.a libsystem_wrappers.a $
+    libaudio_decoder_interface.a libgmock.a libgtest.a libgflags.a $
+    libwebrtc_common.a libvideo_capture.a libwebrtc_vp8.a libwebrtc_vp9.a $
+    libframe_generator.a librtp_test_utils.a libtest_support_main.a $
+    libagc_test_utils.a libaudioproc_protobuf_utils.a $
+    libaudioproc_unittest_proto.a libvpx.a librtc_base_approved.a $
+    libopenmax_dl.a libcommon_audio_sse2.a libaudio_encoder_interface.a $
+    libopus.a libaudioproc_debug_proto.a libprotobuf_lite.a $
+    libaudio_processing_sse2.a librtc_base.a libjsoncpp.a libboringssl.a $
+    libdesktop_capture_differ_sse2.a libtest_support.a libcommon_video.a $
+    libyuv.a libjpeg_turbo.a libvideo_processing_sse2.a libwebrtc_i420.a $
+    libvideo_coding_utility.a libvpx_intrinsics_mmx.a $
+    libvpx_intrinsics_sse2.a libvpx_intrinsics_ssse3.a $
+    libvpx_intrinsics_sse4_1.a libvpx_intrinsics_avx2.a $
+    libvideo_capture_module.a libfield_trial.a libhistogram.a
+  ld = $ldxx
+  postbuilds = $ && (export $
+      BUILT_PRODUCTS_DIR=/Users/heberthbraga/Workspace/quimbik/webrtc/src/out/Debug; $
+      export CONFIGURATION=Debug; export EXECUTABLE_NAME=modules_unittests; $
+      export EXECUTABLE_PATH=modules_unittests; export $
+      FULL_PRODUCT_NAME=modules_unittests; export $
+      PRODUCT_NAME=modules_unittests; export $
+      PRODUCT_TYPE=com.apple.product-type.tool; export $
+      SDKROOT=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk; $
+      export $
+      SRCROOT=/Users/heberthbraga/Workspace/quimbik/webrtc/src/out/Debug/../../webrtc/modules; $
+      export SOURCE_ROOT="$${SRCROOT}"; export $
+      TARGET_BUILD_DIR=/Users/heberthbraga/Workspace/quimbik/webrtc/src/out/Debug; $
+      export TEMP_DIR="$${TMPDIR}"; (cd ../../webrtc/modules && $
+      ../../chromium/src/build/mac/change_mach_o_flags_from_xcode.sh); $
+      G=$$?; ((exit $$G) || rm -rf modules_unittests) && exit $$G)

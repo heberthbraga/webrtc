@@ -1,0 +1,35 @@
+defines = -DV8_DEPRECATION_WARNINGS -DDISABLE_NACL -DCHROMIUM_BUILD $
+    -DCR_CLANG_REVISION=239765-1 -DUSE_LIBJPEG_TURBO=1 $
+    -DENABLE_CONFIGURATION_POLICY -DSYSTEM_NATIVELY_SIGNALS_MEMORY_PRESSURE $
+    -DDONT_EMBED_BUILD_METADATA -DCLD_VERSION=2 -DDISABLE_FTP_SUPPORT=1 $
+    -DV8_USE_EXTERNAL_STARTUP_DATA -DWEBRTC_RESTRICT_LOGGING $
+    -DEXPAT_RELATIVE_PATH -DWEBRTC_ARCH_ARM -DWEBRTC_ARCH_ARM_V7 $
+    -DWEBRTC_HAS_NEON -DWEBRTC_POSIX -DWEBRTC_MAC -DWEBRTC_IOS $
+    -DWEBRTC_INCLUDE_INTERNAL_AUDIO_DEVICE -DUSE_LIBPCI=1 -DUSE_OPENSSL=1 $
+    -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -DNDEBUG -DNVALGRIND $
+    -DDYNAMIC_ANNOTATIONS_ENABLED=0 -DNS_BLOCK_ASSERTIONS=1 $
+    -D_FORTIFY_SOURCE=2
+includes = -Igen -I../..
+cflags = -isysroot $
+    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk $
+    -Os -gdwarf-2 -fvisibility=hidden -Werror -Wnewline-eof $
+    -miphoneos-version-min=7.0 -arch armv7 -Wall -Wendif-labels -Wextra $
+    -Wno-unused-parameter -Wno-missing-field-initializers $
+    -Wno-selector-type-mismatch -Wheader-hygiene -Wno-char-subscripts $
+    -Wno-unneeded-internal-declaration -Wno-covered-switch-default $
+    -Wstring-conversion -Wno-c++11-narrowing -Wno-deprecated-register $
+    -Wno-inconsistent-missing-override
+cflags_c = -std=c99 -fcolor-diagnostics
+cflags_cc = -std=c++11 -stdlib=libc++ -fno-rtti -fno-exceptions $
+    -fvisibility-inlines-hidden -fno-threadsafe-statics -fcolor-diagnostics
+cflags_objc = $cflags_c -Wobjc-missing-property-synthesis
+cflags_objcc = $cflags_cc -Wobjc-missing-property-synthesis $
+    -fobjc-call-cxx-cdtors
+arflags = 
+
+build $
+    obj/webrtc/modules/video_coding/codecs/i420/main/source/webrtc_i420.i420.o: $
+    cxx ../../webrtc/modules/video_coding/codecs/i420/main/source/i420.cc
+
+build libwebrtc_i420.a: alink $
+    obj/webrtc/modules/video_coding/codecs/i420/main/source/webrtc_i420.i420.o

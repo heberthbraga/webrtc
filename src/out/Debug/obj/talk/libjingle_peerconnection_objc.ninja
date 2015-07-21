@@ -1,0 +1,144 @@
+defines = -DV8_DEPRECATION_WARNINGS -DEXPAT_RELATIVE_PATH $
+    -DFEATURE_ENABLE_VOICEMAIL -DGTEST_RELATIVE_PATH $
+    -DJSONCPP_RELATIVE_PATH -DLOGGING=1 -DSRTP_RELATIVE_PATH $
+    -DFEATURE_ENABLE_SSL -DFEATURE_ENABLE_PSTN -DHAVE_SCTP -DHAVE_SRTP $
+    -DHAVE_WEBRTC_VIDEO -DHAVE_WEBRTC_VOICE $
+    -D__ASSERT_MACROS_DEFINE_VERSIONS_WITHOUT_UNDERSCORE=0 -DCHROMIUM_BUILD $
+    -DCR_CLANG_REVISION=239765-1 -DUSE_LIBJPEG_TURBO=1 $
+    -DENABLE_ONE_CLICK_SIGNIN -DENABLE_PRE_SYNC_BACKUP -DENABLE_REMOTING=1 $
+    -DENABLE_WEBRTC=1 -DENABLE_MEDIA_ROUTER=1 -DENABLE_PEPPER_CDMS $
+    -DENABLE_CONFIGURATION_POLICY -DENABLE_NOTIFICATIONS -DENABLE_HIDPI=1 $
+    -DSYSTEM_NATIVELY_SIGNALS_MEMORY_PRESSURE -DDONT_EMBED_BUILD_METADATA $
+    -DENABLE_TASK_MANAGER=1 -DENABLE_EXTENSIONS=1 $
+    -DENABLE_PLUGIN_INSTALLATION=1 -DENABLE_PLUGINS=1 $
+    -DENABLE_SESSION_SERVICE=1 -DENABLE_THEMES=1 -DENABLE_AUTOFILL_DIALOG=1 $
+    -DENABLE_BACKGROUND=1 -DENABLE_GOOGLE_NOW=1 -DCLD_VERSION=2 $
+    -DENABLE_PRINTING=1 -DENABLE_BASIC_PRINTING=1 -DENABLE_PRINT_PREVIEW=1 $
+    -DENABLE_SPELLCHECK=1 -DENABLE_CAPTIVE_PORTAL_DETECTION=1 $
+    -DENABLE_APP_LIST=1 -DENABLE_SETTINGS_APP=1 -DENABLE_SUPERVISED_USERS=1 $
+    -DENABLE_SERVICE_DISCOVERY=1 -DENABLE_WIFI_BOOTSTRAPPING=1 $
+    -DV8_USE_EXTERNAL_STARTUP_DATA -DFULL_SAFE_BROWSING -DSAFE_BROWSING_CSD $
+    -DSAFE_BROWSING_DB_LOCAL -DSAFE_BROWSING_SERVICE -DOSX -DWEBRTC_MAC $
+    -DCARBON_DEPRECATED=YES -DHASH_NAMESPACE=__gnu_cxx -DWEBRTC_POSIX $
+    -DDISABLE_DYNAMIC_CAST -D_REENTRANT -DUSE_LIBPCI=1 -DUSE_OPENSSL=1 $
+    -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DWTF_USE_DYNAMIC_ANNOTATIONS=1 -D_DEBUG
+includes = -Igen -I../.. -I../.. -I../../third_party $
+    -I../../third_party/webrtc -I../../webrtc -I../../talk/app/webrtc $
+    -I../../talk/app/webrtc/objc -I../../talk/app/webrtc/objc/public
+cflags = -isysroot $
+    /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk $
+    -O0 -gdwarf-2 -fvisibility=hidden -Werror -Wnewline-eof $
+    -mmacosx-version-min=10.7 -arch x86_64 -Wendif-labels $
+    -Wno-unused-parameter -Wno-missing-field-initializers $
+    -Wno-selector-type-mismatch -Wheader-hygiene -Wno-char-subscripts $
+    -Wno-unneeded-internal-declaration -Wno-covered-switch-default $
+    -Wstring-conversion -Wno-c++11-narrowing -Wno-deprecated-register $
+    -Wno-inconsistent-missing-override
+cflags_c = -std=c99 -fcolor-diagnostics -fno-strict-aliasing $
+    -fstack-protector-all -Wno-undefined-bool-conversion $
+    -Wno-tautological-undefined-compare
+cflags_cc = -std=c++11 -fno-rtti -fno-exceptions $
+    -fvisibility-inlines-hidden -fno-threadsafe-statics -fcolor-diagnostics $
+    -fno-strict-aliasing -fstack-protector-all $
+    -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare
+cflags_objc = $cflags_c -fobjc-arc
+cflags_objcc = $cflags_cc -fobjc-arc -fobjc-call-cxx-cdtors
+arflags = 
+
+build $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCAudioTrack.o: $
+    objcxx ../../talk/app/webrtc/objc/RTCAudioTrack.mm
+build $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCDataChannel.o: $
+    objcxx ../../talk/app/webrtc/objc/RTCDataChannel.mm
+build $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCEnumConverter.o: $
+    objcxx ../../talk/app/webrtc/objc/RTCEnumConverter.mm
+build $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCI420Frame.o: $
+    objcxx ../../talk/app/webrtc/objc/RTCI420Frame.mm
+build $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCICECandidate.o: $
+    objcxx ../../talk/app/webrtc/objc/RTCICECandidate.mm
+build $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCICEServer.o: $
+    objcxx ../../talk/app/webrtc/objc/RTCICEServer.mm
+build $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCMediaConstraints.o: $
+    objcxx ../../talk/app/webrtc/objc/RTCMediaConstraints.mm
+build $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCMediaConstraintsNative.o: $
+    cxx ../../talk/app/webrtc/objc/RTCMediaConstraintsNative.cc
+build $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCMediaSource.o: $
+    objcxx ../../talk/app/webrtc/objc/RTCMediaSource.mm
+build $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCMediaStream.o: $
+    objcxx ../../talk/app/webrtc/objc/RTCMediaStream.mm
+build $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCMediaStreamTrack.o: $
+    objcxx ../../talk/app/webrtc/objc/RTCMediaStreamTrack.mm
+build $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCOpenGLVideoRenderer.o: $
+    objcxx ../../talk/app/webrtc/objc/RTCOpenGLVideoRenderer.mm
+build obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCPair.o: $
+    objc ../../talk/app/webrtc/objc/RTCPair.m
+build $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCPeerConnection.o: $
+    objcxx ../../talk/app/webrtc/objc/RTCPeerConnection.mm
+build $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCPeerConnectionFactory.o: $
+    objcxx ../../talk/app/webrtc/objc/RTCPeerConnectionFactory.mm
+build $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCPeerConnectionInterface.o: $
+    objcxx ../../talk/app/webrtc/objc/RTCPeerConnectionInterface.mm
+build $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCPeerConnectionObserver.o: $
+    objcxx ../../talk/app/webrtc/objc/RTCPeerConnectionObserver.mm
+build $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCSessionDescription.o: $
+    objcxx ../../talk/app/webrtc/objc/RTCSessionDescription.mm
+build $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCStatsReport.o: $
+    objcxx ../../talk/app/webrtc/objc/RTCStatsReport.mm
+build $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCVideoCapturer.o: $
+    objcxx ../../talk/app/webrtc/objc/RTCVideoCapturer.mm
+build $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCVideoRendererAdapter.o: $
+    objcxx ../../talk/app/webrtc/objc/RTCVideoRendererAdapter.mm
+build $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCVideoSource.o: $
+    objcxx ../../talk/app/webrtc/objc/RTCVideoSource.mm
+build $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCVideoTrack.o: $
+    objcxx ../../talk/app/webrtc/objc/RTCVideoTrack.mm
+build $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCNSGLVideoView.o: $
+    objc ../../talk/app/webrtc/objc/RTCNSGLVideoView.m
+
+build libjingle_peerconnection_objc.a: alink $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCAudioTrack.o $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCDataChannel.o $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCEnumConverter.o $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCI420Frame.o $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCICECandidate.o $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCICEServer.o $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCMediaConstraints.o $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCMediaConstraintsNative.o $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCMediaSource.o $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCMediaStream.o $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCMediaStreamTrack.o $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCOpenGLVideoRenderer.o $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCPair.o $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCPeerConnection.o $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCPeerConnectionFactory.o $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCPeerConnectionInterface.o $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCPeerConnectionObserver.o $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCSessionDescription.o $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCStatsReport.o $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCVideoCapturer.o $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCVideoRendererAdapter.o $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCVideoSource.o $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCVideoTrack.o $
+    obj/talk/app/webrtc/objc/libjingle_peerconnection_objc.RTCNSGLVideoView.o

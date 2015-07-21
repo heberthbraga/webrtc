@@ -1,0 +1,70 @@
+build obj/webrtc/tools/frame_analyzer.actions_depends.stamp: stamp $
+    libcommand_line_parser.a libvideo_quality_analysis.a libcommon_video.a $
+    libwebrtc_common.a libsystem_wrappers.a librtc_base_approved.a libyuv.a $
+    libyuv_neon.a
+
+defines = -DV8_DEPRECATION_WARNINGS -DDISABLE_NACL -DCHROMIUM_BUILD $
+    -DCR_CLANG_REVISION=239765-1 -DUSE_LIBJPEG_TURBO=1 $
+    -DENABLE_CONFIGURATION_POLICY -DSYSTEM_NATIVELY_SIGNALS_MEMORY_PRESSURE $
+    -DDONT_EMBED_BUILD_METADATA -DCLD_VERSION=2 -DDISABLE_FTP_SUPPORT=1 $
+    -DV8_USE_EXTERNAL_STARTUP_DATA -DWEBRTC_RESTRICT_LOGGING $
+    -DEXPAT_RELATIVE_PATH -DWEBRTC_ARCH_ARM -DWEBRTC_ARCH_ARM_V7 $
+    -DWEBRTC_HAS_NEON -DWEBRTC_POSIX -DWEBRTC_MAC -DWEBRTC_IOS $
+    -DWEBRTC_INCLUDE_INTERNAL_AUDIO_DEVICE -DUSE_LIBPCI=1 -DUSE_OPENSSL=1 $
+    -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -DNDEBUG -DNVALGRIND $
+    -DDYNAMIC_ANNOTATIONS_ENABLED=0 -DNS_BLOCK_ASSERTIONS=1 $
+    -D_FORTIFY_SOURCE=2
+includes = -Igen -I../.. -I../../webrtc/common_video/interface $
+    -I../../webrtc/common_video/libyuv/include $
+    -I../../chromium/src/third_party/libyuv/include $
+    -I../../chromium/src/third_party/libyuv
+cflags = -isysroot $
+    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk $
+    -Os -gdwarf-2 -fvisibility=hidden -Werror -Wnewline-eof $
+    -miphoneos-version-min=7.0 -arch armv7 -Wall -Wendif-labels -Wextra $
+    -Wno-unused-parameter -Wno-missing-field-initializers $
+    -Wno-selector-type-mismatch -Wheader-hygiene -Wno-char-subscripts $
+    -Wno-unneeded-internal-declaration -Wno-covered-switch-default $
+    -Wstring-conversion -Wno-c++11-narrowing -Wno-deprecated-register $
+    -Wno-inconsistent-missing-override
+cflags_c = -std=c99 -fcolor-diagnostics
+cflags_cc = -std=c++11 -stdlib=libc++ -fno-rtti -fno-exceptions $
+    -fvisibility-inlines-hidden -fno-threadsafe-statics -fcolor-diagnostics
+cflags_objc = $cflags_c -Wobjc-missing-property-synthesis
+cflags_objcc = $cflags_cc -Wobjc-missing-property-synthesis $
+    -fobjc-call-cxx-cdtors
+arflags = 
+
+build obj/webrtc/tools/frame_analyzer/frame_analyzer.frame_analyzer.o: cxx $
+    ../../webrtc/tools/frame_analyzer/frame_analyzer.cc
+
+ldflags = -Wl,-search_paths_first -Wl,-dead_strip $
+    -miphoneos-version-min=7.0 -isysroot $
+    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk $
+    -arch armv7 -L. -stdlib=libc++
+libs = 
+build frame_analyzer: link $
+    obj/webrtc/tools/frame_analyzer/frame_analyzer.frame_analyzer.o $
+    libcommand_line_parser.a libvideo_quality_analysis.a libcommon_video.a $
+    libwebrtc_common.a libsystem_wrappers.a librtc_base_approved.a libyuv.a $
+    libyuv_neon.a
+  ld = $ldxx
+  postbuilds = $ && (export $
+      BUILT_PRODUCTS_DIR=/Users/heberthbraga/Workspace/quimbik/webrtc/src/out_ios_x86/Profile-iphoneos; $
+      export CONFIGURATION=Profile-iphoneos; export $
+      EXECUTABLE_NAME=frame_analyzer; export $
+      EXECUTABLE_PATH=frame_analyzer; export $
+      FULL_PRODUCT_NAME=frame_analyzer; export PRODUCT_NAME=frame_analyzer; $
+      export PRODUCT_TYPE=com.apple.product-type.tool; export $
+      SDKROOT=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk; $
+      export $
+      SRCROOT=/Users/heberthbraga/Workspace/quimbik/webrtc/src/out_ios_x86/Profile-iphoneos/../../webrtc/tools; $
+      export SOURCE_ROOT="$${SRCROOT}"; export $
+      TARGET_BUILD_DIR=/Users/heberthbraga/Workspace/quimbik/webrtc/src/out_ios_x86/Profile-iphoneos; $
+      export TEMP_DIR="$${TMPDIR}"; (cd ../../webrtc/tools && dsymutil $
+      ../../out_ios_x86/Profile-iphoneos/frame_analyzer -o $
+      ../../out_ios_x86/Profile-iphoneos/frame_analyzer.dSYM && strip  $
+      ../../out_ios_x86/Profile-iphoneos/frame_analyzer && $
+      $${TARGET_BUILD_DIR}/gyp-mac-tool code-sign-bundle $
+      "9E54B595F97FC9B28B6F6AE0BEAE16BAFA4194BF" "" "" ""); G=$$?; ((exit $
+      $$G) || rm -rf frame_analyzer) && exit $$G)

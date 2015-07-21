@@ -1,0 +1,355 @@
+cc = ../../third_party/llvm-build/Release+Asserts/bin/clang
+cxx = ../../third_party/llvm-build/Release+Asserts/bin/clang++
+ld = $cc
+ldxx = $cxx
+ar = ar
+ar_host = ar
+nm_host = nm
+readelf_host = readelf
+cc_host = ../../third_party/llvm-build/Release+Asserts/bin/clang
+cxx_host = ../../third_party/llvm-build/Release+Asserts/bin/clang++
+ld_host = $cc_host
+ldxx_host = $cxx_host
+
+pool link_pool
+  depth = 2
+
+rule cc
+  command = $cc -MMD -MF $out.d $defines $includes $cflags $cflags_c $cflags_pch_c -c $in -o $out
+  description = CC $out
+  depfile = $out.d
+  deps = gcc
+rule cc_s
+  command = $cc $defines $includes $cflags $cflags_c $cflags_pch_c -c $in -o $out
+  description = CC $out
+rule cxx
+  command = $cxx -MMD -MF $out.d $defines $includes $cflags $cflags_cc $cflags_pch_cc -c $in -o $out
+  description = CXX $out
+  depfile = $out.d
+  deps = gcc
+rule objc
+  command = $cc -MMD -MF $out.d $defines $includes $cflags $cflags_objc $cflags_pch_objc -c $in -o $out
+  description = OBJC $out
+  depfile = $out.d
+  deps = gcc
+rule objcxx
+  command = $cxx -MMD -MF $out.d $defines $includes $cflags $cflags_objcc $cflags_pch_objcc -c $in -o $out
+  description = OBJCXX $out
+  depfile = $out.d
+  deps = gcc
+rule alink
+  command = rm -f $out && ./gyp-mac-tool filter-libtool libtool $libtool_flags -static -o $out $in$postbuilds
+  description = LIBTOOL-STATIC $out, POSTBUILDS
+rule lipo
+  command = rm -f $out && lipo -create $in -output $out$postbuilds
+  description = LIPO $out, POSTBUILDS
+rule solipo
+  command = rm -f $lib $lib.TOC && lipo -create $in -output $lib$postbuilds &&{ otool -l $lib | grep LC_ID_DYLIB -A $
+      5; nm -gP $lib | cut -f1-2 -d' ' | grep -v U$$; true; } > $lib.TOC
+  description = SOLIPO $out, POSTBUILDS
+rule solink
+  command = if [ ! -e $lib -o ! -e $lib.TOC ] || otool -l $lib | grep -q LC_REEXPORT_DYLIB ; then $ld -shared $
+      $ldflags -o $lib @$link_file_list$postbuilds && { otool -l $lib | grep LC_ID_DYLIB -A 5; nm -gP $lib | cut $
+      -f1-2 -d' ' | grep -v U$$; true; } > $lib.TOC; else $ld -shared $ldflags -o $lib @$link_file_list$postbuilds && $
+      { otool -l $lib | grep LC_ID_DYLIB -A 5; nm -gP $lib | cut -f1-2 -d' ' | grep -v U$$; true; } > $lib.tmp && if $
+      ! cmp -s $lib.tmp $lib.TOC; then mv $lib.tmp $lib.TOC ; fi; fi
+  description = SOLINK $lib, POSTBUILDS
+  pool = link_pool
+  restat = 1
+  rspfile = $link_file_list
+  rspfile_content = $in $solibs $libs
+rule solink_notoc
+  command = $ld -shared $ldflags -o $lib @$link_file_list$postbuilds
+  description = SOLINK $lib, POSTBUILDS
+  pool = link_pool
+  restat = 1
+  rspfile = $link_file_list
+  rspfile_content = $in $solibs $libs
+rule solink_module
+  command = if [ ! -e $lib -o ! -e $lib.TOC ] || otool -l $lib | grep -q LC_REEXPORT_DYLIB ; then $ld -bundle $
+      $ldflags -o $lib @$link_file_list$postbuilds && { otool -l $lib | grep LC_ID_DYLIB -A 5; nm -gP $lib | cut $
+      -f1-2 -d' ' | grep -v U$$; true; } > $lib.TOC; else $ld -bundle $ldflags -o $lib @$link_file_list$postbuilds && $
+      { otool -l $lib | grep LC_ID_DYLIB -A 5; nm -gP $lib | cut -f1-2 -d' ' | grep -v U$$; true; } > $lib.tmp && if $
+      ! cmp -s $lib.tmp $lib.TOC; then mv $lib.tmp $lib.TOC ; fi; fi
+  description = SOLINK(module) $lib, POSTBUILDS
+  pool = link_pool
+  restat = 1
+  rspfile = $link_file_list
+  rspfile_content = $in $solibs $libs
+rule solink_module_notoc
+  command = $ld -bundle $ldflags -o $lib @$link_file_list$postbuilds
+  description = SOLINK(module) $lib, POSTBUILDS
+  pool = link_pool
+  restat = 1
+  rspfile = $link_file_list
+  rspfile_content = $in $solibs $libs
+rule link
+  command = $ld $ldflags -o $out $in $solibs $libs$postbuilds
+  description = LINK $out, POSTBUILDS
+  pool = link_pool
+rule preprocess_infoplist
+  command = $cc -E -P -Wno-trigraphs -x c $defines $in -o $out && plutil -convert xml1 $out $out
+  description = PREPROCESS INFOPLIST $out
+rule copy_infoplist
+  command = $env ./gyp-mac-tool copy-info-plist $in $out $binary $keys
+  description = COPY INFOPLIST $in
+rule merge_infoplist
+  command = $env ./gyp-mac-tool merge-info-plist $out $in
+  description = MERGE INFOPLISTS $in
+rule compile_xcassets
+  command = $env ./gyp-mac-tool compile-xcassets $keys $in
+  description = COMPILE XCASSETS $in
+rule mac_tool
+  command = $env ./gyp-mac-tool $mactool_cmd $in $out $binary
+  description = MACTOOL $mactool_cmd $in
+rule package_framework
+  command = ./gyp-mac-tool package-framework $out $version$postbuilds && touch $out
+  description = PACKAGE FRAMEWORK $out, POSTBUILDS
+rule stamp
+  command = ${postbuilds}touch $out
+  description = STAMP $out
+rule copy
+  command = ln -f $in $out 2>/dev/null || (rm -rf $out && cp -af $in $out)
+  description = COPY $in $out
+
+subninja obj.host/chromium/src/testing/gtest_prod.ninja
+subninja obj/chromium/src/third_party/jsoncpp/jsoncpp.ninja
+subninja obj/webrtc/tools/command_line_parser.ninja
+subninja obj/chromium/src/third_party/libvpx/libvpx.ninja
+subninja obj/webrtc/modules/audio_encoder_interface.ninja
+subninja obj/webrtc/gtest_prod.ninja
+subninja obj/chromium/src/third_party/opus/opus.ninja
+subninja obj/chromium/src/third_party/opus/test_opus_encode.ninja
+subninja obj/chromium/src/third_party/opus/test_opus_api.ninja
+subninja obj/chromium/src/third_party/opus/opus_demo.ninja
+subninja obj/webrtc/modules/g722.ninja
+subninja obj/chromium/src/third_party/boringssl/boringssl.ninja
+subninja obj/chromium/src/third_party/expat/expat.ninja
+subninja obj/webrtc/webrtc_common.ninja
+subninja obj/webrtc/modules/webrtc_opus.ninja
+subninja obj/chromium/src/third_party/opus/test_opus_decode.ninja
+subninja obj/chromium/src/third_party/opus/opus_compare.ninja
+subninja obj/webrtc/common_audio/common_audio_neon.ninja
+subninja obj/chromium/src/third_party/opus/test_opus_padding.ninja
+subninja obj/webrtc/modules/audio_decoder_interface.ninja
+subninja obj/webrtc/modules/red.ninja
+subninja obj/webrtc/modules/g711.ninja
+subninja obj/chromium/src/third_party/libyuv/libyuv_neon.ninja
+subninja obj/talk/socketrocket.ninja
+subninja obj/chromium/src/testing/gtest_prod.ninja
+subninja obj/webrtc/base/rtc_base_approved.ninja
+subninja obj.host/chromium/src/third_party/class-dump/class-dump.ninja
+subninja obj/chromium/src/third_party/usrsctp/usrsctplib.ninja
+subninja obj.host/chromium/src/testing/iossim/iossim.ninja
+subninja obj/chromium/src/third_party/libsrtp/libsrtp.ninja
+subninja obj/chromium/src/third_party/libsrtp/srtp_test_rand_gen.ninja
+subninja obj/chromium/src/third_party/libyuv/libyuv.ninja
+subninja obj/chromium/src/third_party/libsrtp/srtp_test_sha1_driver.ninja
+subninja obj.host/chromium/src/testing/gtest.ninja
+subninja obj.host/chromium/src/testing/gmock.ninja
+subninja obj/webrtc/modules/pcm16b.ninja
+subninja obj/chromium/src/third_party/libsrtp/rtpw.ninja
+subninja obj/webrtc/base/rtc_base.ninja
+subninja obj/chromium/src/third_party/libsrtp/srtp_test_datatypes_driver.ninja
+subninja obj/webrtc/system_wrappers/system_wrappers.ninja
+subninja obj/chromium/src/third_party/libsrtp/srtp_driver.ninja
+subninja obj/chromium/src/third_party/libsrtp/srtp_test_kernel_driver.ninja
+subninja obj/chromium/src/third_party/libsrtp/rdbx_driver.ninja
+subninja obj/webrtc/p2p/rtc_p2p.ninja
+subninja obj/chromium/src/third_party/libsrtp/replay_driver.ninja
+subninja obj/chromium/src/third_party/libsrtp/srtp_test_aes_calc.ninja
+subninja obj/webrtc/modules/paced_sender.ninja
+subninja obj/webrtc/sound/rtc_sound.ninja
+subninja obj/chromium/src/third_party/libsrtp/srtp_test_env.ninja
+subninja obj/chromium/src/testing/gtest.ninja
+subninja obj/chromium/src/third_party/libsrtp/srtp_test_stat_driver.ninja
+subninja obj/webrtc/system_wrappers/metrics_default.ninja
+subninja obj/chromium/src/third_party/libsrtp/srtp_test_cipher_driver.ninja
+subninja obj/webrtc/modules/bitrate_controller.ninja
+subninja obj/talk/libjingle.ninja
+subninja obj/webrtc/common_video/common_video.ninja
+subninja obj/webrtc/p2p/libstunprober.ninja
+subninja obj/chromium/src/third_party/libsrtp/srtp_test_rand_gen_soak.ninja
+subninja obj/chromium/src/third_party/libsrtp/roc_driver.ninja
+subninja obj/webrtc/modules/remote_bitrate_estimator.ninja
+subninja obj/webrtc/p2p/stun_prober.ninja
+subninja obj/webrtc/tools/frame_editing_lib.ninja
+subninja obj/webrtc/libjingle/xmllite/rtc_xmllite.ninja
+subninja obj/chromium/src/third_party/ocmock/ocmock.ninja
+subninja obj/webrtc/modules/webrtc_i420.ninja
+subninja obj/webrtc/modules/desktop_capture.ninja
+subninja obj/webrtc/base/rtc_base_tests_utils.ninja
+subninja obj/webrtc/modules/rtp_rtcp.ninja
+subninja obj/webrtc/system_wrappers/field_trial_default.ninja
+subninja obj/webrtc/common_audio/common_audio.ninja
+subninja obj/chromium/src/third_party/libsrtp/srtp_runtest.ninja
+subninja obj/webrtc/modules/video_coding/utility/video_coding_utility.ninja
+subninja obj/chromium/src/testing/gtest_main.ninja
+subninja obj/talk/peerconnection_server.ninja
+subninja obj/webrtc/tools/frame_editor.ninja
+subninja obj/chromium/src/testing/gmock.ninja
+subninja obj/webrtc/modules/isac_neon.ninja
+subninja obj/webrtc/tools/video_quality_analysis.ninja
+subninja obj/webrtc/tools/rgba_to_i420_converter.ninja
+subninja obj/webrtc/tools/frame_analyzer.ninja
+subninja obj/webrtc/modules/video_coding/codecs/vp8/webrtc_vp8.ninja
+subninja obj/webrtc/modules/isac_fix.ninja
+subninja obj/webrtc/libjingle/xmpp/rtc_xmpp.ninja
+subninja obj/webrtc/modules/ilbc.ninja
+subninja obj/webrtc/modules/cng.ninja
+subninja obj/webrtc/modules/audio_processing_neon.ninja
+subninja obj/webrtc/modules/isac.ninja
+subninja obj/talk/libjingle_unittest_main.ninja
+subninja obj/webrtc/modules/media_file.ninja
+subninja obj/webrtc/modules/video_coding/codecs/vp9/webrtc_vp9.ninja
+subninja obj/webrtc/tools/psnr_ssim_analyzer.ninja
+subninja obj/chromium/src/testing/gmock_main.ninja
+subninja obj/webrtc/modules/audio_processing.ninja
+subninja obj/webrtc/modules/neteq.ninja
+subninja obj/webrtc/modules/webrtc_video_coding.ninja
+subninja obj/webrtc/modules/audio_coding_module.ninja
+subninja obj/webrtc/modules/webrtc_utility.ninja
+subninja obj/webrtc/modules/audio_device.ninja
+subninja obj/webrtc/modules/video_processing.ninja
+subninja obj/webrtc/modules/audio_conference_mixer.ninja
+subninja obj/webrtc/modules/video_render_module.ninja
+subninja obj/webrtc/modules/video_render_module_internal_impl.ninja
+subninja obj/webrtc/modules/video_capture_module.ninja
+subninja obj/webrtc/modules/video_capture.ninja
+subninja obj/webrtc/modules/video_capture_module_internal_impl.ninja
+subninja obj/webrtc/voice_engine/voice_engine.ninja
+subninja obj/webrtc/tools/force_mic_volume_max.ninja
+subninja obj/webrtc/modules/video_render.ninja
+subninja obj/webrtc/webrtc.ninja
+subninja obj/webrtc/webrtc_all.ninja
+subninja obj/talk/libjingle_media.ninja
+subninja obj/talk/libjingle_media_unittest.ninja
+subninja obj/talk/libjingle_p2p.ninja
+subninja obj/talk/relayserver.ninja
+subninja obj/talk/libjingle_p2p_unittest.ninja
+subninja obj/talk/libjingle_peerconnection.ninja
+subninja obj/talk/libjingle_peerconnection_unittest.ninja
+subninja obj/talk/stunserver.ninja
+subninja obj/talk/turnserver.ninja
+subninja obj/talk/libjingle_peerconnection_objc.ninja
+subninja obj/talk/libjingle_peerconnection_objc_test.ninja
+subninja obj/talk/apprtc_signaling.ninja
+subninja obj/talk/AppRTCDemo.ninja
+subninja obj/talk/apprtc_signaling_gunit_test.ninja
+subninja obj/All.ninja
+
+# Short names for targets.
+build libjingle_media_unittest: phony libjingle_media_unittest.app
+build libvpx: phony libvpx.a
+build g711: phony libg711.a
+build ilbc: phony libilbc.a
+build audio_conference_mixer: phony libaudio_conference_mixer.a
+build libstunprober: phony libstunprober.a
+build rtc_p2p: phony librtc_p2p.a
+build rtc_xmpp: phony librtc_xmpp.a
+build media_file: phony libmedia_file.a
+build video_render_module_internal_impl: phony libvideo_render_module_internal_impl.a
+build webrtc: phony libwebrtc.a
+build webrtc_vp8: phony libwebrtc_vp8.a
+build webrtc_vp9: phony libwebrtc_vp9.a
+build webrtc_opus: phony libwebrtc_opus.a
+build apprtc_signaling_gunit_test: phony apprtc_signaling_gunit_test.app
+build usrsctplib: phony libusrsctplib.a
+build gtest_main: phony libgtest_main.a
+build video_capture_module: phony libvideo_capture_module.a
+build common_video: phony libcommon_video.a
+build field_trial_default: phony libfield_trial_default.a
+build paced_sender: phony libpaced_sender.a
+build jsoncpp: phony libjsoncpp.a
+build video_coding_utility: phony libvideo_coding_utility.a
+build webrtc_common: phony libwebrtc_common.a
+build ocmock: phony libocmock.a
+build libjingle_peerconnection_unittest: phony libjingle_peerconnection_unittest.app
+build gmock_main: phony libgmock_main.a
+build audio_device: phony libaudio_device.a
+build rtc_base: phony librtc_base.a
+build srtp_runtest: phony obj/chromium/src/third_party/libsrtp/srtp_runtest.actions_depends.stamp
+build rtp_rtcp: phony librtp_rtcp.a
+build cng: phony libcng.a
+build gtest: phony libgtest.a
+build remote_bitrate_estimator: phony libremote_bitrate_estimator.a
+build bitrate_controller: phony libbitrate_controller.a
+build red: phony libred.a
+build video_render_module: phony libvideo_render_module.a
+build webrtc_i420: phony libwebrtc_i420.a
+build libyuv: phony libyuv.a
+build common_audio_neon: phony libcommon_audio_neon.a
+build gmock: phony libgmock.a
+build voice_engine: phony libvoice_engine.a
+build common_audio: phony libcommon_audio.a
+build video_capture_module_internal_impl: phony libvideo_capture_module_internal_impl.a
+build audio_processing_neon: phony libaudio_processing_neon.a
+build rtc_base_tests_utils: phony librtc_base_tests_utils.a
+build audio_encoder_interface: phony libaudio_encoder_interface.a
+build libyuv_neon: phony libyuv_neon.a
+build webrtc_utility: phony libwebrtc_utility.a
+build opus: phony libopus.a
+build isac_neon: phony libisac_neon.a
+build apprtc_signaling: phony libapprtc_signaling.a
+build audio_decoder_interface: phony libaudio_decoder_interface.a
+build audio_processing: phony libaudio_processing.a
+build AppRTCDemo: phony AppRTCDemo.app
+build isac: phony libisac.a
+build libjingle: phony obj/talk/libjingle.actions_depends.stamp
+build g722: phony libg722.a
+build libjingle_p2p: phony libjingle_p2p.a
+build socketrocket: phony libsocketrocket.a
+build libjingle_unittest_main: phony libjingle_unittest_main.a
+build expat: phony libexpat.a
+build libjingle_peerconnection_objc_test: phony libjingle_peerconnection_objc_test.app
+build desktop_capture: phony libdesktop_capture.a
+build libjingle_peerconnection_objc: phony libjingle_peerconnection_objc.a
+build audio_coding_module: phony libaudio_coding_module.a
+build rtc_base_approved: phony librtc_base_approved.a
+build libsrtp: phony libsrtp.a
+build libjingle_peerconnection: phony libjingle_peerconnection.a
+build metrics_default: phony libmetrics_default.a
+build video_render: phony libvideo_render.a
+build webrtc_video_coding: phony libwebrtc_video_coding.a
+build libjingle_p2p_unittest: phony libjingle_p2p_unittest.app
+build boringssl: phony libboringssl.a
+build system_wrappers: phony libsystem_wrappers.a
+build frame_editing_lib: phony libframe_editing_lib.a
+build rtc_xmllite: phony librtc_xmllite.a
+build rtc_sound: phony librtc_sound.a
+build neteq: phony libneteq.a
+build video_capture: phony libvideo_capture.a
+build isac_fix: phony libisac_fix.a
+build webrtc_all: phony obj/webrtc/webrtc_all.actions_depends.stamp
+build All: phony obj/All.actions_depends.stamp
+build libjingle_media: phony libjingle_media.a
+build video_quality_analysis: phony libvideo_quality_analysis.a
+build command_line_parser: phony libcommand_line_parser.a
+build pcm16b: phony libpcm16b.a
+build video_processing: phony libvideo_processing.a
+
+# Empty targets (output for completeness).
+build gtest_prod: phony
+build rtc_base_tests: phony
+build system_wrappers_default: phony
+
+build all: phony libgmock.a rgba_to_i420_converter libframe_editing_lib.a class-dump libcommon_audio_neon.a $
+    librtc_sound.a libaudio_processing.a libvideo_render.a libg722.a frame_analyzer libmetrics_default.a $
+    libpaced_sender.a turnserver peerconnection_server libjingle_p2p.a stunserver libgtest.a libcommand_line_parser.a $
+    stun_prober libstunprober.a psnr_ssim_analyzer force_mic_volume_max librtc_base.a libvideo_render_module.a $
+    libbitrate_controller.a libvideo_processing.a libvideo_render_module_internal_impl.a libred.a libisac_fix.a $
+    libopus.a libexpat.a libsystem_wrappers.a libaudio_decoder_interface.a libaudio_device.a librtc_base_approved.a $
+    libaudio_conference_mixer.a libjsoncpp.a libcng.a libjingle_media_unittest.app libsocketrocket.a $
+    libapprtc_signaling.a libaudio_coding_module.a libjingle_peerconnection.a librtc_base_tests_utils.a $
+    libmedia_file.a libwebrtc_opus.a libdesktop_capture.a librtc_xmllite.a libcommon_video.a libcommon_audio.a $
+    libjingle_peerconnection_objc_test.app iossim libvpx.a libwebrtc.a libfield_trial_default.a libg711.a $
+    librtp_rtcp.a libremote_bitrate_estimator.a librtc_p2p.a libilbc.a libisac.a libusrsctplib.a libwebrtc_common.a $
+    libjingle_peerconnection_unittest.app libvideo_coding_utility.a libvideo_capture.a frame_editor libneteq.a $
+    libwebrtc_utility.a AppRTCDemo.app libwebrtc_i420.a libvideo_capture_module.a libyuv.a libwebrtc_video_coding.a $
+    libwebrtc_vp9.a libocmock.a obj/talk/libjingle.actions_depends.stamp librtc_xmpp.a $
+    apprtc_signaling_gunit_test.app libaudio_encoder_interface.a libboringssl.a libjingle_unittest_main.a libsrtp.a $
+    libvideo_capture_module_internal_impl.a libaudio_processing_neon.a obj/webrtc/webrtc_all.actions_depends.stamp $
+    libisac_neon.a libvoice_engine.a libpcm16b.a libjingle_media.a libyuv_neon.a relayserver $
+    libjingle_peerconnection_objc.a libjingle_p2p_unittest.app libvideo_quality_analysis.a $
+    obj/All.actions_depends.stamp libwebrtc_vp8.a
+default all

@@ -1,0 +1,140 @@
+defines = -DV8_DEPRECATION_WARNINGS $
+    -D__ASSERT_MACROS_DEFINE_VERSIONS_WITHOUT_UNDERSCORE=0 -DCHROMIUM_BUILD $
+    -DCR_CLANG_REVISION=239765-1 -DUSE_LIBJPEG_TURBO=1 $
+    -DENABLE_ONE_CLICK_SIGNIN -DENABLE_PRE_SYNC_BACKUP -DENABLE_REMOTING=1 $
+    -DENABLE_WEBRTC=1 -DENABLE_MEDIA_ROUTER=1 -DENABLE_PEPPER_CDMS $
+    -DENABLE_CONFIGURATION_POLICY -DENABLE_NOTIFICATIONS -DENABLE_HIDPI=1 $
+    -DSYSTEM_NATIVELY_SIGNALS_MEMORY_PRESSURE -DDONT_EMBED_BUILD_METADATA $
+    -DENABLE_TASK_MANAGER=1 -DENABLE_EXTENSIONS=1 $
+    -DENABLE_PLUGIN_INSTALLATION=1 -DENABLE_PLUGINS=1 $
+    -DENABLE_SESSION_SERVICE=1 -DENABLE_THEMES=1 -DENABLE_AUTOFILL_DIALOG=1 $
+    -DENABLE_BACKGROUND=1 -DENABLE_GOOGLE_NOW=1 -DCLD_VERSION=2 $
+    -DENABLE_PRINTING=1 -DENABLE_BASIC_PRINTING=1 -DENABLE_PRINT_PREVIEW=1 $
+    -DENABLE_SPELLCHECK=1 -DENABLE_CAPTIVE_PORTAL_DETECTION=1 $
+    -DENABLE_APP_LIST=1 -DENABLE_SETTINGS_APP=1 -DENABLE_SUPERVISED_USERS=1 $
+    -DENABLE_SERVICE_DISCOVERY=1 -DENABLE_WIFI_BOOTSTRAPPING=1 $
+    -DV8_USE_EXTERNAL_STARTUP_DATA -DFULL_SAFE_BROWSING -DSAFE_BROWSING_CSD $
+    -DSAFE_BROWSING_DB_LOCAL -DSAFE_BROWSING_SERVICE -DGTEST_HAS_POSIX_RE=0 $
+    -DGTEST_LANG_CXX11=0 -DUNIT_TEST -DGTEST_HAS_RTTI=0 -DUSE_LIBPCI=1 $
+    -DUSE_OPENSSL=1 -DNDEBUG -DNVALGRIND -DDYNAMIC_ANNOTATIONS_ENABLED=0
+includes = -Igen -I../../chromium/src/third_party/ocmock $
+    -I../../chromium/src -I../../chromium/src/testing/gtest/include
+cflags = -isysroot $
+    /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk $
+    -O2 -gdwarf-2 -fvisibility=hidden -Werror -Wnewline-eof $
+    -mmacosx-version-min=10.6 -arch x86_64 -Wendif-labels $
+    -Wno-unused-parameter -Wno-missing-field-initializers $
+    -Wno-selector-type-mismatch -Wpartial-availability -Wheader-hygiene $
+    -Wno-char-subscripts -Wno-unneeded-internal-declaration $
+    -Wno-covered-switch-default -Wstring-conversion -Wno-c++11-narrowing $
+    -Wno-deprecated-register -Wno-inconsistent-missing-override
+cflags_c = -std=c99 -Xclang -load -Xclang $
+    /Users/heberthbraga/Workspace/quimbik/webrtc/src/third_party/llvm-build/Release+Asserts/lib/libFindBadConstructs.dylib $
+    -Xclang -add-plugin -Xclang find-bad-constructs -Xclang $
+    -plugin-arg-find-bad-constructs -Xclang check-templates $
+    -fcolor-diagnostics -fno-strict-aliasing
+cflags_cc = -std=c++11 -fno-rtti -fno-exceptions $
+    -fvisibility-inlines-hidden -fno-threadsafe-statics -Xclang -load $
+    -Xclang $
+    /Users/heberthbraga/Workspace/quimbik/webrtc/src/third_party/llvm-build/Release+Asserts/lib/libFindBadConstructs.dylib $
+    -Xclang -add-plugin -Xclang find-bad-constructs -Xclang $
+    -plugin-arg-find-bad-constructs -Xclang check-templates $
+    -fcolor-diagnostics -fno-strict-aliasing
+cflags_objc = $cflags_c -Wobjc-missing-property-synthesis
+cflags_objcc = $cflags_cc -Wobjc-missing-property-synthesis $
+    -fobjc-call-cxx-cdtors
+arflags = 
+
+build obj/chromium/src/third_party/ocmock/ocmock.gtest_support.o: objcxx $
+    ../../chromium/src/third_party/ocmock/gtest_support.mm
+build obj/chromium/src/third_party/ocmock/ocmock.ocmock_extensions.o: $
+    objcxx ../../chromium/src/third_party/ocmock/ocmock_extensions.mm
+build $
+    obj/chromium/src/third_party/ocmock/OCMock/ocmock.OCMObserverRecorder.o: $
+    objc ../../chromium/src/third_party/ocmock/OCMock/OCMObserverRecorder.m
+build $
+    obj/chromium/src/third_party/ocmock/OCMock/ocmock.NSInvocation+OCMAdditions.o: $
+    objc $
+    ../../chromium/src/third_party/ocmock/OCMock/NSInvocation+OCMAdditions.m
+build $
+    obj/chromium/src/third_party/ocmock/OCMock/ocmock.NSMethodSignature+OCMAdditions.o: $
+    objc $
+    ../../chromium/src/third_party/ocmock/OCMock/NSMethodSignature+OCMAdditions.m
+build $
+    obj/chromium/src/third_party/ocmock/OCMock/ocmock.NSNotificationCenter+OCMAdditions.o: $
+    objc $
+    ../../chromium/src/third_party/ocmock/OCMock/NSNotificationCenter+OCMAdditions.m
+build $
+    obj/chromium/src/third_party/ocmock/OCMock/ocmock.OCClassMockObject.o: $
+    objc ../../chromium/src/third_party/ocmock/OCMock/OCClassMockObject.m
+build obj/chromium/src/third_party/ocmock/OCMock/ocmock.OCMArg.o: objc $
+    ../../chromium/src/third_party/ocmock/OCMock/OCMArg.m
+build obj/chromium/src/third_party/ocmock/OCMock/ocmock.OCMBlockCaller.o: $
+    objc ../../chromium/src/third_party/ocmock/OCMock/OCMBlockCaller.m
+build $
+    obj/chromium/src/third_party/ocmock/OCMock/ocmock.OCMBoxedReturnValueProvider.o: $
+    objc $
+    ../../chromium/src/third_party/ocmock/OCMock/OCMBoxedReturnValueProvider.m
+build obj/chromium/src/third_party/ocmock/OCMock/ocmock.OCMConstraint.o: $
+    objc ../../chromium/src/third_party/ocmock/OCMock/OCMConstraint.m
+build $
+    obj/chromium/src/third_party/ocmock/OCMock/ocmock.OCMExceptionReturnValueProvider.o: $
+    objc $
+    ../../chromium/src/third_party/ocmock/OCMock/OCMExceptionReturnValueProvider.m
+build $
+    obj/chromium/src/third_party/ocmock/OCMock/ocmock.OCMIndirectReturnValueProvider.o: $
+    objc $
+    ../../chromium/src/third_party/ocmock/OCMock/OCMIndirectReturnValueProvider.m
+build $
+    obj/chromium/src/third_party/ocmock/OCMock/ocmock.OCMNotificationPoster.o: $
+    objc ../../chromium/src/third_party/ocmock/OCMock/OCMNotificationPoster.m
+build $
+    obj/chromium/src/third_party/ocmock/OCMock/ocmock.OCMPassByRefSetter.o: $
+    objc ../../chromium/src/third_party/ocmock/OCMock/OCMPassByRefSetter.m
+build $
+    obj/chromium/src/third_party/ocmock/OCMock/ocmock.OCMRealObjectForwarder.o: $
+    objc ../../chromium/src/third_party/ocmock/OCMock/OCMRealObjectForwarder.m
+build $
+    obj/chromium/src/third_party/ocmock/OCMock/ocmock.OCMReturnValueProvider.o: $
+    objc ../../chromium/src/third_party/ocmock/OCMock/OCMReturnValueProvider.m
+build obj/chromium/src/third_party/ocmock/OCMock/ocmock.OCMockObject.o: $
+    objc ../../chromium/src/third_party/ocmock/OCMock/OCMockObject.m
+build $
+    obj/chromium/src/third_party/ocmock/OCMock/ocmock.OCPartialMockObject.o: $
+    objc ../../chromium/src/third_party/ocmock/OCMock/OCPartialMockObject.m
+build $
+    obj/chromium/src/third_party/ocmock/OCMock/ocmock.OCPartialMockRecorder.o: $
+    objc ../../chromium/src/third_party/ocmock/OCMock/OCPartialMockRecorder.m
+build $
+    obj/chromium/src/third_party/ocmock/OCMock/ocmock.OCProtocolMockObject.o: $
+    objc ../../chromium/src/third_party/ocmock/OCMock/OCProtocolMockObject.m
+build obj/chromium/src/third_party/ocmock/OCMock/ocmock.OCMockRecorder.o: $
+    objc ../../chromium/src/third_party/ocmock/OCMock/OCMockRecorder.m
+build $
+    obj/chromium/src/third_party/ocmock/OCMock/ocmock.OCObserverMockObject.o: $
+    objc ../../chromium/src/third_party/ocmock/OCMock/OCObserverMockObject.m
+
+build libocmock.a: alink $
+    obj/chromium/src/third_party/ocmock/ocmock.gtest_support.o $
+    obj/chromium/src/third_party/ocmock/ocmock.ocmock_extensions.o $
+    obj/chromium/src/third_party/ocmock/OCMock/ocmock.OCMObserverRecorder.o $
+    obj/chromium/src/third_party/ocmock/OCMock/ocmock.NSInvocation+OCMAdditions.o $
+    obj/chromium/src/third_party/ocmock/OCMock/ocmock.NSMethodSignature+OCMAdditions.o $
+    obj/chromium/src/third_party/ocmock/OCMock/ocmock.NSNotificationCenter+OCMAdditions.o $
+    obj/chromium/src/third_party/ocmock/OCMock/ocmock.OCClassMockObject.o $
+    obj/chromium/src/third_party/ocmock/OCMock/ocmock.OCMArg.o $
+    obj/chromium/src/third_party/ocmock/OCMock/ocmock.OCMBlockCaller.o $
+    obj/chromium/src/third_party/ocmock/OCMock/ocmock.OCMBoxedReturnValueProvider.o $
+    obj/chromium/src/third_party/ocmock/OCMock/ocmock.OCMConstraint.o $
+    obj/chromium/src/third_party/ocmock/OCMock/ocmock.OCMExceptionReturnValueProvider.o $
+    obj/chromium/src/third_party/ocmock/OCMock/ocmock.OCMIndirectReturnValueProvider.o $
+    obj/chromium/src/third_party/ocmock/OCMock/ocmock.OCMNotificationPoster.o $
+    obj/chromium/src/third_party/ocmock/OCMock/ocmock.OCMPassByRefSetter.o $
+    obj/chromium/src/third_party/ocmock/OCMock/ocmock.OCMRealObjectForwarder.o $
+    obj/chromium/src/third_party/ocmock/OCMock/ocmock.OCMReturnValueProvider.o $
+    obj/chromium/src/third_party/ocmock/OCMock/ocmock.OCMockObject.o $
+    obj/chromium/src/third_party/ocmock/OCMock/ocmock.OCPartialMockObject.o $
+    obj/chromium/src/third_party/ocmock/OCMock/ocmock.OCPartialMockRecorder.o $
+    obj/chromium/src/third_party/ocmock/OCMock/ocmock.OCProtocolMockObject.o $
+    obj/chromium/src/third_party/ocmock/OCMock/ocmock.OCMockRecorder.o $
+    obj/chromium/src/third_party/ocmock/OCMock/ocmock.OCObserverMockObject.o

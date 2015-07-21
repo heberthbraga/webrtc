@@ -1,0 +1,3 @@
+build obj/talk/libjingle.actions_depends.stamp: stamp librtc_base.a $
+    libjsoncpp.a libexpat.a
+

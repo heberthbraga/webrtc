@@ -1,0 +1,53 @@
+defines = -DV8_DEPRECATION_WARNINGS -DDISABLE_NACL -DCHROMIUM_BUILD $
+    -DCR_CLANG_REVISION=239765-1 -DUSE_LIBJPEG_TURBO=1 $
+    -DENABLE_CONFIGURATION_POLICY -DSYSTEM_NATIVELY_SIGNALS_MEMORY_PRESSURE $
+    -DDONT_EMBED_BUILD_METADATA -DCLD_VERSION=2 -DDISABLE_FTP_SUPPORT=1 $
+    -DV8_USE_EXTERNAL_STARTUP_DATA -DWEBRTC_RESTRICT_LOGGING $
+    -DEXPAT_RELATIVE_PATH -DWEBRTC_ARCH_ARM -DWEBRTC_ARCH_ARM_V7 $
+    -DWEBRTC_HAS_NEON -DWEBRTC_POSIX -DWEBRTC_MAC -DWEBRTC_IOS $
+    -DWEBRTC_INCLUDE_INTERNAL_AUDIO_DEVICE -DFEATURE_ENABLE_SSL $
+    -DSSL_USE_OPENSSL -DHAVE_OPENSSL_SSL_H -DUSE_LIBPCI=1 -DUSE_OPENSSL=1 $
+    -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS $
+    -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DWTF_USE_DYNAMIC_ANNOTATIONS=1 -D_DEBUG
+includes = -Igen -I../..
+cflags = -isysroot $
+    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator8.4.sdk $
+    -O0 -gdwarf-2 -fvisibility=hidden -Werror -Wnewline-eof $
+    -mios-simulator-version-min=7.0 -arch i386 -Wall -Wendif-labels -Wextra $
+    -Wno-unused-parameter -Wno-missing-field-initializers $
+    -Wno-selector-type-mismatch -Wheader-hygiene -Wno-char-subscripts $
+    -Wno-unneeded-internal-declaration -Wno-covered-switch-default $
+    -Wstring-conversion -Wno-c++11-narrowing -Wno-deprecated-register $
+    -Wno-inconsistent-missing-override
+cflags_c = -std=c99 -fcolor-diagnostics -fstack-protector-all $
+    -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare
+cflags_cc = -std=c++11 -stdlib=libc++ -fno-rtti -fno-exceptions $
+    -fvisibility-inlines-hidden -fno-threadsafe-statics -fcolor-diagnostics $
+    -fstack-protector-all -Wno-undefined-bool-conversion $
+    -Wno-tautological-undefined-compare
+cflags_objc = $cflags_c -Wobjc-missing-property-synthesis
+cflags_objcc = $cflags_cc -Wobjc-missing-property-synthesis $
+    -fobjc-call-cxx-cdtors
+arflags = 
+
+build obj/webrtc/sound/rtc_sound.nullsoundsystem.o: cxx $
+    ../../webrtc/sound/nullsoundsystem.cc
+build obj/webrtc/sound/rtc_sound.nullsoundsystemfactory.o: cxx $
+    ../../webrtc/sound/nullsoundsystemfactory.cc
+build obj/webrtc/sound/rtc_sound.platformsoundsystem.o: cxx $
+    ../../webrtc/sound/platformsoundsystem.cc
+build obj/webrtc/sound/rtc_sound.platformsoundsystemfactory.o: cxx $
+    ../../webrtc/sound/platformsoundsystemfactory.cc
+build obj/webrtc/sound/rtc_sound.soundsysteminterface.o: cxx $
+    ../../webrtc/sound/soundsysteminterface.cc
+build obj/webrtc/sound/rtc_sound.soundsystemproxy.o: cxx $
+    ../../webrtc/sound/soundsystemproxy.cc
+
+build librtc_sound.a: alink obj/webrtc/sound/rtc_sound.nullsoundsystem.o $
+    obj/webrtc/sound/rtc_sound.nullsoundsystemfactory.o $
+    obj/webrtc/sound/rtc_sound.platformsoundsystem.o $
+    obj/webrtc/sound/rtc_sound.platformsoundsystemfactory.o $
+    obj/webrtc/sound/rtc_sound.soundsysteminterface.o $
+    obj/webrtc/sound/rtc_sound.soundsystemproxy.o
+  libtool_flags = -framework Foundation -framework Security -framework $
+      SystemConfiguration -framework UIKit

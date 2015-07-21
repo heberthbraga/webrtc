@@ -1,0 +1,21 @@
+build obj/webrtc/webrtc_all.actions_depends.stamp: stamp $
+    librtc_base_approved.a librtc_base.a librtc_sound.a libwebrtc_common.a $
+    libcommon_audio.a libcommon_audio_neon.a libcommon_video.a $
+    libaudio_decoder_interface.a libaudio_encoder_interface.a libcng.a $
+    libg711.a libg722.a libilbc.a libisac.a libisac_fix.a libpcm16b.a $
+    libred.a libaudio_coding_module.a libneteq.a $
+    libaudio_conference_mixer.a libaudio_device.a libaudio_processing.a $
+    libbitrate_controller.a libdesktop_capture.a libmedia_file.a $
+    libpaced_sender.a libremote_bitrate_estimator.a librtp_rtcp.a $
+    libwebrtc_utility.a libwebrtc_i420.a libwebrtc_video_coding.a $
+    libvideo_capture_module.a libvideo_capture.a libvideo_processing.a $
+    libvideo_render_module.a libvideo_render.a libwebrtc_opus.a $
+    libisac_neon.a libaudio_processing_neon.a $
+    libvideo_capture_module_internal_impl.a $
+    libvideo_render_module_internal_impl.a librtc_p2p.a libstunprober.a $
+    stun_prober libsystem_wrappers.a libfield_trial_default.a $
+    libmetrics_default.a libvideo_quality_analysis.a frame_analyzer $
+    psnr_ssim_analyzer rgba_to_i420_converter libframe_editing_lib.a $
+    frame_editor force_mic_volume_max libvoice_engine.a libwebrtc_vp8.a $
+    libwebrtc_vp9.a libwebrtc.a
+

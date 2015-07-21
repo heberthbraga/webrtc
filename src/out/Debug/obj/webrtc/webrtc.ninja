@@ -1,0 +1,114 @@
+defines = -DV8_DEPRECATION_WARNINGS -DEXPAT_RELATIVE_PATH -DWEBRTC_POSIX $
+    -DWEBRTC_MAC -DWEBRTC_INCLUDE_INTERNAL_AUDIO_DEVICE $
+    -D__ASSERT_MACROS_DEFINE_VERSIONS_WITHOUT_UNDERSCORE=0 -DCHROMIUM_BUILD $
+    -DCR_CLANG_REVISION=239765-1 -DUSE_LIBJPEG_TURBO=1 $
+    -DENABLE_ONE_CLICK_SIGNIN -DENABLE_PRE_SYNC_BACKUP -DENABLE_REMOTING=1 $
+    -DENABLE_WEBRTC=1 -DENABLE_MEDIA_ROUTER=1 -DENABLE_PEPPER_CDMS $
+    -DENABLE_CONFIGURATION_POLICY -DENABLE_NOTIFICATIONS -DENABLE_HIDPI=1 $
+    -DSYSTEM_NATIVELY_SIGNALS_MEMORY_PRESSURE -DDONT_EMBED_BUILD_METADATA $
+    -DENABLE_TASK_MANAGER=1 -DENABLE_EXTENSIONS=1 $
+    -DENABLE_PLUGIN_INSTALLATION=1 -DENABLE_PLUGINS=1 $
+    -DENABLE_SESSION_SERVICE=1 -DENABLE_THEMES=1 -DENABLE_AUTOFILL_DIALOG=1 $
+    -DENABLE_BACKGROUND=1 -DENABLE_GOOGLE_NOW=1 -DCLD_VERSION=2 $
+    -DENABLE_PRINTING=1 -DENABLE_BASIC_PRINTING=1 -DENABLE_PRINT_PREVIEW=1 $
+    -DENABLE_SPELLCHECK=1 -DENABLE_CAPTIVE_PORTAL_DETECTION=1 $
+    -DENABLE_APP_LIST=1 -DENABLE_SETTINGS_APP=1 -DENABLE_SUPERVISED_USERS=1 $
+    -DENABLE_SERVICE_DISCOVERY=1 -DENABLE_WIFI_BOOTSTRAPPING=1 $
+    -DV8_USE_EXTERNAL_STARTUP_DATA -DFULL_SAFE_BROWSING -DSAFE_BROWSING_CSD $
+    -DSAFE_BROWSING_DB_LOCAL -DSAFE_BROWSING_SERVICE -DUSE_LIBPCI=1 $
+    -DUSE_OPENSSL=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS $
+    -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DWTF_USE_DYNAMIC_ANNOTATIONS=1 -D_DEBUG
+includes = -Igen -I../.. -I../../webrtc/common_video/interface $
+    -I../../webrtc/common_video/libyuv/include $
+    -I../../chromium/src/third_party/libyuv/include $
+    -I../../chromium/src/third_party/libyuv
+cflags = -isysroot $
+    /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk $
+    -O0 -gdwarf-2 -fvisibility=hidden -Werror -Wnewline-eof $
+    -mmacosx-version-min=10.6 -arch x86_64 -Wall -Wendif-labels -Wextra $
+    -Wno-unused-parameter -Wno-missing-field-initializers $
+    -Wno-selector-type-mismatch -Wpartial-availability -Wheader-hygiene $
+    -Wno-char-subscripts -Wno-unneeded-internal-declaration $
+    -Wno-covered-switch-default -Wstring-conversion -Wno-c++11-narrowing $
+    -Wno-deprecated-register -Wno-inconsistent-missing-override
+cflags_c = -std=c99 -fcolor-diagnostics -fno-strict-aliasing $
+    -fstack-protector-all -Wno-undefined-bool-conversion $
+    -Wno-tautological-undefined-compare
+cflags_cc = -std=c++11 -fno-rtti -fno-exceptions $
+    -fvisibility-inlines-hidden -fno-threadsafe-statics -fcolor-diagnostics $
+    -fno-strict-aliasing -fstack-protector-all $
+    -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare
+cflags_objc = $cflags_c -Wobjc-missing-property-synthesis
+cflags_objcc = $cflags_cc -Wobjc-missing-property-synthesis $
+    -fobjc-call-cxx-cdtors
+arflags = 
+
+build obj/webrtc/video/webrtc.audio_receive_stream.o: cxx $
+    ../../webrtc/video/audio_receive_stream.cc
+build obj/webrtc/video/webrtc.call.o: cxx ../../webrtc/video/call.cc
+build obj/webrtc/video/webrtc.encoded_frame_callback_adapter.o: cxx $
+    ../../webrtc/video/encoded_frame_callback_adapter.cc
+build obj/webrtc/video/webrtc.receive_statistics_proxy.o: cxx $
+    ../../webrtc/video/receive_statistics_proxy.cc
+build obj/webrtc/video/webrtc.send_statistics_proxy.o: cxx $
+    ../../webrtc/video/send_statistics_proxy.cc
+build obj/webrtc/video/webrtc.transport_adapter.o: cxx $
+    ../../webrtc/video/transport_adapter.cc
+build obj/webrtc/video/webrtc.video_decoder.o: cxx $
+    ../../webrtc/video/video_decoder.cc
+build obj/webrtc/video/webrtc.video_encoder.o: cxx $
+    ../../webrtc/video/video_encoder.cc
+build obj/webrtc/video/webrtc.video_receive_stream.o: cxx $
+    ../../webrtc/video/video_receive_stream.cc
+build obj/webrtc/video/webrtc.video_send_stream.o: cxx $
+    ../../webrtc/video/video_send_stream.cc
+build obj/webrtc/video_engine/webrtc.call_stats.o: cxx $
+    ../../webrtc/video_engine/call_stats.cc
+build obj/webrtc/video_engine/webrtc.encoder_state_feedback.o: cxx $
+    ../../webrtc/video_engine/encoder_state_feedback.cc
+build obj/webrtc/video_engine/webrtc.overuse_frame_detector.o: cxx $
+    ../../webrtc/video_engine/overuse_frame_detector.cc
+build obj/webrtc/video_engine/webrtc.payload_router.o: cxx $
+    ../../webrtc/video_engine/payload_router.cc
+build obj/webrtc/video_engine/webrtc.report_block_stats.o: cxx $
+    ../../webrtc/video_engine/report_block_stats.cc
+build obj/webrtc/video_engine/webrtc.stream_synchronization.o: cxx $
+    ../../webrtc/video_engine/stream_synchronization.cc
+build obj/webrtc/video_engine/webrtc.vie_capturer.o: cxx $
+    ../../webrtc/video_engine/vie_capturer.cc
+build obj/webrtc/video_engine/webrtc.vie_channel.o: cxx $
+    ../../webrtc/video_engine/vie_channel.cc
+build obj/webrtc/video_engine/webrtc.vie_channel_group.o: cxx $
+    ../../webrtc/video_engine/vie_channel_group.cc
+build obj/webrtc/video_engine/webrtc.vie_encoder.o: cxx $
+    ../../webrtc/video_engine/vie_encoder.cc
+build obj/webrtc/video_engine/webrtc.vie_receiver.o: cxx $
+    ../../webrtc/video_engine/vie_receiver.cc
+build obj/webrtc/video_engine/webrtc.vie_remb.o: cxx $
+    ../../webrtc/video_engine/vie_remb.cc
+build obj/webrtc/video_engine/webrtc.vie_sync_module.o: cxx $
+    ../../webrtc/video_engine/vie_sync_module.cc
+
+build libwebrtc.a: alink obj/webrtc/video/webrtc.audio_receive_stream.o $
+    obj/webrtc/video/webrtc.call.o $
+    obj/webrtc/video/webrtc.encoded_frame_callback_adapter.o $
+    obj/webrtc/video/webrtc.receive_statistics_proxy.o $
+    obj/webrtc/video/webrtc.send_statistics_proxy.o $
+    obj/webrtc/video/webrtc.transport_adapter.o $
+    obj/webrtc/video/webrtc.video_decoder.o $
+    obj/webrtc/video/webrtc.video_encoder.o $
+    obj/webrtc/video/webrtc.video_receive_stream.o $
+    obj/webrtc/video/webrtc.video_send_stream.o $
+    obj/webrtc/video_engine/webrtc.call_stats.o $
+    obj/webrtc/video_engine/webrtc.encoder_state_feedback.o $
+    obj/webrtc/video_engine/webrtc.overuse_frame_detector.o $
+    obj/webrtc/video_engine/webrtc.payload_router.o $
+    obj/webrtc/video_engine/webrtc.report_block_stats.o $
+    obj/webrtc/video_engine/webrtc.stream_synchronization.o $
+    obj/webrtc/video_engine/webrtc.vie_capturer.o $
+    obj/webrtc/video_engine/webrtc.vie_channel.o $
+    obj/webrtc/video_engine/webrtc.vie_channel_group.o $
+    obj/webrtc/video_engine/webrtc.vie_encoder.o $
+    obj/webrtc/video_engine/webrtc.vie_receiver.o $
+    obj/webrtc/video_engine/webrtc.vie_remb.o $
+    obj/webrtc/video_engine/webrtc.vie_sync_module.o

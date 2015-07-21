@@ -1,0 +1,234 @@
+build obj/talk/libjingle_p2p_unittest.actions_depends.stamp: stamp $
+    librtc_base_tests_utils.a obj/talk/libjingle.actions_depends.stamp $
+    libjingle_p2p.a libjingle_unittest_main.a libsrtp.a librtc_base.a $
+    libwebrtc_common.a librtc_base_approved.a libjsoncpp.a libboringssl.a $
+    libgtest.a libexpat.a libjingle_media.a libvideo_render_module.a $
+    libwebrtc_utility.a libaudio_coding_module.a libcng.a libcommon_audio.a $
+    libsystem_wrappers.a libcommon_audio_neon.a $
+    libaudio_encoder_interface.a libg711.a libg722.a libilbc.a libisac.a $
+    libaudio_decoder_interface.a libisac_fix.a libisac_neon.a libpcm16b.a $
+    libred.a libwebrtc_opus.a libopus.a libneteq.a libmedia_file.a $
+    libcommon_video.a libyuv.a libyuv_neon.a libwebrtc.a $
+    libbitrate_controller.a librtp_rtcp.a libpaced_sender.a $
+    libremote_bitrate_estimator.a libvideo_capture_module.a $
+    libvideo_processing.a libwebrtc_video_coding.a libwebrtc_i420.a $
+    libvideo_coding_utility.a libwebrtc_vp8.a libvpx.a libwebrtc_vp9.a $
+    libvoice_engine.a libaudio_conference_mixer.a libaudio_processing.a $
+    libaudio_processing_neon.a libaudio_device.a librtc_sound.a $
+    libfield_trial_default.a libmetrics_default.a librtc_xmllite.a $
+    librtc_xmpp.a librtc_p2p.a libusrsctplib.a $
+    libvideo_capture_module_internal_impl.a $
+    libvideo_render_module_internal_impl.a
+
+build obj/talk/libjingle_p2p_unittest.compile_depends.stamp: stamp $
+    obj.host/chromium/src/testing/iossim/iossim.actions_rules_copies.stamp $
+    obj/chromium/src/third_party/libvpx/libvpx.actions_rules_copies.stamp
+
+build libjingle_p2p_unittest.app/Default.png: mac_tool $
+    ../../testing/gtest_ios/Default.png
+  mactool_cmd = copy-bundle-resource
+  binary = True
+build libjingle_p2p_unittest.app/Info.plist: copy_infoplist $
+    ../../testing/gtest_ios/unittest-Info.plist
+  env = export ALWAYS_SEARCH_USER_PATHS=NO; export $
+      ARCHS="$${ARCHS_STANDARD_INCLUDING_64_BIT}"; export $
+      BUILT_PRODUCTS_DIR=/Users/heberthbraga/Workspace/quimbik/webrtc/src/out_ios_x86/Profile-iphoneos; $
+      export BUNDLE_ID_TEST_NAME=libjinglep2punittest; export $
+      SRCROOT=/Users/heberthbraga/Workspace/quimbik/webrtc/src/out_ios_x86/Profile-iphoneos/../../talk; $
+      export SOURCE_ROOT="$${SRCROOT}"; export $
+      CC="$${SOURCE_ROOT}/../chromium/src/third_party/llvm-build/Release+Asserts/bin/clang"; $
+      export CLANG_CXX_LANGUAGE_STANDARD=c++11; export $
+      CLANG_CXX_LIBRARY=libc++; export CLANG_LINK_OBJC_RUNTIME=NO; export $
+      CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS=NO; export $
+      CONFIGURATION=Profile-iphoneos; export $
+      CONTENTS_FOLDER_PATH=libjingle_p2p_unittest.app; export $
+      COPY_PHASE_STRIP=NO; export EXECUTABLE_NAME=libjingle_p2p_unittest; $
+      export $
+      EXECUTABLE_PATH=libjingle_p2p_unittest.app/libjingle_p2p_unittest; $
+      export FULL_PRODUCT_NAME=libjingle_p2p_unittest.app; export $
+      GCC_CW_ASM_SYNTAX=NO; export GCC_C_LANGUAGE_STANDARD=c99; export $
+      GCC_ENABLE_CPP_EXCEPTIONS=NO; export GCC_ENABLE_CPP_RTTI=NO; export $
+      GCC_ENABLE_PASCAL_STRINGS=NO; export $
+      GCC_INLINES_ARE_PRIVATE_EXTERN=YES; export $
+      GCC_OBJC_CALL_CXX_CDTORS=YES; export $
+      GCC_PRECOMPILE_PREFIX_HEADER=YES; export $
+      GCC_SYMBOLS_PRIVATE_EXTERN=YES; export GCC_THREADSAFE_STATICS=NO; $
+      export GCC_TREAT_WARNINGS_AS_ERRORS=NO; export $
+      GCC_VERSION=com.apple.compilers.llvm.clang.1_0; export $
+      GCC_WARN_ABOUT_MISSING_NEWLINE=YES; export $
+      INFOPLIST_FILE=../testing/gtest_ios/unittest-Info.plist; export $
+      INFOPLIST_PATH=libjingle_p2p_unittest.app/Info.plist; export $
+      IPHONEOS_DEPLOYMENT_TARGET=7.0; export $
+      LDPLUSPLUS="$${SOURCE_ROOT}/../chromium/src/third_party/llvm-build/Release+Asserts/bin/clang++"; $
+      export MACH_O_TYPE=mh_execute; export OTHER_LDFLAGS="-framework $
+      Foundation -framework Security -framework SystemConfiguration $
+      -framework UIKit -framework AVFoundation -framework CoreMedia $
+      -framework CoreVideo -framework UIKit -framework OpenGLES -framework $
+      QuartzCore -framework UIKit -framework AudioToolbox -framework $
+      AVFoundation -framework Foundation -Wl,-search_paths_first"; export $
+      PRODUCT_NAME=libjingle_p2p_unittest; export $
+      PRODUCT_TYPE=com.apple.product-type.application; export $
+      RUN_CLANG_STATIC_ANALYZER=NO; export $
+      SDKROOT=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk; $
+      export SYMROOT=../xcodebuild; export TARGETED_DEVICE_FAMILY=1,2; $
+      export $
+      TARGET_BUILD_DIR=/Users/heberthbraga/Workspace/quimbik/webrtc/src/out_ios_x86/Profile-iphoneos; $
+      export TEMP_DIR="$${TMPDIR}"; export $
+      UNLOCALIZED_RESOURCES_FOLDER_PATH=libjingle_p2p_unittest.app; export $
+      USE_HEADERMAP=NO; export VALID_ARCHS="armv7 i386"; export $
+      WARNING_CFLAGS="-Wendif-labels -Wno-unused-parameter $
+      -Wno-missing-field-initializers -Wno-selector-type-mismatch $
+      -Wheader-hygiene -Wno-char-subscripts $
+      -Wno-unneeded-internal-declaration -Wno-covered-switch-default $
+      -Wstring-conversion -Wno-c++11-narrowing -Wno-deprecated-register $
+      -Wno-inconsistent-missing-override"; export $
+      WARNING_CFLAGS_excluded="-Wall -Wextra"; export $
+      WRAPPER_NAME=libjingle_p2p_unittest.app;
+  keys = '{"UIDeviceFamily": [1, 2], "BuildMachineOSBuild": "14E46", $
+      "DTXcodeBuild": "6E35b", "DTSDKBuild": "12H141", $
+      "CFBundleSupportedPlatforms": ["iPhoneOS"], "DTXcode": "0640", $
+      "DTSDKName": "iphoneos", "DTPlatformVersion": "8.4", $
+      "DTPlatformName": "iphoneos"}'
+  binary = True
+defines = -DV8_DEPRECATION_WARNINGS -DEXPAT_RELATIVE_PATH $
+    -DFEATURE_ENABLE_VOICEMAIL -DGTEST_RELATIVE_PATH $
+    -DJSONCPP_RELATIVE_PATH -DLOGGING=1 -DSRTP_RELATIVE_PATH $
+    -DFEATURE_ENABLE_SSL -DFEATURE_ENABLE_PSTN -DHAVE_SCTP -DHAVE_SRTP $
+    -DHAVE_WEBRTC_VIDEO -DHAVE_WEBRTC_VOICE -DDISABLE_NACL -DCHROMIUM_BUILD $
+    -DCR_CLANG_REVISION=239765-1 -DUSE_LIBJPEG_TURBO=1 $
+    -DENABLE_CONFIGURATION_POLICY -DSYSTEM_NATIVELY_SIGNALS_MEMORY_PRESSURE $
+    -DDONT_EMBED_BUILD_METADATA -DCLD_VERSION=2 -DDISABLE_FTP_SUPPORT=1 $
+    -DV8_USE_EXTERNAL_STARTUP_DATA -DIOS -DWEBRTC_MAC -DWEBRTC_IOS $
+    -DCARBON_DEPRECATED=YES -DHASH_NAMESPACE=__gnu_cxx -DWEBRTC_POSIX $
+    -DDISABLE_DYNAMIC_CAST -D_REENTRANT -DGTEST_HAS_POSIX_RE=0 $
+    -DGTEST_LANG_CXX11=0 -DUNIT_TEST -DGTEST_HAS_RTTI=0 -DXML_STATIC $
+    -DHAVE_INT16_T -DHAVE_INT32_T -DHAVE_INT8_T -DHAVE_UINT16_T $
+    -DHAVE_UINT32_T -DHAVE_UINT64_T -DHAVE_UINT8_T -DHAVE_STDINT_H $
+    -DHAVE_INTTYPES_H -DHAVE_NETINET_IN_H -DUSE_LIBPCI=1 -DUSE_OPENSSL=1 $
+    -DNDEBUG -DNVALGRIND -DDYNAMIC_ANNOTATIONS_ENABLED=0 $
+    -DNS_BLOCK_ASSERTIONS=1
+includes = -Igen -I../.. -I../.. -I../../third_party $
+    -I../../third_party/webrtc -I../../webrtc $
+    -I../../third_party/libsrtp/srtp $
+    -I../../chromium/src/testing/gtest/include $
+    -I../../chromium/src/third_party/jsoncpp/overrides/include $
+    -I../../chromium/src/third_party/jsoncpp/source/include $
+    -I../../chromium/src/third_party/expat/files/lib $
+    -I../../testing/gtest/include -I../../third_party/libyuv/include $
+    -I../../testing/gtest -I../../chromium/src/third_party/libsrtp/config $
+    -I../../chromium/src/third_party/libsrtp/srtp/include $
+    -I../../chromium/src/third_party/libsrtp/srtp/crypto/include
+cflags = -isysroot $
+    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk $
+    -Os -gdwarf-2 -fvisibility=hidden -Wnewline-eof $
+    -miphoneos-version-min=7.0 -arch armv7 -Wendif-labels $
+    -Wno-unused-parameter -Wno-missing-field-initializers $
+    -Wno-selector-type-mismatch -Wheader-hygiene -Wno-char-subscripts $
+    -Wno-unneeded-internal-declaration -Wno-covered-switch-default $
+    -Wstring-conversion -Wno-c++11-narrowing -Wno-deprecated-register $
+    -Wno-inconsistent-missing-override
+cflags_c = -std=c99 -fcolor-diagnostics
+cflags_cc = -std=c++11 -stdlib=libc++ -fno-rtti -fno-exceptions $
+    -fvisibility-inlines-hidden -fno-threadsafe-statics -fcolor-diagnostics
+cflags_objc = $cflags_c
+cflags_objcc = $cflags_cc -fobjc-call-cxx-cdtors
+arflags = 
+
+build $
+    obj/talk/session/media/libjingle_p2p_unittest.bundlefilter_unittest.o: $
+    cxx ../../talk/session/media/bundlefilter_unittest.cc || $
+    obj/talk/libjingle_p2p_unittest.compile_depends.stamp
+build obj/talk/session/media/libjingle_p2p_unittest.channel_unittest.o: cxx $
+    ../../talk/session/media/channel_unittest.cc || $
+    obj/talk/libjingle_p2p_unittest.compile_depends.stamp
+build $
+    obj/talk/session/media/libjingle_p2p_unittest.channelmanager_unittest.o: $
+    cxx ../../talk/session/media/channelmanager_unittest.cc || $
+    obj/talk/libjingle_p2p_unittest.compile_depends.stamp
+build $
+    obj/talk/session/media/libjingle_p2p_unittest.currentspeakermonitor_unittest.o: $
+    cxx ../../talk/session/media/currentspeakermonitor_unittest.cc || $
+    obj/talk/libjingle_p2p_unittest.compile_depends.stamp
+build $
+    obj/talk/session/media/libjingle_p2p_unittest.mediarecorder_unittest.o: $
+    cxx ../../talk/session/media/mediarecorder_unittest.cc || $
+    obj/talk/libjingle_p2p_unittest.compile_depends.stamp
+build $
+    obj/talk/session/media/libjingle_p2p_unittest.mediasession_unittest.o: $
+    cxx ../../talk/session/media/mediasession_unittest.cc || $
+    obj/talk/libjingle_p2p_unittest.compile_depends.stamp
+build $
+    obj/talk/session/media/libjingle_p2p_unittest.rtcpmuxfilter_unittest.o: $
+    cxx ../../talk/session/media/rtcpmuxfilter_unittest.cc || $
+    obj/talk/libjingle_p2p_unittest.compile_depends.stamp
+build obj/talk/session/media/libjingle_p2p_unittest.srtpfilter_unittest.o: $
+    cxx ../../talk/session/media/srtpfilter_unittest.cc || $
+    obj/talk/libjingle_p2p_unittest.compile_depends.stamp
+
+ldflags = -framework Foundation -framework Security -framework $
+    SystemConfiguration -framework UIKit -framework AVFoundation -framework $
+    CoreMedia -framework CoreVideo -framework OpenGLES -framework $
+    QuartzCore -framework AudioToolbox -Wl,-search_paths_first $
+    -Wl,-dead_strip -miphoneos-version-min=7.0 -isysroot $
+    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk $
+    -arch armv7 -L. -stdlib=libc++
+libs = -framework Foundation -lm
+build libjingle_p2p_unittest.app/libjingle_p2p_unittest: link $
+    obj/talk/session/media/libjingle_p2p_unittest.bundlefilter_unittest.o $
+    obj/talk/session/media/libjingle_p2p_unittest.channel_unittest.o $
+    obj/talk/session/media/libjingle_p2p_unittest.channelmanager_unittest.o $
+    obj/talk/session/media/libjingle_p2p_unittest.currentspeakermonitor_unittest.o $
+    obj/talk/session/media/libjingle_p2p_unittest.mediarecorder_unittest.o $
+    obj/talk/session/media/libjingle_p2p_unittest.mediasession_unittest.o $
+    obj/talk/session/media/libjingle_p2p_unittest.rtcpmuxfilter_unittest.o $
+    obj/talk/session/media/libjingle_p2p_unittest.srtpfilter_unittest.o $
+    librtc_base_tests_utils.a libjingle_p2p.a libjingle_unittest_main.a $
+    libsrtp.a librtc_base.a libwebrtc_common.a librtc_base_approved.a $
+    libjsoncpp.a libboringssl.a libgtest.a libexpat.a libjingle_media.a $
+    libvideo_render_module.a libwebrtc_utility.a libaudio_coding_module.a $
+    libcng.a libcommon_audio.a libsystem_wrappers.a libcommon_audio_neon.a $
+    libaudio_encoder_interface.a libg711.a libg722.a libilbc.a libisac.a $
+    libaudio_decoder_interface.a libisac_fix.a libisac_neon.a libpcm16b.a $
+    libred.a libwebrtc_opus.a libopus.a libneteq.a libmedia_file.a $
+    libcommon_video.a libyuv.a libyuv_neon.a libwebrtc.a $
+    libbitrate_controller.a librtp_rtcp.a libpaced_sender.a $
+    libremote_bitrate_estimator.a libvideo_capture_module.a $
+    libvideo_processing.a libwebrtc_video_coding.a libwebrtc_i420.a $
+    libvideo_coding_utility.a libwebrtc_vp8.a libvpx.a libwebrtc_vp9.a $
+    libvoice_engine.a libaudio_conference_mixer.a libaudio_processing.a $
+    libaudio_processing_neon.a libaudio_device.a librtc_sound.a $
+    libfield_trial_default.a libmetrics_default.a librtc_xmllite.a $
+    librtc_xmpp.a librtc_p2p.a libusrsctplib.a $
+    libvideo_capture_module_internal_impl.a $
+    libvideo_render_module_internal_impl.a | $
+    obj/talk/libjingle.actions_depends.stamp
+  ld = $ldxx
+build libjingle_p2p_unittest.app: stamp $
+    libjingle_p2p_unittest.app/Default.png $
+    libjingle_p2p_unittest.app/Info.plist $
+    libjingle_p2p_unittest.app/libjingle_p2p_unittest
+  postbuilds = (export $
+      BUILT_PRODUCTS_DIR=/Users/heberthbraga/Workspace/quimbik/webrtc/src/out_ios_x86/Profile-iphoneos; $
+      export CONFIGURATION=Profile-iphoneos; export $
+      CONTENTS_FOLDER_PATH=libjingle_p2p_unittest.app; export $
+      EXECUTABLE_NAME=libjingle_p2p_unittest; export $
+      EXECUTABLE_PATH=libjingle_p2p_unittest.app/libjingle_p2p_unittest; $
+      export FULL_PRODUCT_NAME=libjingle_p2p_unittest.app; export $
+      INFOPLIST_PATH=libjingle_p2p_unittest.app/Info.plist; export $
+      MACH_O_TYPE=mh_execute; export PRODUCT_NAME=libjingle_p2p_unittest; $
+      export PRODUCT_TYPE=com.apple.product-type.application; export $
+      SDKROOT=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk; $
+      export $
+      SRCROOT=/Users/heberthbraga/Workspace/quimbik/webrtc/src/out_ios_x86/Profile-iphoneos/../../talk; $
+      export SOURCE_ROOT="$${SRCROOT}"; export $
+      TARGET_BUILD_DIR=/Users/heberthbraga/Workspace/quimbik/webrtc/src/out_ios_x86/Profile-iphoneos; $
+      export TEMP_DIR="$${TMPDIR}"; export $
+      UNLOCALIZED_RESOURCES_FOLDER_PATH=libjingle_p2p_unittest.app; export $
+      WRAPPER_NAME=libjingle_p2p_unittest.app; (cd ../../talk && dsymutil $
+      ../out_ios_x86/Profile-iphoneos/libjingle_p2p_unittest.app/libjingle_p2p_unittest $
+      -o ../out_ios_x86/Profile-iphoneos/libjingle_p2p_unittest.app.dSYM && $
+      strip  $
+      ../out_ios_x86/Profile-iphoneos/libjingle_p2p_unittest.app/libjingle_p2p_unittest $
+      && $${TARGET_BUILD_DIR}/gyp-mac-tool code-sign-bundle $
+      "9E54B595F97FC9B28B6F6AE0BEAE16BAFA4194BF" "" "" ""); G=$$?; ((exit $
+      $$G) || rm -rf libjingle_p2p_unittest.app) && exit $$G) && 

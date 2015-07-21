@@ -1,0 +1,104 @@
+build obj/talk/turnserver.actions_depends.stamp: stamp $
+    obj/talk/libjingle.actions_depends.stamp libjingle_p2p.a librtc_base.a $
+    libwebrtc_common.a librtc_base_approved.a libjsoncpp.a libboringssl.a $
+    libexpat.a libjingle_media.a libvideo_render_module.a $
+    libwebrtc_utility.a libaudio_coding_module.a libcng.a libcommon_audio.a $
+    libsystem_wrappers.a libcommon_audio_neon.a $
+    libaudio_encoder_interface.a libg711.a libg722.a libilbc.a libisac.a $
+    libaudio_decoder_interface.a libisac_fix.a libisac_neon.a libpcm16b.a $
+    libred.a libwebrtc_opus.a libopus.a libneteq.a libmedia_file.a $
+    libcommon_video.a libyuv.a libyuv_neon.a libwebrtc.a $
+    libbitrate_controller.a librtp_rtcp.a libpaced_sender.a $
+    libremote_bitrate_estimator.a libvideo_capture_module.a $
+    libvideo_processing.a libwebrtc_video_coding.a libwebrtc_i420.a $
+    libvideo_coding_utility.a libwebrtc_vp8.a libvpx.a libwebrtc_vp9.a $
+    libvoice_engine.a libaudio_conference_mixer.a libaudio_processing.a $
+    libaudio_processing_neon.a libaudio_device.a librtc_sound.a $
+    libfield_trial_default.a libmetrics_default.a librtc_xmllite.a $
+    librtc_xmpp.a librtc_p2p.a libusrsctplib.a $
+    libvideo_capture_module_internal_impl.a $
+    libvideo_render_module_internal_impl.a libsrtp.a
+
+defines = -DV8_DEPRECATION_WARNINGS -DEXPAT_RELATIVE_PATH $
+    -DFEATURE_ENABLE_VOICEMAIL -DGTEST_RELATIVE_PATH $
+    -DJSONCPP_RELATIVE_PATH -DLOGGING=1 -DSRTP_RELATIVE_PATH $
+    -DFEATURE_ENABLE_SSL -DFEATURE_ENABLE_PSTN -DHAVE_SCTP -DHAVE_SRTP $
+    -DHAVE_WEBRTC_VIDEO -DHAVE_WEBRTC_VOICE -DDISABLE_NACL -DCHROMIUM_BUILD $
+    -DCR_CLANG_REVISION=239765-1 -DUSE_LIBJPEG_TURBO=1 $
+    -DENABLE_CONFIGURATION_POLICY -DSYSTEM_NATIVELY_SIGNALS_MEMORY_PRESSURE $
+    -DDONT_EMBED_BUILD_METADATA -DCLD_VERSION=2 -DDISABLE_FTP_SUPPORT=1 $
+    -DV8_USE_EXTERNAL_STARTUP_DATA -DIOS -DWEBRTC_MAC -DWEBRTC_IOS $
+    -DCARBON_DEPRECATED=YES -DHASH_NAMESPACE=__gnu_cxx -DWEBRTC_POSIX $
+    -DDISABLE_DYNAMIC_CAST -D_REENTRANT -DXML_STATIC -DUSE_LIBPCI=1 $
+    -DUSE_OPENSSL=1 -DNDEBUG -DNVALGRIND -DDYNAMIC_ANNOTATIONS_ENABLED=0 $
+    -DNS_BLOCK_ASSERTIONS=1
+includes = -Igen -I../.. -I../.. -I../../third_party $
+    -I../../third_party/webrtc -I../../webrtc $
+    -I../../chromium/src/third_party/jsoncpp/overrides/include $
+    -I../../chromium/src/third_party/jsoncpp/source/include $
+    -I../../chromium/src/third_party/expat/files/lib $
+    -I../../testing/gtest/include
+cflags = -isysroot $
+    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator8.4.sdk $
+    -Os -gdwarf-2 -fvisibility=hidden -Wnewline-eof $
+    -mios-simulator-version-min=7.0 -arch i386 -Wendif-labels $
+    -Wno-unused-parameter -Wno-missing-field-initializers $
+    -Wno-selector-type-mismatch -Wheader-hygiene -Wno-char-subscripts $
+    -Wno-unneeded-internal-declaration -Wno-covered-switch-default $
+    -Wstring-conversion -Wno-c++11-narrowing -Wno-deprecated-register $
+    -Wno-inconsistent-missing-override
+cflags_c = -std=c99 -fcolor-diagnostics
+cflags_cc = -std=c++11 -stdlib=libc++ -fno-rtti -fno-exceptions $
+    -fvisibility-inlines-hidden -fno-threadsafe-statics -fcolor-diagnostics
+cflags_objc = $cflags_c
+cflags_objcc = $cflags_cc -fobjc-call-cxx-cdtors
+arflags = 
+
+build obj/talk/examples/turnserver/turnserver.turnserver_main.o: cxx $
+    ../../talk/examples/turnserver/turnserver_main.cc || $
+    obj/chromium/src/third_party/libvpx/libvpx.actions_rules_copies.stamp
+
+ldflags = -framework Foundation -framework Security -framework $
+    SystemConfiguration -framework UIKit -framework AVFoundation -framework $
+    CoreMedia -framework CoreVideo -framework OpenGLES -framework $
+    QuartzCore -framework AudioToolbox -Wl,-search_paths_first $
+    -Wl,-dead_strip -mios-simulator-version-min=7.0 -isysroot $
+    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator8.4.sdk $
+    -arch i386 -L. -stdlib=libc++
+libs = -lm
+build turnserver: link $
+    obj/talk/examples/turnserver/turnserver.turnserver_main.o $
+    libjingle_p2p.a librtc_base.a libwebrtc_common.a librtc_base_approved.a $
+    libjsoncpp.a libboringssl.a libexpat.a libjingle_media.a $
+    libvideo_render_module.a libwebrtc_utility.a libaudio_coding_module.a $
+    libcng.a libcommon_audio.a libsystem_wrappers.a libcommon_audio_neon.a $
+    libaudio_encoder_interface.a libg711.a libg722.a libilbc.a libisac.a $
+    libaudio_decoder_interface.a libisac_fix.a libisac_neon.a libpcm16b.a $
+    libred.a libwebrtc_opus.a libopus.a libneteq.a libmedia_file.a $
+    libcommon_video.a libyuv.a libyuv_neon.a libwebrtc.a $
+    libbitrate_controller.a librtp_rtcp.a libpaced_sender.a $
+    libremote_bitrate_estimator.a libvideo_capture_module.a $
+    libvideo_processing.a libwebrtc_video_coding.a libwebrtc_i420.a $
+    libvideo_coding_utility.a libwebrtc_vp8.a libvpx.a libwebrtc_vp9.a $
+    libvoice_engine.a libaudio_conference_mixer.a libaudio_processing.a $
+    libaudio_processing_neon.a libaudio_device.a librtc_sound.a $
+    libfield_trial_default.a libmetrics_default.a librtc_xmllite.a $
+    librtc_xmpp.a librtc_p2p.a libusrsctplib.a $
+    libvideo_capture_module_internal_impl.a $
+    libvideo_render_module_internal_impl.a libsrtp.a | $
+    obj/talk/libjingle.actions_depends.stamp
+  ld = $ldxx
+  postbuilds = $ && (export $
+      BUILT_PRODUCTS_DIR=/Users/heberthbraga/Workspace/quimbik/webrtc/src/out_ios_x86/Release-iphonesimulator; $
+      export CONFIGURATION=Release-iphonesimulator; export $
+      EXECUTABLE_NAME=turnserver; export EXECUTABLE_PATH=turnserver; export $
+      FULL_PRODUCT_NAME=turnserver; export PRODUCT_NAME=turnserver; export $
+      PRODUCT_TYPE=com.apple.product-type.tool; export $
+      SDKROOT=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator8.4.sdk; $
+      export $
+      SRCROOT=/Users/heberthbraga/Workspace/quimbik/webrtc/src/out_ios_x86/Release-iphonesimulator/../../talk; $
+      export SOURCE_ROOT="$${SRCROOT}"; export $
+      TARGET_BUILD_DIR=/Users/heberthbraga/Workspace/quimbik/webrtc/src/out_ios_x86/Release-iphonesimulator; $
+      export TEMP_DIR="$${TMPDIR}"; (cd ../../talk && strip  $
+      ../out_ios_x86/Release-iphonesimulator/turnserver); G=$$?; ((exit $
+      $$G) || rm -rf turnserver) && exit $$G)

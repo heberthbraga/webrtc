@@ -1,0 +1,26 @@
+build obj/All.actions_depends.stamp: stamp $
+    obj/webrtc/webrtc_all.actions_depends.stamp libwebrtc.a $
+    obj/talk/libjingle.actions_depends.stamp libjingle_media.a $
+    libjingle_p2p.a libjingle_peerconnection.a $
+    libjingle_peerconnection_objc.a relayserver stunserver turnserver $
+    peerconnection_server libapprtc_signaling.a AppRTCDemo.app $
+    libsocketrocket.a libjingle_unittest_main.a libjingle_media_unittest $
+    libjingle_p2p_unittest libjingle_peerconnection_unittest $
+    libjingle_peerconnection_objc_test.app apprtc_signaling_gunit_test.app $
+    libjingle_media_unittest.isolated libjingle_p2p_unittest.isolated $
+    libjingle_peerconnection_unittest.isolated
+
+build obj/All.compile_depends.stamp: stamp $
+    obj/webrtc/webrtc_all.compile_depends.stamp $
+    obj/talk/relayserver.compile_depends.stamp $
+    obj/talk/stunserver.compile_depends.stamp $
+    obj/talk/turnserver.compile_depends.stamp $
+    obj/talk/AppRTCDemo.compile_depends.stamp $
+    obj/talk/libjingle_media_unittest.compile_depends.stamp $
+    obj/talk/libjingle_p2p_unittest.compile_depends.stamp $
+    obj/talk/libjingle_peerconnection_unittest.compile_depends.stamp $
+    obj/talk/libjingle_peerconnection_objc_test.compile_depends.stamp $
+    obj/talk/apprtc_signaling_gunit_test.compile_depends.stamp $
+    libjingle_media_unittest.isolated libjingle_p2p_unittest.isolated $
+    libjingle_peerconnection_unittest.isolated
+

@@ -1,0 +1,200 @@
+build obj/All.actions_depends.stamp: stamp $
+    obj/webrtc/webrtc_all.actions_depends.stamp libwebrtc.a rtc_unittests $
+    obj/webrtc/webrtc_tests.actions_depends.stamp libloopback_base.a $
+    video_loopback screenshare_loopback video_replay video_engine_tests $
+    webrtc_perf_tests rtc_unittests.isolated video_engine_tests.isolated $
+    webrtc_perf_tests.isolated obj/talk/libjingle.actions_depends.stamp $
+    libjingle_media.a libjingle_p2p.a libjingle_peerconnection.a $
+    libjingle_peerconnection_objc.a relayserver stunserver turnserver $
+    peerconnection_server libapprtc_signaling.a AppRTCDemo.app $
+    libsocketrocket.a libjingle_unittest_main.a libjingle_media_unittest $
+    libjingle_p2p_unittest libjingle_peerconnection_unittest $
+    libjingle_peerconnection_objc_test.app apprtc_signaling_gunit_test.app $
+    libjingle_media_unittest.isolated libjingle_p2p_unittest.isolated $
+    libjingle_peerconnection_unittest.isolated
+
+build obj/All.compile_depends.stamp: stamp $
+    obj/webrtc/webrtc_all.compile_depends.stamp $
+    obj/webrtc/webrtc_tests.compile_depends.stamp $
+    obj/webrtc/video_loopback.compile_depends.stamp $
+    obj/webrtc/screenshare_loopback.compile_depends.stamp $
+    obj/webrtc/video_replay.compile_depends.stamp $
+    obj/webrtc/video_engine_tests.compile_depends.stamp $
+    obj/webrtc/webrtc_perf_tests.compile_depends.stamp $
+    rtc_unittests.isolated video_engine_tests.isolated $
+    webrtc_perf_tests.isolated obj/talk/relayserver.compile_depends.stamp $
+    obj/talk/stunserver.compile_depends.stamp $
+    obj/talk/turnserver.compile_depends.stamp $
+    obj/talk/AppRTCDemo.compile_depends.stamp $
+    obj/talk/libjingle_media_unittest.compile_depends.stamp $
+    obj/talk/libjingle_p2p_unittest.compile_depends.stamp $
+    obj/talk/libjingle_peerconnection_unittest.compile_depends.stamp $
+    obj/talk/libjingle_peerconnection_objc_test.compile_depends.stamp $
+    obj/talk/apprtc_signaling_gunit_test.compile_depends.stamp $
+    libjingle_media_unittest.isolated libjingle_p2p_unittest.isolated $
+    libjingle_peerconnection_unittest.isolated
+
+defines = -DV8_DEPRECATION_WARNINGS $
+    -D__ASSERT_MACROS_DEFINE_VERSIONS_WITHOUT_UNDERSCORE=0 -DCHROMIUM_BUILD $
+    -DCR_CLANG_REVISION=239765-1 -DUSE_LIBJPEG_TURBO=1 $
+    -DENABLE_ONE_CLICK_SIGNIN -DENABLE_PRE_SYNC_BACKUP -DENABLE_REMOTING=1 $
+    -DENABLE_WEBRTC=1 -DENABLE_MEDIA_ROUTER=1 -DENABLE_PEPPER_CDMS $
+    -DENABLE_CONFIGURATION_POLICY -DENABLE_NOTIFICATIONS -DENABLE_HIDPI=1 $
+    -DSYSTEM_NATIVELY_SIGNALS_MEMORY_PRESSURE -DDONT_EMBED_BUILD_METADATA $
+    -DENABLE_TASK_MANAGER=1 -DENABLE_EXTENSIONS=1 $
+    -DENABLE_PLUGIN_INSTALLATION=1 -DENABLE_PLUGINS=1 $
+    -DENABLE_SESSION_SERVICE=1 -DENABLE_THEMES=1 -DENABLE_AUTOFILL_DIALOG=1 $
+    -DENABLE_BACKGROUND=1 -DENABLE_GOOGLE_NOW=1 -DCLD_VERSION=2 $
+    -DENABLE_PRINTING=1 -DENABLE_BASIC_PRINTING=1 -DENABLE_PRINT_PREVIEW=1 $
+    -DENABLE_SPELLCHECK=1 -DENABLE_CAPTIVE_PORTAL_DETECTION=1 $
+    -DENABLE_APP_LIST=1 -DENABLE_SETTINGS_APP=1 -DENABLE_SUPERVISED_USERS=1 $
+    -DENABLE_SERVICE_DISCOVERY=1 -DENABLE_WIFI_BOOTSTRAPPING=1 $
+    -DV8_USE_EXTERNAL_STARTUP_DATA -DFULL_SAFE_BROWSING -DSAFE_BROWSING_CSD $
+    -DSAFE_BROWSING_DB_LOCAL -DSAFE_BROWSING_SERVICE -DGTEST_HAS_POSIX_RE=0 $
+    -DGTEST_LANG_CXX11=0 -DWEBRTC_MAC -DWEBRTC_POSIX -DXML_STATIC $
+    -DUSE_LIBPCI=1 -DUSE_OPENSSL=1 -DDYNAMIC_ANNOTATIONS_ENABLED=1 $
+    -DWTF_USE_DYNAMIC_ANNOTATIONS=1
+includes = -Igen -I../.. $
+    -I../../chromium/src/third_party/jsoncpp/overrides/include $
+    -I../../chromium/src/third_party/jsoncpp/source/include $
+    -I../../chromium/src/third_party/expat/files/lib $
+    -I../../third_party/libyuv/include -I../../testing/gtest/include $
+    -I../../talk/app/webrtc/objc/public $
+    -I../../talk/examples/objc/AppRTCDemo $
+    -I../../talk/examples/objc/AppRTCDemo/third_party/SocketRocket $
+    -I../../testing/gtest -I../../testing/gmock/include
+cflags = -isysroot $
+    /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk $
+    -O0 -gdwarf-2 -fvisibility=hidden -Werror -Wnewline-eof $
+    -mmacosx-version-min=10.6 -arch x86_64 -Wendif-labels $
+    -Wno-unused-parameter -Wno-missing-field-initializers $
+    -Wno-selector-type-mismatch -Wpartial-availability -Wheader-hygiene $
+    -Wno-char-subscripts -Wno-unneeded-internal-declaration $
+    -Wno-covered-switch-default -Wstring-conversion -Wno-c++11-narrowing $
+    -Wno-deprecated-register -Wno-inconsistent-missing-override
+cflags_c = -std=c99 -Xclang -load -Xclang $
+    /Users/heberthbraga/Workspace/quimbik/webrtc/src/third_party/llvm-build/Release+Asserts/lib/libFindBadConstructs.dylib $
+    -Xclang -add-plugin -Xclang find-bad-constructs -Xclang $
+    -plugin-arg-find-bad-constructs -Xclang check-templates $
+    -fcolor-diagnostics -fno-strict-aliasing -fstack-protector-all $
+    -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare
+cflags_cc = -std=c++11 -fno-rtti -fno-exceptions $
+    -fvisibility-inlines-hidden -fno-threadsafe-statics -Xclang -load $
+    -Xclang $
+    /Users/heberthbraga/Workspace/quimbik/webrtc/src/third_party/llvm-build/Release+Asserts/lib/libFindBadConstructs.dylib $
+    -Xclang -add-plugin -Xclang find-bad-constructs -Xclang $
+    -plugin-arg-find-bad-constructs -Xclang check-templates $
+    -fcolor-diagnostics -fno-strict-aliasing -fstack-protector-all $
+    -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare
+cflags_objc = $cflags_c -fobjc-arc -Wobjc-missing-property-synthesis
+cflags_objcc = $cflags_cc -fobjc-arc -Wobjc-missing-property-synthesis $
+    -fobjc-call-cxx-cdtors
+arflags = 
+
+build obj/webrtc/libjingle/xmllite/All.qname_unittest.o: cxx $
+    ../../webrtc/libjingle/xmllite/qname_unittest.cc || $
+    obj/All.compile_depends.stamp
+build obj/webrtc/libjingle/xmllite/All.xmlbuilder_unittest.o: cxx $
+    ../../webrtc/libjingle/xmllite/xmlbuilder_unittest.cc || $
+    obj/All.compile_depends.stamp
+build obj/webrtc/libjingle/xmllite/All.xmlelement_unittest.o: cxx $
+    ../../webrtc/libjingle/xmllite/xmlelement_unittest.cc || $
+    obj/All.compile_depends.stamp
+build obj/webrtc/libjingle/xmllite/All.xmlnsstack_unittest.o: cxx $
+    ../../webrtc/libjingle/xmllite/xmlnsstack_unittest.cc || $
+    obj/All.compile_depends.stamp
+build obj/webrtc/libjingle/xmllite/All.xmlparser_unittest.o: cxx $
+    ../../webrtc/libjingle/xmllite/xmlparser_unittest.cc || $
+    obj/All.compile_depends.stamp
+build obj/webrtc/libjingle/xmllite/All.xmlprinter_unittest.o: cxx $
+    ../../webrtc/libjingle/xmllite/xmlprinter_unittest.cc || $
+    obj/All.compile_depends.stamp
+build obj/webrtc/libjingle/xmpp/All.hangoutpubsubclient_unittest.o: cxx $
+    ../../webrtc/libjingle/xmpp/hangoutpubsubclient_unittest.cc || $
+    obj/All.compile_depends.stamp
+build obj/webrtc/libjingle/xmpp/All.jid_unittest.o: cxx $
+    ../../webrtc/libjingle/xmpp/jid_unittest.cc || $
+    obj/All.compile_depends.stamp
+build obj/webrtc/libjingle/xmpp/All.mucroomconfigtask_unittest.o: cxx $
+    ../../webrtc/libjingle/xmpp/mucroomconfigtask_unittest.cc || $
+    obj/All.compile_depends.stamp
+build obj/webrtc/libjingle/xmpp/All.mucroomdiscoverytask_unittest.o: cxx $
+    ../../webrtc/libjingle/xmpp/mucroomdiscoverytask_unittest.cc || $
+    obj/All.compile_depends.stamp
+build obj/webrtc/libjingle/xmpp/All.mucroomlookuptask_unittest.o: cxx $
+    ../../webrtc/libjingle/xmpp/mucroomlookuptask_unittest.cc || $
+    obj/All.compile_depends.stamp
+build obj/webrtc/libjingle/xmpp/All.mucroomuniquehangoutidtask_unittest.o: $
+    cxx ../../webrtc/libjingle/xmpp/mucroomuniquehangoutidtask_unittest.cc $
+    || obj/All.compile_depends.stamp
+build obj/webrtc/libjingle/xmpp/All.pingtask_unittest.o: cxx $
+    ../../webrtc/libjingle/xmpp/pingtask_unittest.cc || $
+    obj/All.compile_depends.stamp
+build obj/webrtc/libjingle/xmpp/All.pubsubclient_unittest.o: cxx $
+    ../../webrtc/libjingle/xmpp/pubsubclient_unittest.cc || $
+    obj/All.compile_depends.stamp
+build obj/webrtc/libjingle/xmpp/All.pubsubtasks_unittest.o: cxx $
+    ../../webrtc/libjingle/xmpp/pubsubtasks_unittest.cc || $
+    obj/All.compile_depends.stamp
+build obj/webrtc/libjingle/xmpp/All.util_unittest.o: cxx $
+    ../../webrtc/libjingle/xmpp/util_unittest.cc || $
+    obj/All.compile_depends.stamp
+build obj/webrtc/libjingle/xmpp/All.xmppengine_unittest.o: cxx $
+    ../../webrtc/libjingle/xmpp/xmppengine_unittest.cc || $
+    obj/All.compile_depends.stamp
+build obj/webrtc/libjingle/xmpp/All.xmpplogintask_unittest.o: cxx $
+    ../../webrtc/libjingle/xmpp/xmpplogintask_unittest.cc || $
+    obj/All.compile_depends.stamp
+build obj/webrtc/libjingle/xmpp/All.xmppstanzaparser_unittest.o: cxx $
+    ../../webrtc/libjingle/xmpp/xmppstanzaparser_unittest.cc || $
+    obj/All.compile_depends.stamp
+build obj/webrtc/p2p/base/All.dtlstransportchannel_unittest.o: cxx $
+    ../../webrtc/p2p/base/dtlstransportchannel_unittest.cc || $
+    obj/All.compile_depends.stamp
+build obj/webrtc/p2p/base/All.p2ptransportchannel_unittest.o: cxx $
+    ../../webrtc/p2p/base/p2ptransportchannel_unittest.cc || $
+    obj/All.compile_depends.stamp
+build obj/webrtc/p2p/base/All.port_unittest.o: cxx $
+    ../../webrtc/p2p/base/port_unittest.cc || obj/All.compile_depends.stamp
+build obj/webrtc/p2p/base/All.pseudotcp_unittest.o: cxx $
+    ../../webrtc/p2p/base/pseudotcp_unittest.cc || $
+    obj/All.compile_depends.stamp
+build obj/webrtc/p2p/base/All.relayport_unittest.o: cxx $
+    ../../webrtc/p2p/base/relayport_unittest.cc || $
+    obj/All.compile_depends.stamp
+build obj/webrtc/p2p/base/All.relayserver_unittest.o: cxx $
+    ../../webrtc/p2p/base/relayserver_unittest.cc || $
+    obj/All.compile_depends.stamp
+build obj/webrtc/p2p/base/All.stun_unittest.o: cxx $
+    ../../webrtc/p2p/base/stun_unittest.cc || obj/All.compile_depends.stamp
+build obj/webrtc/p2p/base/All.stunport_unittest.o: cxx $
+    ../../webrtc/p2p/base/stunport_unittest.cc || $
+    obj/All.compile_depends.stamp
+build obj/webrtc/p2p/base/All.stunrequest_unittest.o: cxx $
+    ../../webrtc/p2p/base/stunrequest_unittest.cc || $
+    obj/All.compile_depends.stamp
+build obj/webrtc/p2p/base/All.stunserver_unittest.o: cxx $
+    ../../webrtc/p2p/base/stunserver_unittest.cc || $
+    obj/All.compile_depends.stamp
+build obj/webrtc/p2p/base/All.transport_unittest.o: cxx $
+    ../../webrtc/p2p/base/transport_unittest.cc || $
+    obj/All.compile_depends.stamp
+build obj/webrtc/p2p/base/All.transportdescriptionfactory_unittest.o: cxx $
+    ../../webrtc/p2p/base/transportdescriptionfactory_unittest.cc || $
+    obj/All.compile_depends.stamp
+build obj/webrtc/p2p/base/All.turnport_unittest.o: cxx $
+    ../../webrtc/p2p/base/turnport_unittest.cc || $
+    obj/All.compile_depends.stamp
+build obj/webrtc/p2p/client/All.connectivitychecker_unittest.o: cxx $
+    ../../webrtc/p2p/client/connectivitychecker_unittest.cc || $
+    obj/All.compile_depends.stamp
+build obj/webrtc/p2p/client/All.portallocator_unittest.o: cxx $
+    ../../webrtc/p2p/client/portallocator_unittest.cc || $
+    obj/All.compile_depends.stamp
+build obj/webrtc/p2p/stunprober/All.stunprober_unittest.o: cxx $
+    ../../webrtc/p2p/stunprober/stunprober_unittest.cc || $
+    obj/All.compile_depends.stamp
+build obj/webrtc/sound/All.automaticallychosensoundsystem_unittest.o: cxx $
+    ../../webrtc/sound/automaticallychosensoundsystem_unittest.cc || $
+    obj/All.compile_depends.stamp
+

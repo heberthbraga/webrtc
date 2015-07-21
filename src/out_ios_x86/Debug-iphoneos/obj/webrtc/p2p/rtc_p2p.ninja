@@ -1,0 +1,127 @@
+defines = -DV8_DEPRECATION_WARNINGS -DDISABLE_NACL -DCHROMIUM_BUILD $
+    -DCR_CLANG_REVISION=239765-1 -DUSE_LIBJPEG_TURBO=1 $
+    -DENABLE_CONFIGURATION_POLICY -DSYSTEM_NATIVELY_SIGNALS_MEMORY_PRESSURE $
+    -DDONT_EMBED_BUILD_METADATA -DCLD_VERSION=2 -DDISABLE_FTP_SUPPORT=1 $
+    -DV8_USE_EXTERNAL_STARTUP_DATA -DWEBRTC_RESTRICT_LOGGING $
+    -DEXPAT_RELATIVE_PATH -DWEBRTC_ARCH_ARM -DWEBRTC_ARCH_ARM_V7 $
+    -DWEBRTC_HAS_NEON -DWEBRTC_POSIX -DWEBRTC_MAC -DWEBRTC_IOS $
+    -DWEBRTC_INCLUDE_INTERNAL_AUDIO_DEVICE -DFEATURE_ENABLE_VOICEMAIL $
+    -DFEATURE_ENABLE_PSTN -DFEATURE_ENABLE_SSL -DSSL_USE_OPENSSL $
+    -DHAVE_OPENSSL_SSL_H -DUSE_LIBPCI=1 -DUSE_OPENSSL=1 $
+    -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS $
+    -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DWTF_USE_DYNAMIC_ANNOTATIONS=1 -D_DEBUG
+includes = -Igen -I../..
+cflags = -isysroot $
+    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk $
+    -O0 -gdwarf-2 -fvisibility=hidden -Werror -Wnewline-eof $
+    -miphoneos-version-min=7.0 -arch armv7 -Wall -Wendif-labels -Wextra $
+    -Wno-unused-parameter -Wno-missing-field-initializers $
+    -Wno-selector-type-mismatch -Wheader-hygiene -Wno-char-subscripts $
+    -Wno-unneeded-internal-declaration -Wno-covered-switch-default $
+    -Wstring-conversion -Wno-c++11-narrowing -Wno-deprecated-register $
+    -Wno-inconsistent-missing-override
+cflags_c = -std=c99 -fcolor-diagnostics -fstack-protector-all $
+    -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare
+cflags_cc = -std=c++11 -stdlib=libc++ -fno-rtti -fno-exceptions $
+    -fvisibility-inlines-hidden -fno-threadsafe-statics -fcolor-diagnostics $
+    -fstack-protector-all -Wno-undefined-bool-conversion $
+    -Wno-tautological-undefined-compare
+cflags_objc = $cflags_c -Wobjc-missing-property-synthesis
+cflags_objcc = $cflags_cc -Wobjc-missing-property-synthesis $
+    -fobjc-call-cxx-cdtors
+arflags = 
+
+build obj/webrtc/p2p/base/rtc_p2p.asyncstuntcpsocket.o: cxx $
+    ../../webrtc/p2p/base/asyncstuntcpsocket.cc
+build obj/webrtc/p2p/base/rtc_p2p.basicpacketsocketfactory.o: cxx $
+    ../../webrtc/p2p/base/basicpacketsocketfactory.cc
+build obj/webrtc/p2p/base/rtc_p2p.constants.o: cxx $
+    ../../webrtc/p2p/base/constants.cc
+build obj/webrtc/p2p/base/rtc_p2p.dtlstransportchannel.o: cxx $
+    ../../webrtc/p2p/base/dtlstransportchannel.cc
+build obj/webrtc/p2p/base/rtc_p2p.p2ptransport.o: cxx $
+    ../../webrtc/p2p/base/p2ptransport.cc
+build obj/webrtc/p2p/base/rtc_p2p.p2ptransportchannel.o: cxx $
+    ../../webrtc/p2p/base/p2ptransportchannel.cc
+build obj/webrtc/p2p/base/rtc_p2p.port.o: cxx ../../webrtc/p2p/base/port.cc
+build obj/webrtc/p2p/base/rtc_p2p.portallocator.o: cxx $
+    ../../webrtc/p2p/base/portallocator.cc
+build obj/webrtc/p2p/base/rtc_p2p.pseudotcp.o: cxx $
+    ../../webrtc/p2p/base/pseudotcp.cc
+build obj/webrtc/p2p/base/rtc_p2p.rawtransport.o: cxx $
+    ../../webrtc/p2p/base/rawtransport.cc
+build obj/webrtc/p2p/base/rtc_p2p.rawtransportchannel.o: cxx $
+    ../../webrtc/p2p/base/rawtransportchannel.cc
+build obj/webrtc/p2p/base/rtc_p2p.relayport.o: cxx $
+    ../../webrtc/p2p/base/relayport.cc
+build obj/webrtc/p2p/base/rtc_p2p.relayserver.o: cxx $
+    ../../webrtc/p2p/base/relayserver.cc
+build obj/webrtc/p2p/base/rtc_p2p.session.o: cxx $
+    ../../webrtc/p2p/base/session.cc
+build obj/webrtc/p2p/base/rtc_p2p.sessiondescription.o: cxx $
+    ../../webrtc/p2p/base/sessiondescription.cc
+build obj/webrtc/p2p/base/rtc_p2p.stun.o: cxx ../../webrtc/p2p/base/stun.cc
+build obj/webrtc/p2p/base/rtc_p2p.stunport.o: cxx $
+    ../../webrtc/p2p/base/stunport.cc
+build obj/webrtc/p2p/base/rtc_p2p.stunrequest.o: cxx $
+    ../../webrtc/p2p/base/stunrequest.cc
+build obj/webrtc/p2p/base/rtc_p2p.stunserver.o: cxx $
+    ../../webrtc/p2p/base/stunserver.cc
+build obj/webrtc/p2p/base/rtc_p2p.tcpport.o: cxx $
+    ../../webrtc/p2p/base/tcpport.cc
+build obj/webrtc/p2p/base/rtc_p2p.transport.o: cxx $
+    ../../webrtc/p2p/base/transport.cc
+build obj/webrtc/p2p/base/rtc_p2p.transportchannel.o: cxx $
+    ../../webrtc/p2p/base/transportchannel.cc
+build obj/webrtc/p2p/base/rtc_p2p.transportchannelproxy.o: cxx $
+    ../../webrtc/p2p/base/transportchannelproxy.cc
+build obj/webrtc/p2p/base/rtc_p2p.transportdescription.o: cxx $
+    ../../webrtc/p2p/base/transportdescription.cc
+build obj/webrtc/p2p/base/rtc_p2p.transportdescriptionfactory.o: cxx $
+    ../../webrtc/p2p/base/transportdescriptionfactory.cc
+build obj/webrtc/p2p/base/rtc_p2p.turnport.o: cxx $
+    ../../webrtc/p2p/base/turnport.cc
+build obj/webrtc/p2p/base/rtc_p2p.turnserver.o: cxx $
+    ../../webrtc/p2p/base/turnserver.cc
+build obj/webrtc/p2p/client/rtc_p2p.basicportallocator.o: cxx $
+    ../../webrtc/p2p/client/basicportallocator.cc
+build obj/webrtc/p2p/client/rtc_p2p.connectivitychecker.o: cxx $
+    ../../webrtc/p2p/client/connectivitychecker.cc
+build obj/webrtc/p2p/client/rtc_p2p.httpportallocator.o: cxx $
+    ../../webrtc/p2p/client/httpportallocator.cc
+build obj/webrtc/p2p/client/rtc_p2p.socketmonitor.o: cxx $
+    ../../webrtc/p2p/client/socketmonitor.cc
+
+build librtc_p2p.a: alink obj/webrtc/p2p/base/rtc_p2p.asyncstuntcpsocket.o $
+    obj/webrtc/p2p/base/rtc_p2p.basicpacketsocketfactory.o $
+    obj/webrtc/p2p/base/rtc_p2p.constants.o $
+    obj/webrtc/p2p/base/rtc_p2p.dtlstransportchannel.o $
+    obj/webrtc/p2p/base/rtc_p2p.p2ptransport.o $
+    obj/webrtc/p2p/base/rtc_p2p.p2ptransportchannel.o $
+    obj/webrtc/p2p/base/rtc_p2p.port.o $
+    obj/webrtc/p2p/base/rtc_p2p.portallocator.o $
+    obj/webrtc/p2p/base/rtc_p2p.pseudotcp.o $
+    obj/webrtc/p2p/base/rtc_p2p.rawtransport.o $
+    obj/webrtc/p2p/base/rtc_p2p.rawtransportchannel.o $
+    obj/webrtc/p2p/base/rtc_p2p.relayport.o $
+    obj/webrtc/p2p/base/rtc_p2p.relayserver.o $
+    obj/webrtc/p2p/base/rtc_p2p.session.o $
+    obj/webrtc/p2p/base/rtc_p2p.sessiondescription.o $
+    obj/webrtc/p2p/base/rtc_p2p.stun.o $
+    obj/webrtc/p2p/base/rtc_p2p.stunport.o $
+    obj/webrtc/p2p/base/rtc_p2p.stunrequest.o $
+    obj/webrtc/p2p/base/rtc_p2p.stunserver.o $
+    obj/webrtc/p2p/base/rtc_p2p.tcpport.o $
+    obj/webrtc/p2p/base/rtc_p2p.transport.o $
+    obj/webrtc/p2p/base/rtc_p2p.transportchannel.o $
+    obj/webrtc/p2p/base/rtc_p2p.transportchannelproxy.o $
+    obj/webrtc/p2p/base/rtc_p2p.transportdescription.o $
+    obj/webrtc/p2p/base/rtc_p2p.transportdescriptionfactory.o $
+    obj/webrtc/p2p/base/rtc_p2p.turnport.o $
+    obj/webrtc/p2p/base/rtc_p2p.turnserver.o $
+    obj/webrtc/p2p/client/rtc_p2p.basicportallocator.o $
+    obj/webrtc/p2p/client/rtc_p2p.connectivitychecker.o $
+    obj/webrtc/p2p/client/rtc_p2p.httpportallocator.o $
+    obj/webrtc/p2p/client/rtc_p2p.socketmonitor.o
+  libtool_flags = -framework Foundation -framework Security -framework $
+      SystemConfiguration -framework UIKit

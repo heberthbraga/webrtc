@@ -1,0 +1,129 @@
+defines = -DV8_DEPRECATION_WARNINGS -DEXPAT_RELATIVE_PATH $
+    -DFEATURE_ENABLE_VOICEMAIL -DGTEST_RELATIVE_PATH $
+    -DJSONCPP_RELATIVE_PATH -DLOGGING=1 -DSRTP_RELATIVE_PATH $
+    -DFEATURE_ENABLE_SSL -DFEATURE_ENABLE_PSTN -DHAVE_SCTP -DHAVE_SRTP $
+    -DHAVE_WEBRTC_VIDEO -DHAVE_WEBRTC_VOICE -DDISABLE_NACL -DCHROMIUM_BUILD $
+    -DCR_CLANG_REVISION=239765-1 -DUSE_LIBJPEG_TURBO=1 $
+    -DENABLE_CONFIGURATION_POLICY -DSYSTEM_NATIVELY_SIGNALS_MEMORY_PRESSURE $
+    -DDONT_EMBED_BUILD_METADATA -DCLD_VERSION=2 -DDISABLE_FTP_SUPPORT=1 $
+    -DV8_USE_EXTERNAL_STARTUP_DATA -DIOS -DWEBRTC_MAC -DWEBRTC_IOS $
+    -DCARBON_DEPRECATED=YES -DHASH_NAMESPACE=__gnu_cxx -DWEBRTC_POSIX $
+    -DDISABLE_DYNAMIC_CAST -D_REENTRANT -DXML_STATIC -DUSE_LIBPCI=1 $
+    -DUSE_OPENSSL=1 -DDYNAMIC_ANNOTATIONS_ENABLED=1 $
+    -DWTF_USE_DYNAMIC_ANNOTATIONS=1 -D_DEBUG
+includes = -Igen -I../.. -I../.. -I../../third_party $
+    -I../../third_party/webrtc -I../../webrtc $
+    -I../../chromium/src/third_party/jsoncpp/overrides/include $
+    -I../../chromium/src/third_party/jsoncpp/source/include $
+    -I../../chromium/src/third_party/expat/files/lib $
+    -I../../third_party/libyuv/include -I../../testing/gtest/include
+cflags = -isysroot $
+    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk $
+    -O0 -gdwarf-2 -fvisibility=hidden -Wnewline-eof $
+    -miphoneos-version-min=7.0 -arch armv7 -Wendif-labels $
+    -Wno-unused-parameter -Wno-missing-field-initializers $
+    -Wno-selector-type-mismatch -Wheader-hygiene -Wno-char-subscripts $
+    -Wno-unneeded-internal-declaration -Wno-covered-switch-default $
+    -Wstring-conversion -Wno-c++11-narrowing -Wno-deprecated-register $
+    -Wno-inconsistent-missing-override
+cflags_c = -std=c99 -fcolor-diagnostics -fstack-protector-all $
+    -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare
+cflags_cc = -std=c++11 -stdlib=libc++ -fno-rtti -fno-exceptions $
+    -fvisibility-inlines-hidden -fno-threadsafe-statics -fcolor-diagnostics $
+    -fstack-protector-all -Wno-undefined-bool-conversion $
+    -Wno-tautological-undefined-compare
+cflags_objc = $cflags_c
+cflags_objcc = $cflags_cc -fobjc-call-cxx-cdtors
+arflags = 
+
+build obj/talk/app/webrtc/libjingle_peerconnection.audiotrack.o: cxx $
+    ../../talk/app/webrtc/audiotrack.cc
+build obj/talk/app/webrtc/libjingle_peerconnection.audiotrackrenderer.o: $
+    cxx ../../talk/app/webrtc/audiotrackrenderer.cc
+build obj/talk/app/webrtc/libjingle_peerconnection.datachannel.o: cxx $
+    ../../talk/app/webrtc/datachannel.cc
+build obj/talk/app/webrtc/libjingle_peerconnection.dtlsidentityservice.o: $
+    cxx ../../talk/app/webrtc/dtlsidentityservice.cc
+build obj/talk/app/webrtc/libjingle_peerconnection.dtlsidentitystore.o: cxx $
+    ../../talk/app/webrtc/dtlsidentitystore.cc
+build obj/talk/app/webrtc/libjingle_peerconnection.dtmfsender.o: cxx $
+    ../../talk/app/webrtc/dtmfsender.cc
+build obj/talk/app/webrtc/libjingle_peerconnection.jsepicecandidate.o: cxx $
+    ../../talk/app/webrtc/jsepicecandidate.cc
+build $
+    obj/talk/app/webrtc/libjingle_peerconnection.jsepsessiondescription.o: $
+    cxx ../../talk/app/webrtc/jsepsessiondescription.cc
+build obj/talk/app/webrtc/libjingle_peerconnection.localaudiosource.o: cxx $
+    ../../talk/app/webrtc/localaudiosource.cc
+build $
+    obj/talk/app/webrtc/libjingle_peerconnection.mediaconstraintsinterface.o: $
+    cxx ../../talk/app/webrtc/mediaconstraintsinterface.cc
+build obj/talk/app/webrtc/libjingle_peerconnection.mediastream.o: cxx $
+    ../../talk/app/webrtc/mediastream.cc
+build obj/talk/app/webrtc/libjingle_peerconnection.mediastreamhandler.o: $
+    cxx ../../talk/app/webrtc/mediastreamhandler.cc
+build obj/talk/app/webrtc/libjingle_peerconnection.mediastreamsignaling.o: $
+    cxx ../../talk/app/webrtc/mediastreamsignaling.cc
+build obj/talk/app/webrtc/libjingle_peerconnection.peerconnection.o: cxx $
+    ../../talk/app/webrtc/peerconnection.cc
+build obj/talk/app/webrtc/libjingle_peerconnection.peerconnectionfactory.o: $
+    cxx ../../talk/app/webrtc/peerconnectionfactory.cc
+build obj/talk/app/webrtc/libjingle_peerconnection.portallocatorfactory.o: $
+    cxx ../../talk/app/webrtc/portallocatorfactory.cc
+build obj/talk/app/webrtc/libjingle_peerconnection.remoteaudiosource.o: cxx $
+    ../../talk/app/webrtc/remoteaudiosource.cc
+build obj/talk/app/webrtc/libjingle_peerconnection.remotevideocapturer.o: $
+    cxx ../../talk/app/webrtc/remotevideocapturer.cc
+build obj/talk/app/webrtc/libjingle_peerconnection.sctputils.o: cxx $
+    ../../talk/app/webrtc/sctputils.cc
+build obj/talk/app/webrtc/libjingle_peerconnection.statscollector.o: cxx $
+    ../../talk/app/webrtc/statscollector.cc
+build obj/talk/app/webrtc/libjingle_peerconnection.statstypes.o: cxx $
+    ../../talk/app/webrtc/statstypes.cc
+build obj/talk/app/webrtc/libjingle_peerconnection.videosource.o: cxx $
+    ../../talk/app/webrtc/videosource.cc
+build obj/talk/app/webrtc/libjingle_peerconnection.videotrack.o: cxx $
+    ../../talk/app/webrtc/videotrack.cc
+build obj/talk/app/webrtc/libjingle_peerconnection.videotrackrenderers.o: $
+    cxx ../../talk/app/webrtc/videotrackrenderers.cc
+build obj/talk/app/webrtc/libjingle_peerconnection.webrtcsdp.o: cxx $
+    ../../talk/app/webrtc/webrtcsdp.cc
+build obj/talk/app/webrtc/libjingle_peerconnection.webrtcsession.o: cxx $
+    ../../talk/app/webrtc/webrtcsession.cc
+build $
+    obj/talk/app/webrtc/libjingle_peerconnection.webrtcsessiondescriptionfactory.o: $
+    cxx ../../talk/app/webrtc/webrtcsessiondescriptionfactory.cc
+
+build libjingle_peerconnection.a: alink $
+    obj/talk/app/webrtc/libjingle_peerconnection.audiotrack.o $
+    obj/talk/app/webrtc/libjingle_peerconnection.audiotrackrenderer.o $
+    obj/talk/app/webrtc/libjingle_peerconnection.datachannel.o $
+    obj/talk/app/webrtc/libjingle_peerconnection.dtlsidentityservice.o $
+    obj/talk/app/webrtc/libjingle_peerconnection.dtlsidentitystore.o $
+    obj/talk/app/webrtc/libjingle_peerconnection.dtmfsender.o $
+    obj/talk/app/webrtc/libjingle_peerconnection.jsepicecandidate.o $
+    obj/talk/app/webrtc/libjingle_peerconnection.jsepsessiondescription.o $
+    obj/talk/app/webrtc/libjingle_peerconnection.localaudiosource.o $
+    obj/talk/app/webrtc/libjingle_peerconnection.mediaconstraintsinterface.o $
+    obj/talk/app/webrtc/libjingle_peerconnection.mediastream.o $
+    obj/talk/app/webrtc/libjingle_peerconnection.mediastreamhandler.o $
+    obj/talk/app/webrtc/libjingle_peerconnection.mediastreamsignaling.o $
+    obj/talk/app/webrtc/libjingle_peerconnection.peerconnection.o $
+    obj/talk/app/webrtc/libjingle_peerconnection.peerconnectionfactory.o $
+    obj/talk/app/webrtc/libjingle_peerconnection.portallocatorfactory.o $
+    obj/talk/app/webrtc/libjingle_peerconnection.remoteaudiosource.o $
+    obj/talk/app/webrtc/libjingle_peerconnection.remotevideocapturer.o $
+    obj/talk/app/webrtc/libjingle_peerconnection.sctputils.o $
+    obj/talk/app/webrtc/libjingle_peerconnection.statscollector.o $
+    obj/talk/app/webrtc/libjingle_peerconnection.statstypes.o $
+    obj/talk/app/webrtc/libjingle_peerconnection.videosource.o $
+    obj/talk/app/webrtc/libjingle_peerconnection.videotrack.o $
+    obj/talk/app/webrtc/libjingle_peerconnection.videotrackrenderers.o $
+    obj/talk/app/webrtc/libjingle_peerconnection.webrtcsdp.o $
+    obj/talk/app/webrtc/libjingle_peerconnection.webrtcsession.o $
+    obj/talk/app/webrtc/libjingle_peerconnection.webrtcsessiondescriptionfactory.o $
+    || obj/talk/libjingle.actions_depends.stamp
+  libtool_flags = -framework Foundation -framework Security -framework $
+      SystemConfiguration -framework UIKit -framework AVFoundation $
+      -framework CoreMedia -framework CoreVideo -framework UIKit -framework $
+      OpenGLES -framework QuartzCore -framework UIKit
