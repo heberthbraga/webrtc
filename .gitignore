@@ -1,4 +1,4 @@
 .gclient
-.DS_Store
+*.DS_Store
 .gclient_entries
 src/out_ios_x86/*
