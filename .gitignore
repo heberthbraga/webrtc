@@ -1,0 +1,4 @@
+.gclient
+.DS_Store
+.gclient_entries
+src/out_ios_x86/*
