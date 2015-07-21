@@ -1,3 +1,4 @@
+WEBRTC_LIB_DIR="/Users/heberthbraga/Workspace/quimbik/webrtc/lib"
 WEBRTC_SRC_DIR="/Users/heberthbraga/Workspace/quimbik/webrtc/src"
 DEPOT_TOOLS="/Users/heberthbraga/Workspace/quimbik/webrtc/depot_tools"
 
@@ -77,7 +78,7 @@ function combine_libs_x86() {
   # strip -S -x -o $WEBRTC_SRC_DIR/out_ios_x86/Debug-iphonesimulator/libWebRTC-sim-min.a -r $WEBRTC_SRC_DIR/out_ios_x86/Debug-iphonesimulator/libWebRTC-sim.a
   libtool -static -o $WEBRTC_SRC_DIR/out_ios_x86/Debug-iphoneos/libWebRTC-ios.a $WEBRTC_SRC_DIR/out_ios_x86/Debug-iphoneos/*.a
   strip -S -x -o $WEBRTC_SRC_DIR/out_ios_x86/Debug-iphoneos/libWebRTC-ios-min.a -r $WEBRTC_SRC_DIR/out_ios_x86/Debug-iphoneos/libWebRTC-ios.a
-  lipo -create $WEBRTC_SRC_DIR/out_ios_x86/Debug-iphoneos/libWebRTC-ios-min.a -output libWebRTC.a
+  lipo -create $WEBRTC_SRC_DIR/out_ios_x86/Debug-iphoneos/libWebRTC-ios-min.a -output $WEBRTC_LIB_DIR/libWebRTC.a
   echo "The public headers are located in ./src/talk/app/webrtc/objc/public/*.h"
 }
 
@@ -87,7 +88,7 @@ function combine_libs_x64() {
   # strip -S -x -o $WEBRTC_SRC_DIR/out_ios_x64/Debug-iphonesimulator/libWebRTC-sim-min.a -r $WEBRTC_SRC_DIR/out_ios_x64/Debug-iphonesimulator/libWebRTC-sim.a
   libtool -static -o $WEBRTC_SRC_DIR/out_ios_x64/Debug-iphoneos/libWebRTC-ios.a $WEBRTC_SRC_DIR/out_ios_x64/Debug-iphoneos/*.a
   strip -S -x -o $WEBRTC_SRC_DIR/out_ios_x64/Debug-iphoneos/libWebRTC-ios-min.a -r $WEBRTC_SRC_DIR/out_ios_x64/Debug-iphoneos/libWebRTC-ios.a
-  lipo -create $WEBRTC_SRC_DIR/out_ios_x64/Debug-iphoneos/libWebRTC-ios-min.a -output libWebRTC.a
+  lipo -create $WEBRTC_SRC_DIR/out_ios_x64/Debug-iphoneos/libWebRTC-ios-min.a -output $WEBRTC_LIB_DIR/libWebRTC.a
   echo "The public headers are located in ./src/talk/app/webrtc/objc/public/*.h"
 }
  

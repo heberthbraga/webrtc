@@ -1,0 +1,29 @@
+/* Copyright 2015 The Chromium Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file. */
+
+:host {
+  bottom: 0;
+  padding: 24px;
+  position: fixed;
+  right: 0;
+  z-index: 3;
+}
+
+#zoom-buttons {
+  display: inline-block;
+}
+
+#fit-to-width-button {
+  display: block;
+  margin: auto;
+  margin-top: 1em;
+  overflow: visible;
+}
+
+#fit-to-page-button {
+  display: block;
+  margin: auto;
+  overflow: visible;
+}
+

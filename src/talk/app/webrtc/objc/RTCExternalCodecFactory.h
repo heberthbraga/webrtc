@@ -8,7 +8,6 @@
 	- rtc::scoped_ptr<cricket::WebRtcVideoEncoderFactory> get_encoder_factory();
 	- rtc::scoped_ptr<cricket::WebRtcVideoDecoderFactory> get_decoder_factory();
 
-
 @private
 
 	rtc::scoped_ptr<cricket::WebRtcVideoEncoderFactory> encoder_factory;
