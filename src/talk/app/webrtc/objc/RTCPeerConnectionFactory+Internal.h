@@ -30,9 +30,13 @@
 #include "talk/app/webrtc/peerconnectionfactory.h"
 #include "webrtc/base/scoped_ptr.h"
 
+#import "RTCExternalCodecFactory.h"
+
 @interface RTCPeerConnectionFactory ()
 
 @property(nonatomic, assign) rtc::scoped_refptr<
     webrtc::PeerConnectionFactoryInterface> nativeFactory;
+
+@property(strong, nonatomic) NSObject<RTCExternalCodecFactory> * externalCodecFactory;
 
 @end

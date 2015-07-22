@@ -63,6 +63,8 @@
 }
 
 @synthesize nativeFactory = _nativeFactory;
+@synthesize externalCodecFactory = _externalCodecFactory;
+
 
 + (void)initializeSSL {
   BOOL initialized = rtc::InitializeSSL();
@@ -83,8 +85,16 @@
     result = _workerThread->Start();
     NSAssert(result, @"Failed to start worker thread.");
 
+    rtc::scoped_ptr<cricket::WebRtcVideoEncoderFactory> encoderFactory = [_externalCodecFactory getEncoderFactory];
+    rtc::scoped_ptr<cricket::WebRtcVideoDecoderFactory> decoderFactory = [_externalCodecFactory getDecoderFactory];
+
     _nativeFactory = webrtc::CreatePeerConnectionFactory(
-        _signalingThread.get(), _workerThread.get(), NULL, NULL, NULL);
+        _signalingThread.get(), 
+        _workerThread.get(), 
+        NULL, 
+        (encoderFactory == NULL) ? NULL : encoderFactory.release(), 
+        (decoderFactory == NULL) ? NULL : decoderFactory.release());
+
     NSAssert(_nativeFactory, @"Failed to initialize PeerConnectionFactory!");
     // Uncomment to get sensitive logs emitted (to stderr or logcat).
     rtc::LogMessage::LogToDebug(rtc::LS_SENSITIVE);
