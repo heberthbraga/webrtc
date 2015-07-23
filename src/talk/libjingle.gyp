@@ -276,7 +276,6 @@
             'app/webrtc/objc/RTCVideoSource.mm',
             'app/webrtc/objc/RTCVideoTrack+Internal.h',
             'app/webrtc/objc/RTCVideoTrack.mm',
-            'app/webrtc/objc/RTCExternalCodecFactory.h',
             'app/webrtc/objc/public/RTCAudioSource.h',
             'app/webrtc/objc/public/RTCAudioTrack.h',
             'app/webrtc/objc/public/RTCDataChannel.h',
