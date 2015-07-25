@@ -53,9 +53,6 @@
 #include "talk/app/webrtc/videotrack.h"
 #include "webrtc/base/logging.h"
 #include "webrtc/base/ssladapter.h"
-#include "talk/media/webrtc/webrtcvideodecoderfactory.h"
-#include "talk/media/webrtc/webrtcvideoencoderfactory.h"
-
 
 @implementation RTCPeerConnectionFactory {
   rtc::scoped_ptr<rtc::Thread> _signalingThread;
@@ -63,7 +60,7 @@
 }
 
 @synthesize nativeFactory = _nativeFactory;
-@synthesize codecFactoryDelegate;
+@synthesize externalCodecDelegate = _externalCodecDelegate;
 
 
 + (void)initializeSSL {
@@ -76,8 +73,35 @@
   NSAssert(deinitialized, @"Failed to deinitialize SSL library");
 }
 
-- (id)init {
+// - (id)init {
+//   if ((self = [super init])) {
+//     _signalingThread.reset(new rtc::Thread());
+//     BOOL result = _signalingThread->Start();
+//     NSAssert(result, @"Failed to start signaling thread.");
+//     _workerThread.reset(new rtc::Thread());
+//     result = _workerThread->Start();
+//     NSAssert(result, @"Failed to start worker thread.");
+
+//     // rtc::scoped_ptr<cricket::WebRtcVideoEncoderFactory> encoderFactory = [externalCodecDelegate getEncoderFactory];
+//     // rtc::scoped_ptr<cricket::WebRtcVideoDecoderFactory> decoderFactory = [externalCodecDelegate getDecoderFactory];
+
+//     _nativeFactory = webrtc::CreatePeerConnectionFactory(
+//         _signalingThread.get(), 
+//         _workerThread.get(), 
+//         NULL, 
+//         NULL, 
+//         NULL);
+
+//     NSAssert(_nativeFactory, @"Failed to initialize PeerConnectionFactory!");
+//     // Uncomment to get sensitive logs emitted (to stderr or logcat).
+//     rtc::LogMessage::LogToDebug(rtc::LS_SENSITIVE);
+//   }
+//   return self;
+// }
+
+- (id)initWithExternalCodecDelegate:(id<WebRtcExternalVideoCodecFactoryDelegate>)externalCodecDelegate {
   if ((self = [super init])) {
+    _externalCodecDelegate = externalCodecDelegate;
     _signalingThread.reset(new rtc::Thread());
     BOOL result = _signalingThread->Start();
     NSAssert(result, @"Failed to start signaling thread.");
@@ -85,8 +109,11 @@
     result = _workerThread->Start();
     NSAssert(result, @"Failed to start worker thread.");
 
-    rtc::scoped_ptr<cricket::WebRtcVideoEncoderFactory> encoderFactory = [self.codecFactoryDelegate getEncoderFactory];
-    rtc::scoped_ptr<cricket::WebRtcVideoDecoderFactory> decoderFactory = [self.codecFactoryDelegate getDecoderFactory];
+    rtc::scoped_ptr<cricket::WebRtcVideoEncoderFactory> encoderFactory;
+    rtc::scoped_ptr<cricket::WebRtcVideoDecoderFactory> decoderFactory;
+    
+    encoderFactory.reset([_externalCodecDelegate getEncoderFactory]);
+    decoderFactory.reset([_externalCodecDelegate getDecoderFactory]);
 
     _nativeFactory = webrtc::CreatePeerConnectionFactory(
         _signalingThread.get(), 

@@ -2,3 +2,8 @@
 *.DS_Store
 .gclient_entries
 src/out_ios_x86/*
+src/out_ios_x64/*
+src/out_mac/*
+lib/*
+src/all.ninja.xcodeproj/project.pbxproj
+src/sources_for_indexing.xcodeproj/

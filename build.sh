@@ -71,27 +71,50 @@ function build_osx64() {
   ninja -C out_mac/Debug libjingle_peerconnection_objc_test
   popd
 }
- 
+
+function build_all() {
+    build_iossimX86
+    build_iosdeviceX86
+    build_iossimX64
+    build_iosdeviceX64
+    build_osx64
+}
+
+
 function combine_libs_x86() {
   echo "-- combining libraries"
-  # libtool -static -o $WEBRTC_SRC_DIR/out_ios_x86/Debug-iphonesimulator/libWebRTC-sim.a $WEBRTC_SRC_DIR/out_ios_x86/Debug-iphonesimulator/*.a
-  # strip -S -x -o $WEBRTC_SRC_DIR/out_ios_x86/Debug-iphonesimulator/libWebRTC-sim-min.a -r $WEBRTC_SRC_DIR/out_ios_x86/Debug-iphonesimulator/libWebRTC-sim.a
+  libtool -static -o $WEBRTC_SRC_DIR/out_ios_x86/Debug-iphonesimulator/libWebRTC-sim.a $WEBRTC_SRC_DIR/out_ios_x86/Debug-iphonesimulator/*.a
+  strip -S -x -o $WEBRTC_SRC_DIR/out_ios_x86/Debug-iphonesimulator/libWebRTC-sim-min.a -r $WEBRTC_SRC_DIR/out_ios_x86/Debug-iphonesimulator/libWebRTC-sim.a
   libtool -static -o $WEBRTC_SRC_DIR/out_ios_x86/Debug-iphoneos/libWebRTC-ios.a $WEBRTC_SRC_DIR/out_ios_x86/Debug-iphoneos/*.a
   strip -S -x -o $WEBRTC_SRC_DIR/out_ios_x86/Debug-iphoneos/libWebRTC-ios-min.a -r $WEBRTC_SRC_DIR/out_ios_x86/Debug-iphoneos/libWebRTC-ios.a
-  lipo -create $WEBRTC_SRC_DIR/out_ios_x86/Debug-iphoneos/libWebRTC-ios-min.a -output $WEBRTC_LIB_DIR/libWebRTC.a
+  lipo -create $WEBRTC_SRC_DIR/out_ios_x86/Debug-iphoneos/libWebRTC-ios-min.a -output $WEBRTC_LIB_DIR/libWebRTC-armv7-i386.a
   echo "The public headers are located in ./src/talk/app/webrtc/objc/public/*.h"
 }
 
 function combine_libs_x64() {
   echo "-- combining libraries"
-  # libtool -static -o $WEBRTC_SRC_DIR/out_ios_x64/Debug-iphonesimulator/libWebRTC-sim.a $WEBRTC_SRC_DIR/out_ios_x64/Debug-iphonesimulator/*.a
-  # strip -S -x -o $WEBRTC_SRC_DIR/out_ios_x64/Debug-iphonesimulator/libWebRTC-sim-min.a -r $WEBRTC_SRC_DIR/out_ios_x64/Debug-iphonesimulator/libWebRTC-sim.a
+  libtool -static -o $WEBRTC_SRC_DIR/out_ios_x64/Debug-iphonesimulator/libWebRTC-sim.a $WEBRTC_SRC_DIR/out_ios_x64/Debug-iphonesimulator/*.a
+  strip -S -x -o $WEBRTC_SRC_DIR/out_ios_x64/Debug-iphonesimulator/libWebRTC-sim-min.a -r $WEBRTC_SRC_DIR/out_ios_x64/Debug-iphonesimulator/libWebRTC-sim.a
   libtool -static -o $WEBRTC_SRC_DIR/out_ios_x64/Debug-iphoneos/libWebRTC-ios.a $WEBRTC_SRC_DIR/out_ios_x64/Debug-iphoneos/*.a
   strip -S -x -o $WEBRTC_SRC_DIR/out_ios_x64/Debug-iphoneos/libWebRTC-ios-min.a -r $WEBRTC_SRC_DIR/out_ios_x64/Debug-iphoneos/libWebRTC-ios.a
-  lipo -create $WEBRTC_SRC_DIR/out_ios_x64/Debug-iphoneos/libWebRTC-ios-min.a -output $WEBRTC_LIB_DIR/libWebRTC.a
+  lipo -create $WEBRTC_SRC_DIR/out_ios_x64/Debug-iphoneos/libWebRTC-ios-min.a -output $WEBRTC_LIB_DIR/libWebRTC-arm64.a
   echo "The public headers are located in ./src/talk/app/webrtc/objc/public/*.h"
 }
- 
+
+function combine_libs_mac() {
+    echo "-- combining libraries"
+    libtool -static -o $WEBRTC_SRC_DIR/out_mac/Debug/libWebRTC-mac.a $WEBRTC_SRC_DIR/out_mac/Debug/*.a
+    strip -S -x -o $WEBRTC_SRC_DIR/out_mac/Debug/libWebRTC-mac-min.a -r $WEBRTC_SRC_DIR/out_mac/Debug/libWebRTC-mac.a
+    lipo -create $WEBRTC_SRC_DIR/out_mac/Debug/libWebRTC-mac-min.a -output $WEBRTC_LIB_DIR/libWebRTC-x86-x64.a
+    echo "The public headers are located in ./src/talk/app/webrtc/objc/public/*.h"
+}
+
+function combine_universal() {
+    echo "-- combining libraries"
+    lipo -create $WEBRTC_LIB_DIR/*.a -output $WEBRTC_LIB_DIR/libWebRTC.a
+    echo "The public headers are located in ./src/talk/app/webrtc/objc/public/*.h"
+}
+
 function run_simulatorX86() {
   echo "-- running webrtc appdemo on iOS simulator"
   $WEBRTC_SRC_DIR/out_ios_x86/Debug-iphonesimulator/iossim $WEBRTC_SRC_DIR/out_ios_x86/Debug-iphonesimulator/AppRTCDemo.app

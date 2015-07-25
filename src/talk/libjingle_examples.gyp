@@ -160,10 +160,10 @@
           ],
           'sources': [
             'examples/objc/AppRTCDemo/ARDAppClient.h',
-            'examples/objc/AppRTCDemo/ARDAppClient.m',
+            'examples/objc/AppRTCDemo/ARDAppClient.mm',
             'examples/objc/AppRTCDemo/ARDAppClient+Internal.h',
             'examples/objc/AppRTCDemo/ARDAppEngineClient.h',
-            'examples/objc/AppRTCDemo/ARDAppEngineClient.m',
+            'examples/objc/AppRTCDemo/ARDAppEngineClient.mm',
             'examples/objc/AppRTCDemo/ARDCEODTURNClient.h',
             'examples/objc/AppRTCDemo/ARDCEODTURNClient.m',
             'examples/objc/AppRTCDemo/ARDJoinResponse.h',
@@ -232,7 +232,7 @@
               ],
               'sources': [
                 'examples/objc/AppRTCDemo/ios/ARDAppDelegate.h',
-                'examples/objc/AppRTCDemo/ios/ARDAppDelegate.m',
+                'examples/objc/AppRTCDemo/ios/ARDAppDelegate.mm',
                 'examples/objc/AppRTCDemo/ios/ARDMainView.h',
                 'examples/objc/AppRTCDemo/ios/ARDMainView.m',
                 'examples/objc/AppRTCDemo/ios/ARDMainViewController.h',

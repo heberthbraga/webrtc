@@ -27,6 +27,9 @@
 
 #import <Foundation/Foundation.h>
 
+#include "talk/media/webrtc/webrtcvideodecoderfactory.h"
+#include "talk/media/webrtc/webrtcvideoencoderfactory.h"
+
 @class RTCAudioTrack;
 @class RTCConfiguration;
 @class RTCMediaConstraints;
@@ -35,15 +38,32 @@
 @class RTCVideoCapturer;
 @class RTCVideoSource;
 @class RTCVideoTrack;
+
 @protocol RTCPeerConnectionDelegate;
+
+// Created a protocol for handling external video codec factories
+// that will be initialized during the PeerConnectionFactory initialization.
+@protocol WebRtcExternalVideoCodecFactoryDelegate<NSObject>
+
+- (cricket::WebRtcVideoEncoderFactory*) getEncoderFactory;
+
+- (cricket::WebRtcVideoDecoderFactory*) getDecoderFactory;
+
+@end
 
 // RTCPeerConnectionFactory is an ObjectiveC wrapper for PeerConnectionFactory.
 // It is the main entry point to the PeerConnection API for clients.
 @interface RTCPeerConnectionFactory : NSObject
 
+// Property for handling the delegate
+@property (nonatomic, weak) id<WebRtcExternalVideoCodecFactoryDelegate> externalCodecDelegate;
+
 // Initialize & de-initialize the SSL subsystem.  Failure is fatal.
 + (void)initializeSSL;
 + (void)deinitializeSSL;
+
+// Custom cronstructor that receives a WebRtcExternalVideoCodecFactoryDelegate delegate.
+- (id)initWithExternalCodecDelegate:(id<WebRtcExternalVideoCodecFactoryDelegate>)externalCodecDelegate;
 
 // Create an RTCPeerConnection object. RTCPeerConnectionFactory will create
 // required libjingle threads, socket and network manager factory classes for

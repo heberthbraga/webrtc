@@ -27,21 +27,10 @@
 
 #import "RTCPeerConnectionFactory.h"
 
-#include "talk/app/webrtc/peerconnectionfactory.h"
 #include "webrtc/base/scoped_ptr.h"
-#include "talk/media/webrtc/webrtcvideodecoderfactory.h"
-#include "talk/media/webrtc/webrtcvideoencoderfactory.h"
-
-@protocol WebRtcExternalVideoCodecFactoryDelegate<NSObject>
-
-@required
-	- (rtc::scoped_ptr<cricket::WebRtcVideoEncoderFactory>) getEncoderFactory;
-	- (rtc::scoped_ptr<cricket::WebRtcVideoDecoderFactory>) getDecoderFactory;
-@end
+#include "talk/app/webrtc/peerconnectionfactory.h"
 
 @interface RTCPeerConnectionFactory ()
-
-@property (nonatomic, retain) id<WebRtcExternalVideoCodecFactoryDelegate> codecFactoryDelegate;
 
 @property(nonatomic, assign) rtc::scoped_refptr<
     webrtc::PeerConnectionFactoryInterface> nativeFactory;
