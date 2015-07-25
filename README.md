@@ -5,6 +5,7 @@ WebRTC is a google Web, open project that provides browsers and mobile applicati
 capabilities via simple APIs. The WebRTC components have been optimized to best serve this purpose.
 
 For more information about WebRTC, visit: http://www.webrtc.org/.
+
 WebRTC license: http://www.webrtc.org/license-rights/license.
 
 
