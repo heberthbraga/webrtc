@@ -118,7 +118,7 @@
     _nativeFactory = webrtc::CreatePeerConnectionFactory(
         _signalingThread.get(), 
         _workerThread.get(), 
-        NULL, 
+        NULL,
         encoderFactory.release(), 
         decoderFactory.release());
 
