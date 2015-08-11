@@ -132,6 +132,7 @@
           'IOS',
           'WEBRTC_MAC',
           'WEBRTC_IOS',
+          'HAVE_SCTP',
         ],
       }],
       ['OS=="ios" or (OS=="mac" and target_arch!="ia32")', {

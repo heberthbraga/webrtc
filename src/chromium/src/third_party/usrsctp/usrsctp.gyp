@@ -10,7 +10,7 @@
       'SCTP_PROCESS_LEVEL_LOCKS',
       'SCTP_SIMPLE_ALLOCATOR',
       '__Userspace__',
-      # 'SCTP_DEBUG', # Uncomment for SCTP debugging.
+      'SCTP_DEBUG', # Uncomment for SCTP debugging.
     ],
     'include_dirs': [
       'usrsctplib/',
@@ -134,6 +134,7 @@
             'HAVE_SCONN_LEN',
             '__APPLE_USE_RFC_2292',
             '__Userspace_os_Darwin',
+            '__IOS',
           ],
           # usrsctp requires that __APPLE__ is undefined for compilation (for
           # historical reasons). There is a plan to change this, and when it
