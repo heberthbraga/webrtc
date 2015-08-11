@@ -3,8 +3,7 @@ Description
 Since WebRTC is not hosted in github itself, it was not possible to fork the original source from their repository on googlesource. In this sense, I have cloned the original source locally and then created a repo in github for modifying the code and keep tracking
 the changes.
 
-The goal of this fork is to provide a solution to override the WebRtcVideoCodecFactory for using external factories 
-in order to replace the default VP8 codec (encoder/decoder). The idea is to use a codec for encoding and decoding raw data from the input devices cameras. This is going to be linked to an external iOS AppRTC application.
+The goal of this fork is to provide a solution to enable SCTP protocol transmission over data channels on iOS change code accordingly.
 
 About WebRTC
 =============
