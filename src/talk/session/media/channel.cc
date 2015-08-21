@@ -172,7 +172,8 @@ BaseChannel::BaseChannel(rtc::Thread* thread,
       has_received_packet_(false),
       dtls_keyed_(false),
       secure_required_(false),
-      rtp_abs_sendtime_extn_id_(-1) {
+      rtp_abs_sendtime_extn_id_(-1),
+      _cmx() {
   ASSERT(worker_thread_ == rtc::Thread::Current());
   LOG(LS_INFO) << "Created channel for " << content_name;
 }
@@ -430,9 +431,15 @@ void BaseChannel::OnChannelRead(TransportChannel* channel,
 
   // When using RTCP multiplexing we might get RTCP packets on the RTP
   // transport. We feed RTP traffic into the demuxer to determine if it is RTCP.
-  bool rtcp = PacketIsRtcp(channel, data, len);
+//  bool rtcp = PacketIsRtcp(channel, data, len);
+  
+  LOG(LS_INFO) << "Before buffer -> Packet size=" << len;
+  
   rtc::Buffer packet(data, len);
-  HandlePacket(rtcp, &packet, packet_time);
+  
+  LOG(LS_INFO) << "After buffer -> Packet size=" << packet.size();
+  
+  HandlePacket(false, &packet, packet_time);
 }
 
 void BaseChannel::OnReadyToSend(TransportChannel* channel) {
@@ -509,90 +516,37 @@ bool BaseChannel::SendPacket(bool rtcp, rtc::Buffer* packet,
   }
 
   rtc::PacketOptions options(dscp);
-  // Protect if needed.
-  if (srtp_filter_.IsActive()) {
-    bool res;
-    uint8_t* data = packet->data();
-    int len = static_cast<int>(packet->size());
-    if (!rtcp) {
-    // If ENABLE_EXTERNAL_AUTH flag is on then packet authentication is not done
-    // inside libsrtp for a RTP packet. A external HMAC module will be writing
-    // a fake HMAC value. This is ONLY done for a RTP packet.
-    // Socket layer will update rtp sendtime extension header if present in
-    // packet with current time before updating the HMAC.
-#if !defined(ENABLE_EXTERNAL_AUTH)
-      res = srtp_filter_.ProtectRtp(
-          data, len, static_cast<int>(packet->capacity()), &len);
-#else
-      options.packet_time_params.rtp_sendtime_extension_id =
-          rtp_abs_sendtime_extn_id_;
-      res = srtp_filter_.ProtectRtp(
-          data, len, static_cast<int>(packet->capacity()), &len,
-          &options.packet_time_params.srtp_packet_index);
-      // If protection succeeds, let's get auth params from srtp.
-      if (res) {
-        uint8* auth_key = NULL;
-        int key_len;
-        res = srtp_filter_.GetRtpAuthParams(
-            &auth_key, &key_len, &options.packet_time_params.srtp_auth_tag_len);
-        if (res) {
-          options.packet_time_params.srtp_auth_key.resize(key_len);
-          options.packet_time_params.srtp_auth_key.assign(auth_key,
-                                                          auth_key + key_len);
-        }
-      }
-#endif
-      if (!res) {
-        int seq_num = -1;
-        uint32 ssrc = 0;
-        GetRtpSeqNum(data, len, &seq_num);
-        GetRtpSsrc(data, len, &ssrc);
-        LOG(LS_ERROR) << "Failed to protect " << content_name_
-                      << " RTP packet: size=" << len
-                      << ", seqnum=" << seq_num << ", SSRC=" << ssrc;
-        return false;
-      }
-    } else {
-      res = srtp_filter_.ProtectRtcp(data, len,
-                                     static_cast<int>(packet->capacity()),
-                                     &len);
-      if (!res) {
-        int type = -1;
-        GetRtcpType(data, len, &type);
-        LOG(LS_ERROR) << "Failed to protect " << content_name_
-                      << " RTCP packet: size=" << len << ", type=" << type;
-        return false;
-      }
-    }
-
-    // Update the length of the packet now that we've added the auth tag.
-    packet->SetSize(len);
-  } else if (secure_required_) {
-    // This is a double check for something that supposedly can't happen.
-    LOG(LS_ERROR) << "Can't send outgoing " << PacketType(rtcp)
-                  << " packet when SRTP is inactive and crypto is required";
-
-    ASSERT(false);
+  
+  //  Encode the packet with CMX encoder
+  LOG(LS_INFO) << "Encoding packet with cmx\n";
+  
+  uint8_t* in_buf = packet->data();
+  int in_len = static_cast<int>(packet->size());
+  int out_len = CMX_OLEN_BYTES(in_len);
+  uint8_t out_buf[out_len];
+  
+  int cmx_res = cmx_encode(in_buf, &in_len, out_buf, &out_len, &_cmx, CMX_FINISH);
+  
+  if(cmx_res < CMX_OK) {
+    LOG(LS_ERROR) << "Failed to encode packet with cmx\n";
     return false;
   }
+  
+  rtc::Buffer encoded_packet(out_buf, out_len);
 
   // Signal to the media sink after protecting the packet.
   {
     rtc::CritScope cs(&signal_send_packet_cs_);
-    SignalSendPacketPostCrypto(packet->data(), packet->size(), rtcp);
+    SignalSendPacketPostCrypto(encoded_packet.data(), encoded_packet.size(), rtcp);
   }
+  
+  LOG(LS_INFO) << "Encoded packet size=" << encoded_packet.size();
 
   // Bon voyage.
   int ret =
-      channel->SendPacket(packet->data<char>(), packet->size(), options,
+      channel->SendPacket(encoded_packet.data<char>(), encoded_packet.size(), options,
                           (secure() && secure_dtls()) ? PF_SRTP_BYPASS : 0);
-  if (ret != static_cast<int>(packet->size())) {
-    if (channel->GetError() == EWOULDBLOCK) {
-      LOG(LS_WARNING) << "Got EWOULDBLOCK from socket.";
-      SetReadyToSend(channel, false);
-    }
-    return false;
-  }
+
   return true;
 }
 
@@ -611,79 +565,56 @@ bool BaseChannel::WantsPacket(bool rtcp, rtc::Buffer* packet) {
 
 void BaseChannel::HandlePacket(bool rtcp, rtc::Buffer* packet,
                                const rtc::PacketTime& packet_time) {
-  if (!WantsPacket(rtcp, packet)) {
-    return;
-  }
 
   // We are only interested in the first rtp packet because that
   // indicates the media has started flowing.
   if (!has_received_packet_ && !rtcp) {
+    LOG(LS_WARNING) << "has_received_packet_ \n";
     has_received_packet_ = true;
     signaling_thread()->Post(this, MSG_FIRSTPACKETRECEIVED);
   }
+  
+  LOG(LS_WARNING) << "Decoded packet size=" << packet->size();
 
   // Signal to the media sink before unprotecting the packet.
   {
     rtc::CritScope cs(&signal_recv_packet_cs_);
     SignalRecvPacketPostCrypto(packet->data(), packet->size(), rtcp);
   }
-
-  // Unprotect the packet, if needed.
-  if (srtp_filter_.IsActive()) {
-    char* data = packet->data<char>();
-    int len = static_cast<int>(packet->size());
-    bool res;
-    if (!rtcp) {
-      res = srtp_filter_.UnprotectRtp(data, len, &len);
-      if (!res) {
-        int seq_num = -1;
-        uint32 ssrc = 0;
-        GetRtpSeqNum(data, len, &seq_num);
-        GetRtpSsrc(data, len, &ssrc);
-        LOG(LS_ERROR) << "Failed to unprotect " << content_name_
-                      << " RTP packet: size=" << len
-                      << ", seqnum=" << seq_num << ", SSRC=" << ssrc;
-        return;
-      }
-    } else {
-      res = srtp_filter_.UnprotectRtcp(data, len, &len);
-      if (!res) {
-        int type = -1;
-        GetRtcpType(data, len, &type);
-        LOG(LS_ERROR) << "Failed to unprotect " << content_name_
-                      << " RTCP packet: size=" << len << ", type=" << type;
-        return;
-      }
-    }
-
-    packet->SetSize(len);
-  } else if (secure_required_) {
-    // Our session description indicates that SRTP is required, but we got a
-    // packet before our SRTP filter is active. This means either that
-    // a) we got SRTP packets before we received the SDES keys, in which case
-    //    we can't decrypt it anyway, or
-    // b) we got SRTP packets before DTLS completed on both the RTP and RTCP
-    //    channels, so we haven't yet extracted keys, even if DTLS did complete
-    //    on the channel that the packets are being sent on. It's really good
-    //    practice to wait for both RTP and RTCP to be good to go before sending
-    //    media, to prevent weird failure modes, so it's fine for us to just eat
-    //    packets here. This is all sidestepped if RTCP mux is used anyway.
-    LOG(LS_WARNING) << "Can't process incoming " << PacketType(rtcp)
-                    << " packet when SRTP is inactive and crypto is required";
+  
+  // Decode the packet received with CMX
+  
+  LOG(LS_INFO) << "Decoding packet with cmx\n";
+  
+  int ibuflen = static_cast<int>(packet->size());
+  int obuflen = CMX_OLEN_BYTES(ibuflen);
+  
+  uint8_t* in_buf = packet->data();
+  uint8_t out_buf[obuflen];
+  
+  int in_len = ibuflen;
+  int out_len = obuflen;
+  
+  int ret = cmx_decode(in_buf, &in_len, out_buf, &out_len, &_cmx);
+  
+  if (ret < CMX_OK) {
+    LOG(LS_ERROR) << "Failed to decode packet with cmx \n";
     return;
   }
+  
+  rtc::Buffer decoded_packet(out_buf, out_len);
 
   // Signal to the media sink after unprotecting the packet.
   {
     rtc::CritScope cs(&signal_recv_packet_cs_);
-    SignalRecvPacketPreCrypto(packet->data(), packet->size(), rtcp);
+    SignalRecvPacketPreCrypto(decoded_packet.data(), decoded_packet.size(), rtcp);
   }
 
   // Push it down to the media channel.
   if (!rtcp) {
-    media_channel_->OnPacketReceived(packet, packet_time);
+    media_channel_->OnPacketReceived(&decoded_packet, packet_time);
   } else {
-    media_channel_->OnRtcpReceived(packet, packet_time);
+    media_channel_->OnRtcpReceived(&decoded_packet, packet_time);
   }
 }
 

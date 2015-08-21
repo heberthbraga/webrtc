@@ -341,6 +341,9 @@
                 'app/webrtc/objc/public/RTCAVFoundationVideoSource.h',
               ],
               'link_settings': {
+                'libraries': [
+                  '../../third_party/cmx/lib/ios/libcmx.a',
+                ],
                 'xcode_settings': {
                   'OTHER_LDFLAGS': [
                     '-framework CoreGraphics',

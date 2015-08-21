@@ -48,6 +48,7 @@
 #include "webrtc/base/network.h"
 #include "webrtc/base/sigslot.h"
 #include "webrtc/base/window.h"
+#include "third_party/cmx/include/cmx.h"
 
 namespace cricket {
 
@@ -411,6 +412,7 @@ class BaseChannel
   bool dtls_keyed_;
   bool secure_required_;
   int rtp_abs_sendtime_extn_id_;
+  cmx_data _cmx;
 };
 
 // VoiceChannel is a specialization that adds support for early media, DTMF,
