@@ -428,16 +428,12 @@ void BaseChannel::OnChannelRead(TransportChannel* channel,
                                 int flags) {
   // OnChannelRead gets called from P2PSocket; now pass data to MediaEngine
   ASSERT(worker_thread_ == rtc::Thread::Current());
-
+  
   // When using RTCP multiplexing we might get RTCP packets on the RTP
   // transport. We feed RTP traffic into the demuxer to determine if it is RTCP.
-//  bool rtcp = PacketIsRtcp(channel, data, len);
-  
-  LOG(LS_INFO) << "Before buffer -> Packet size=" << len;
+  //  bool rtcp = PacketIsRtcp(channel, out_buf, out_len);
   
   rtc::Buffer packet(data, len);
-  
-  LOG(LS_INFO) << "After buffer -> Packet size=" << packet.size();
   
   HandlePacket(false, &packet, packet_time);
 }
@@ -517,13 +513,13 @@ bool BaseChannel::SendPacket(bool rtcp, rtc::Buffer* packet,
 
   rtc::PacketOptions options(dscp);
   
-  //  Encode the packet with CMX encoder
+  // Encode the packet with CMX encoder
   LOG(LS_INFO) << "Encoding packet with cmx\n";
   
-  uint8_t* in_buf = packet->data();
+  const uint8_t* in_buf = packet->data();
   int in_len = static_cast<int>(packet->size());
   int out_len = CMX_OLEN_BYTES(in_len);
-  uint8_t out_buf[out_len];
+  uint8_t* out_buf = new uint8_t[out_len];
   
   int cmx_res = cmx_encode(in_buf, &in_len, out_buf, &out_len, &_cmx, CMX_FINISH);
   
@@ -546,6 +542,8 @@ bool BaseChannel::SendPacket(bool rtcp, rtc::Buffer* packet,
   int ret =
       channel->SendPacket(encoded_packet.data<char>(), encoded_packet.size(), options,
                           (secure() && secure_dtls()) ? PF_SRTP_BYPASS : 0);
+  
+  delete [] reinterpret_cast<char*>(_cmx.cache);
 
   return true;
 }
@@ -565,6 +563,10 @@ bool BaseChannel::WantsPacket(bool rtcp, rtc::Buffer* packet) {
 
 void BaseChannel::HandlePacket(bool rtcp, rtc::Buffer* packet,
                                const rtc::PacketTime& packet_time) {
+  
+//  if (!WantsPacket(rtcp, packet)) {
+//    return;
+//  }
 
   // We are only interested in the first rtp packet because that
   // indicates the media has started flowing.
@@ -574,23 +576,20 @@ void BaseChannel::HandlePacket(bool rtcp, rtc::Buffer* packet,
     signaling_thread()->Post(this, MSG_FIRSTPACKETRECEIVED);
   }
   
-  LOG(LS_WARNING) << "Decoded packet size=" << packet->size();
-
   // Signal to the media sink before unprotecting the packet.
   {
     rtc::CritScope cs(&signal_recv_packet_cs_);
     SignalRecvPacketPostCrypto(packet->data(), packet->size(), rtcp);
   }
   
-  // Decode the packet received with CMX
-  
+  // Decode the packet received with CMX decoder
   LOG(LS_INFO) << "Decoding packet with cmx\n";
   
   int ibuflen = static_cast<int>(packet->size());
   int obuflen = CMX_OLEN_BYTES(ibuflen);
   
-  uint8_t* in_buf = packet->data();
-  uint8_t out_buf[obuflen];
+  const uint8_t* in_buf = packet->data();
+  uint8_t* out_buf = new uint8_t[obuflen];
   
   int in_len = ibuflen;
   int out_len = obuflen;
@@ -609,13 +608,17 @@ void BaseChannel::HandlePacket(bool rtcp, rtc::Buffer* packet,
     rtc::CritScope cs(&signal_recv_packet_cs_);
     SignalRecvPacketPreCrypto(decoded_packet.data(), decoded_packet.size(), rtcp);
   }
-
+  
+  LOG(LS_INFO) << "Decoded packet size=" << decoded_packet.size();
+  
   // Push it down to the media channel.
   if (!rtcp) {
     media_channel_->OnPacketReceived(&decoded_packet, packet_time);
   } else {
     media_channel_->OnRtcpReceived(&decoded_packet, packet_time);
   }
+  
+  delete [] reinterpret_cast<char*>(_cmx.cache);
 }
 
 void BaseChannel::OnNewLocalDescription(

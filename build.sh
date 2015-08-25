@@ -146,11 +146,11 @@ function run() {
 
     echo "-- packing the folder files to a zip file"
     pushd $WEBRTC_IOS_DIR
-    zip -r -q webrtc-ios-r0.0.$1.zip include/* lib/*
+    zip -r -q webrtc-ios-r$1.zip include/* lib/*
     popd
 
     echo "-- uploading the zip file to amazon s3"
-    aws s3 cp $WEBRTC_IOS_DIR/webrtc-ios-r0.0.$1.zip s3://webrtc-smtrtc --acl public-read
+    aws s3 cp $WEBRTC_IOS_DIR/webrtc-ios-r$1.zip s3://webrtc-smtrtc --acl public-read
   fi
 }
 
