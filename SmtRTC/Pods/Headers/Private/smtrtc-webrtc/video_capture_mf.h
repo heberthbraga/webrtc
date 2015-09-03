@@ -1,0 +1,1 @@
+../../../smtrtc-webrtc/include/webrtc/modules/video_capture/windows/video_capture_mf.h

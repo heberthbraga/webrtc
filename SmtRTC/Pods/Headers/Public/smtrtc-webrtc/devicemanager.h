@@ -1,0 +1,1 @@
+../../../smtrtc-webrtc/include/talk/media/devices/devicemanager.h

@@ -1,0 +1,6 @@
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/SocketRocket" "${PODS_ROOT}/Headers/Public/smtrtc-webrtc"
+LIBRARY_SEARCH_PATHS = "$(PODS_ROOT)/smtrtc-webrtc/lib" "$(PODS_ROOT)/smtrtc-webrtc/include/third_party/cmx/lib/ios"
+OTHER_CFLAGS = -DWEBRTC_POSIX -DHAVE_WEBRTC_VIDEO -DHAVE_WEBRTC_VOICE $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/SocketRocket" -isystem "${PODS_ROOT}/Headers/Public/smtrtc-webrtc" -DWEBRTC_POSIX -DHAVE_WEBRTC_VIDEO -DHAVE_WEBRTC_VOICE -DWEBRTC_POSIX -DHAVE_WEBRTC_VIDEO -DHAVE_WEBRTC_VOICE
+OTHER_LDFLAGS = $(inherited) -ObjC -l"SocketRocket" -l"WebRTC" -l"c" -l"c++" -l"cmx" -l"icucore" -l"resolv" -l"sqlite3" -l"stdc++" -l"z" -framework "AVFoundation" -framework "AudioToolbox" -framework "CFNetwork" -framework "CoreAudio" -framework "CoreGraphics" -framework "CoreMedia" -framework "CoreVideo" -framework "Foundation" -framework "GLKit" -framework "OpenGLES" -framework "QuartzCore" -framework "Security" -framework "UIKit"
+PODS_ROOT = ${SRCROOT}/Pods

@@ -1,0 +1,1 @@
+../../../smtrtc-webrtc/include/webrtc/modules/video_coding/codecs/vp8/include/vp8_common_types.h

@@ -1,0 +1,1 @@
+../../../smtrtc-webrtc/include/webrtc/modules/video_capture/linux/device_info_linux.h

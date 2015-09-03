@@ -1,0 +1,10 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+inhibit_all_warnings!
+
+platform :ios, '8.4'
+
+pod 'smtrtc-webrtc', :podspec => './smtrtc-webrtc.podspec'
+pod 'SocketRocket', :git => 'https://github.com/square/SocketRocket.git'
+
+link_with 'SmtRTC', 'SmtRTCTests'

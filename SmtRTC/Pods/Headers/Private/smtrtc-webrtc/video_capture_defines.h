@@ -1,0 +1,1 @@
+../../../smtrtc-webrtc/include/webrtc/modules/video_capture/include/video_capture_defines.h

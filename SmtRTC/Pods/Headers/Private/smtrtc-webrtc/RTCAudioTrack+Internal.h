@@ -1,0 +1,1 @@
+../../../smtrtc-webrtc/include/talk/app/webrtc/objc/RTCAudioTrack+Internal.h

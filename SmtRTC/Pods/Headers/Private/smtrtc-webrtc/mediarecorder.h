@@ -1,0 +1,1 @@
+../../../smtrtc-webrtc/include/talk/session/media/mediarecorder.h

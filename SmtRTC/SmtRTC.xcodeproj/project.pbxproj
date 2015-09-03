@@ -1,0 +1,752 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		33950610116FD27B299F254F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45EB9FD007CD632D76851EE0 /* libPods.a */; };
+		763F24331B603D1B00657F88 /* ARDAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 763F240C1B603D1B00657F88 /* ARDAppDelegate.mm */; };
+		763F24371B603D1B00657F88 /* ARDMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 763F24151B603D1B00657F88 /* ARDMainView.m */; };
+		763F24381B603D1B00657F88 /* ARDMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 763F24171B603D1B00657F88 /* ARDMainViewController.m */; };
+		763F243C1B603D1B00657F88 /* ARDVideoCallView.m in Sources */ = {isa = PBXBuildFile; fileRef = 763F24231B603D1B00657F88 /* ARDVideoCallView.m */; };
+		763F243D1B603D1B00657F88 /* ARDVideoCallViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 763F24251B603D1B00657F88 /* ARDVideoCallViewController.mm */; };
+		764195EC1B5E78CC00CB8087 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 764195EB1B5E78CC00CB8087 /* main.m */; };
+		764195F21B5E78CC00CB8087 /* SmtRTC.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 764195F01B5E78CC00CB8087 /* SmtRTC.xcdatamodeld */; };
+		764195F81B5E78CC00CB8087 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 764195F61B5E78CC00CB8087 /* Main.storyboard */; };
+		764195FA1B5E78CC00CB8087 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 764195F91B5E78CC00CB8087 /* Images.xcassets */; };
+		764195FD1B5E78CC00CB8087 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 764195FB1B5E78CC00CB8087 /* LaunchScreen.xib */; };
+		764196091B5E78CC00CB8087 /* SmtRTCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 764196081B5E78CC00CB8087 /* SmtRTCTests.m */; };
+		7649BC331B7BB45E0017EA0B /* Default-568h.png in Resources */ = {isa = PBXBuildFile; fileRef = 7649BC2B1B7BB45E0017EA0B /* Default-568h.png */; };
+		7649BC341B7BB45E0017EA0B /* ic_call_end_black_24dp.png in Resources */ = {isa = PBXBuildFile; fileRef = 7649BC2C1B7BB45E0017EA0B /* ic_call_end_black_24dp.png */; };
+		7649BC351B7BB45E0017EA0B /* ic_call_end_black_24dp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7649BC2D1B7BB45E0017EA0B /* ic_call_end_black_24dp@2x.png */; };
+		7649BC361B7BB45E0017EA0B /* ic_clear_black_24dp.png in Resources */ = {isa = PBXBuildFile; fileRef = 7649BC2E1B7BB45E0017EA0B /* ic_clear_black_24dp.png */; };
+		7649BC371B7BB45E0017EA0B /* ic_clear_black_24dp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7649BC2F1B7BB45E0017EA0B /* ic_clear_black_24dp@2x.png */; };
+		7649BC381B7BB45E0017EA0B /* ic_switch_video_black_24dp.png in Resources */ = {isa = PBXBuildFile; fileRef = 7649BC301B7BB45E0017EA0B /* ic_switch_video_black_24dp.png */; };
+		7649BC391B7BB45E0017EA0B /* ic_switch_video_black_24dp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7649BC311B7BB45E0017EA0B /* ic_switch_video_black_24dp@2x.png */; };
+		7649BC3A1B7BB45E0017EA0B /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7649BC321B7BB45E0017EA0B /* Roboto-Regular.ttf */; };
+		765E1B721B7518E8009F8F09 /* RTCDataChannelSync.mm in Sources */ = {isa = PBXBuildFile; fileRef = 765E1B711B7518E8009F8F09 /* RTCDataChannelSync.mm */; };
+		765E1B761B7A363F009F8F09 /* CmxCodec.mm in Sources */ = {isa = PBXBuildFile; fileRef = 765E1B751B7A363F009F8F09 /* CmxCodec.mm */; };
+		765E1B781B7A3E98009F8F09 /* CmxCodecTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 765E1B771B7A3E98009F8F09 /* CmxCodecTests.m */; };
+		767655EE1B61EC6F00A27EED /* ARDAppClient.mm in Sources */ = {isa = PBXBuildFile; fileRef = 767655D11B61EC6F00A27EED /* ARDAppClient.mm */; };
+		767655EF1B61EC6F00A27EED /* ARDAppEngineClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 767655D41B61EC6F00A27EED /* ARDAppEngineClient.m */; };
+		767655F01B61EC6F00A27EED /* ARDCEODTURNClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 767655D61B61EC6F00A27EED /* ARDCEODTURNClient.m */; };
+		767655F11B61EC6F00A27EED /* ARDJoinResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 767655D81B61EC6F00A27EED /* ARDJoinResponse.m */; };
+		767655F21B61EC6F00A27EED /* ARDMessageResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 767655DB1B61EC6F00A27EED /* ARDMessageResponse.m */; };
+		767655F31B61EC6F00A27EED /* ARDSignalingMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 767655E01B61EC6F00A27EED /* ARDSignalingMessage.m */; };
+		767655F41B61EC6F00A27EED /* ARDUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 767655E31B61EC6F00A27EED /* ARDUtilities.m */; };
+		767655F51B61EC6F00A27EED /* ARDWebSocketChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 767655E51B61EC6F00A27EED /* ARDWebSocketChannel.m */; };
+		767655F61B61EC6F00A27EED /* RTCICECandidate+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 767655E71B61EC6F00A27EED /* RTCICECandidate+JSON.m */; };
+		767655F71B61EC6F00A27EED /* RTCICEServer+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 767655E91B61EC6F00A27EED /* RTCICEServer+JSON.m */; };
+		767655F81B61EC6F00A27EED /* RTCMediaConstraints+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 767655EB1B61EC6F00A27EED /* RTCMediaConstraints+JSON.m */; };
+		767655F91B61EC6F00A27EED /* RTCSessionDescription+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 767655ED1B61EC6F00A27EED /* RTCSessionDescription+JSON.m */; };
+		76C25C431B60663E00960BB5 /* UIImage+ARDUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C25C421B60663E00960BB5 /* UIImage+ARDUtilities.m */; };
+		8E63F1A0B64B0EDF663E3661 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45EB9FD007CD632D76851EE0 /* libPods.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		764196031B5E78CC00CB8087 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 764195DE1B5E78CC00CB8087 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 764195E51B5E78CC00CB8087;
+			remoteInfo = SmtRTC;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0EE783DEB9274085CD1070BE /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		45EB9FD007CD632D76851EE0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CBB29105B8DD36A9523A88C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		763F240B1B603D1B00657F88 /* ARDAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDAppDelegate.h; sourceTree = "<group>"; };
+		763F240C1B603D1B00657F88 /* ARDAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ARDAppDelegate.mm; sourceTree = "<group>"; };
+		763F24141B603D1B00657F88 /* ARDMainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDMainView.h; sourceTree = "<group>"; };
+		763F24151B603D1B00657F88 /* ARDMainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDMainView.m; sourceTree = "<group>"; };
+		763F24161B603D1B00657F88 /* ARDMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDMainViewController.h; sourceTree = "<group>"; };
+		763F24171B603D1B00657F88 /* ARDMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDMainViewController.m; sourceTree = "<group>"; };
+		763F24221B603D1B00657F88 /* ARDVideoCallView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDVideoCallView.h; sourceTree = "<group>"; };
+		763F24231B603D1B00657F88 /* ARDVideoCallView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDVideoCallView.m; sourceTree = "<group>"; };
+		763F24241B603D1B00657F88 /* ARDVideoCallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDVideoCallViewController.h; sourceTree = "<group>"; };
+		763F24251B603D1B00657F88 /* ARDVideoCallViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ARDVideoCallViewController.mm; sourceTree = "<group>"; };
+		764195E61B5E78CC00CB8087 /* SmtRTC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmtRTC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		764195EA1B5E78CC00CB8087 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		764195EB1B5E78CC00CB8087 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		764195F11B5E78CC00CB8087 /* SmtRTC.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SmtRTC.xcdatamodel; sourceTree = "<group>"; };
+		764195F71B5E78CC00CB8087 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		764195F91B5E78CC00CB8087 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		764195FC1B5E78CC00CB8087 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		764196021B5E78CC00CB8087 /* SmtRTCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmtRTCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		764196071B5E78CC00CB8087 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		764196081B5E78CC00CB8087 /* SmtRTCTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmtRTCTests.m; sourceTree = "<group>"; };
+		7649BC2B1B7BB45E0017EA0B /* Default-568h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h.png"; sourceTree = "<group>"; };
+		7649BC2C1B7BB45E0017EA0B /* ic_call_end_black_24dp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_call_end_black_24dp.png; sourceTree = "<group>"; };
+		7649BC2D1B7BB45E0017EA0B /* ic_call_end_black_24dp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_call_end_black_24dp@2x.png"; sourceTree = "<group>"; };
+		7649BC2E1B7BB45E0017EA0B /* ic_clear_black_24dp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_clear_black_24dp.png; sourceTree = "<group>"; };
+		7649BC2F1B7BB45E0017EA0B /* ic_clear_black_24dp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_clear_black_24dp@2x.png"; sourceTree = "<group>"; };
+		7649BC301B7BB45E0017EA0B /* ic_switch_video_black_24dp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_switch_video_black_24dp.png; sourceTree = "<group>"; };
+		7649BC311B7BB45E0017EA0B /* ic_switch_video_black_24dp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_switch_video_black_24dp@2x.png"; sourceTree = "<group>"; };
+		7649BC321B7BB45E0017EA0B /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		765E1B701B75183F009F8F09 /* RTCDataChannelSync.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RTCDataChannelSync.h; sourceTree = "<group>"; };
+		765E1B711B7518E8009F8F09 /* RTCDataChannelSync.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RTCDataChannelSync.mm; sourceTree = "<group>"; };
+		765E1B741B7A363F009F8F09 /* CmxCodec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CmxCodec.h; sourceTree = "<group>"; };
+		765E1B751B7A363F009F8F09 /* CmxCodec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CmxCodec.mm; sourceTree = "<group>"; };
+		765E1B771B7A3E98009F8F09 /* CmxCodecTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CmxCodecTests.m; sourceTree = "<group>"; };
+		767655D01B61EC6F00A27EED /* ARDAppClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ARDAppClient.h; path = AppRTC/ARDAppClient.h; sourceTree = "<group>"; };
+		767655D11B61EC6F00A27EED /* ARDAppClient.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ARDAppClient.mm; path = AppRTC/ARDAppClient.mm; sourceTree = "<group>"; };
+		767655D21B61EC6F00A27EED /* ARDAppClient+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ARDAppClient+Internal.h"; path = "AppRTC/ARDAppClient+Internal.h"; sourceTree = "<group>"; };
+		767655D31B61EC6F00A27EED /* ARDAppEngineClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ARDAppEngineClient.h; path = AppRTC/ARDAppEngineClient.h; sourceTree = "<group>"; };
+		767655D41B61EC6F00A27EED /* ARDAppEngineClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ARDAppEngineClient.m; path = AppRTC/ARDAppEngineClient.m; sourceTree = "<group>"; };
+		767655D51B61EC6F00A27EED /* ARDCEODTURNClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ARDCEODTURNClient.h; path = AppRTC/ARDCEODTURNClient.h; sourceTree = "<group>"; };
+		767655D61B61EC6F00A27EED /* ARDCEODTURNClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ARDCEODTURNClient.m; path = AppRTC/ARDCEODTURNClient.m; sourceTree = "<group>"; };
+		767655D71B61EC6F00A27EED /* ARDJoinResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ARDJoinResponse.h; path = AppRTC/ARDJoinResponse.h; sourceTree = "<group>"; };
+		767655D81B61EC6F00A27EED /* ARDJoinResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ARDJoinResponse.m; path = AppRTC/ARDJoinResponse.m; sourceTree = "<group>"; };
+		767655D91B61EC6F00A27EED /* ARDJoinResponse+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ARDJoinResponse+Internal.h"; path = "AppRTC/ARDJoinResponse+Internal.h"; sourceTree = "<group>"; };
+		767655DA1B61EC6F00A27EED /* ARDMessageResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ARDMessageResponse.h; path = AppRTC/ARDMessageResponse.h; sourceTree = "<group>"; };
+		767655DB1B61EC6F00A27EED /* ARDMessageResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ARDMessageResponse.m; path = AppRTC/ARDMessageResponse.m; sourceTree = "<group>"; };
+		767655DC1B61EC6F00A27EED /* ARDMessageResponse+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ARDMessageResponse+Internal.h"; path = "AppRTC/ARDMessageResponse+Internal.h"; sourceTree = "<group>"; };
+		767655DD1B61EC6F00A27EED /* ARDRoomServerClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ARDRoomServerClient.h; path = AppRTC/ARDRoomServerClient.h; sourceTree = "<group>"; };
+		767655DE1B61EC6F00A27EED /* ARDSignalingChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ARDSignalingChannel.h; path = AppRTC/ARDSignalingChannel.h; sourceTree = "<group>"; };
+		767655DF1B61EC6F00A27EED /* ARDSignalingMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ARDSignalingMessage.h; path = AppRTC/ARDSignalingMessage.h; sourceTree = "<group>"; };
+		767655E01B61EC6F00A27EED /* ARDSignalingMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ARDSignalingMessage.m; path = AppRTC/ARDSignalingMessage.m; sourceTree = "<group>"; };
+		767655E11B61EC6F00A27EED /* ARDTURNClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ARDTURNClient.h; path = AppRTC/ARDTURNClient.h; sourceTree = "<group>"; };
+		767655E21B61EC6F00A27EED /* ARDUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ARDUtilities.h; path = AppRTC/ARDUtilities.h; sourceTree = "<group>"; };
+		767655E31B61EC6F00A27EED /* ARDUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ARDUtilities.m; path = AppRTC/ARDUtilities.m; sourceTree = "<group>"; };
+		767655E41B61EC6F00A27EED /* ARDWebSocketChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ARDWebSocketChannel.h; path = AppRTC/ARDWebSocketChannel.h; sourceTree = "<group>"; };
+		767655E51B61EC6F00A27EED /* ARDWebSocketChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ARDWebSocketChannel.m; path = AppRTC/ARDWebSocketChannel.m; sourceTree = "<group>"; };
+		767655E61B61EC6F00A27EED /* RTCICECandidate+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "RTCICECandidate+JSON.h"; path = "AppRTC/RTCICECandidate+JSON.h"; sourceTree = "<group>"; };
+		767655E71B61EC6F00A27EED /* RTCICECandidate+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "RTCICECandidate+JSON.m"; path = "AppRTC/RTCICECandidate+JSON.m"; sourceTree = "<group>"; };
+		767655E81B61EC6F00A27EED /* RTCICEServer+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "RTCICEServer+JSON.h"; path = "AppRTC/RTCICEServer+JSON.h"; sourceTree = "<group>"; };
+		767655E91B61EC6F00A27EED /* RTCICEServer+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "RTCICEServer+JSON.m"; path = "AppRTC/RTCICEServer+JSON.m"; sourceTree = "<group>"; };
+		767655EA1B61EC6F00A27EED /* RTCMediaConstraints+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "RTCMediaConstraints+JSON.h"; path = "AppRTC/RTCMediaConstraints+JSON.h"; sourceTree = "<group>"; };
+		767655EB1B61EC6F00A27EED /* RTCMediaConstraints+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "RTCMediaConstraints+JSON.m"; path = "AppRTC/RTCMediaConstraints+JSON.m"; sourceTree = "<group>"; };
+		767655EC1B61EC6F00A27EED /* RTCSessionDescription+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "RTCSessionDescription+JSON.h"; path = "AppRTC/RTCSessionDescription+JSON.h"; sourceTree = "<group>"; };
+		767655ED1B61EC6F00A27EED /* RTCSessionDescription+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "RTCSessionDescription+JSON.m"; path = "AppRTC/RTCSessionDescription+JSON.m"; sourceTree = "<group>"; };
+		76765F801B609B3A000008A4 /* SmtRTC-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SmtRTC-Prefix.pch"; sourceTree = "<group>"; };
+		76C25C411B60663E00960BB5 /* UIImage+ARDUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ARDUtilities.h"; sourceTree = "<group>"; };
+		76C25C421B60663E00960BB5 /* UIImage+ARDUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ARDUtilities.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		764195E31B5E78CC00CB8087 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E63F1A0B64B0EDF663E3661 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		764195FF1B5E78CC00CB8087 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33950610116FD27B299F254F /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0248037A7A62DB727E408101 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0EE783DEB9274085CD1070BE /* Pods.debug.xcconfig */,
+				5CBB29105B8DD36A9523A88C /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		4EB247ADEAAEED1368D1A131 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				45EB9FD007CD632D76851EE0 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		764195DD1B5E78CC00CB8087 = {
+			isa = PBXGroup;
+			children = (
+				764195E81B5E78CC00CB8087 /* SmtRTC */,
+				764196051B5E78CC00CB8087 /* SmtRTCTests */,
+				764195E71B5E78CC00CB8087 /* Products */,
+				0248037A7A62DB727E408101 /* Pods */,
+				4EB247ADEAAEED1368D1A131 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		764195E71B5E78CC00CB8087 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				764195E61B5E78CC00CB8087 /* SmtRTC.app */,
+				764196021B5E78CC00CB8087 /* SmtRTCTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		764195E81B5E78CC00CB8087 /* SmtRTC */ = {
+			isa = PBXGroup;
+			children = (
+				7649BC2A1B7BB45E0017EA0B /* resources */,
+				765E1B731B7A363F009F8F09 /* Cmx */,
+				767655CF1B61EBFE00A27EED /* AppRTC */,
+				76C25C411B60663E00960BB5 /* UIImage+ARDUtilities.h */,
+				76C25C421B60663E00960BB5 /* UIImage+ARDUtilities.m */,
+				763F240B1B603D1B00657F88 /* ARDAppDelegate.h */,
+				763F240C1B603D1B00657F88 /* ARDAppDelegate.mm */,
+				763F24141B603D1B00657F88 /* ARDMainView.h */,
+				763F24151B603D1B00657F88 /* ARDMainView.m */,
+				763F24161B603D1B00657F88 /* ARDMainViewController.h */,
+				763F24171B603D1B00657F88 /* ARDMainViewController.m */,
+				763F24221B603D1B00657F88 /* ARDVideoCallView.h */,
+				763F24231B603D1B00657F88 /* ARDVideoCallView.m */,
+				763F24241B603D1B00657F88 /* ARDVideoCallViewController.h */,
+				763F24251B603D1B00657F88 /* ARDVideoCallViewController.mm */,
+				764195F61B5E78CC00CB8087 /* Main.storyboard */,
+				764195F91B5E78CC00CB8087 /* Images.xcassets */,
+				764195FB1B5E78CC00CB8087 /* LaunchScreen.xib */,
+				764195F01B5E78CC00CB8087 /* SmtRTC.xcdatamodeld */,
+				764195E91B5E78CC00CB8087 /* Supporting Files */,
+				76765F801B609B3A000008A4 /* SmtRTC-Prefix.pch */,
+			);
+			path = SmtRTC;
+			sourceTree = "<group>";
+		};
+		764195E91B5E78CC00CB8087 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				764195EA1B5E78CC00CB8087 /* Info.plist */,
+				764195EB1B5E78CC00CB8087 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		764196051B5E78CC00CB8087 /* SmtRTCTests */ = {
+			isa = PBXGroup;
+			children = (
+				765E1B771B7A3E98009F8F09 /* CmxCodecTests.m */,
+				764196081B5E78CC00CB8087 /* SmtRTCTests.m */,
+				764196061B5E78CC00CB8087 /* Supporting Files */,
+			);
+			path = SmtRTCTests;
+			sourceTree = "<group>";
+		};
+		764196061B5E78CC00CB8087 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				764196071B5E78CC00CB8087 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7649BC2A1B7BB45E0017EA0B /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				7649BC2B1B7BB45E0017EA0B /* Default-568h.png */,
+				7649BC2C1B7BB45E0017EA0B /* ic_call_end_black_24dp.png */,
+				7649BC2D1B7BB45E0017EA0B /* ic_call_end_black_24dp@2x.png */,
+				7649BC2E1B7BB45E0017EA0B /* ic_clear_black_24dp.png */,
+				7649BC2F1B7BB45E0017EA0B /* ic_clear_black_24dp@2x.png */,
+				7649BC301B7BB45E0017EA0B /* ic_switch_video_black_24dp.png */,
+				7649BC311B7BB45E0017EA0B /* ic_switch_video_black_24dp@2x.png */,
+				7649BC321B7BB45E0017EA0B /* Roboto-Regular.ttf */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		765E1B731B7A363F009F8F09 /* Cmx */ = {
+			isa = PBXGroup;
+			children = (
+				765E1B741B7A363F009F8F09 /* CmxCodec.h */,
+				765E1B751B7A363F009F8F09 /* CmxCodec.mm */,
+			);
+			path = Cmx;
+			sourceTree = "<group>";
+		};
+		767655CF1B61EBFE00A27EED /* AppRTC */ = {
+			isa = PBXGroup;
+			children = (
+				767655D01B61EC6F00A27EED /* ARDAppClient.h */,
+				767655D11B61EC6F00A27EED /* ARDAppClient.mm */,
+				767655D21B61EC6F00A27EED /* ARDAppClient+Internal.h */,
+				767655D31B61EC6F00A27EED /* ARDAppEngineClient.h */,
+				767655D41B61EC6F00A27EED /* ARDAppEngineClient.m */,
+				767655D51B61EC6F00A27EED /* ARDCEODTURNClient.h */,
+				767655D61B61EC6F00A27EED /* ARDCEODTURNClient.m */,
+				767655D71B61EC6F00A27EED /* ARDJoinResponse.h */,
+				767655D81B61EC6F00A27EED /* ARDJoinResponse.m */,
+				767655D91B61EC6F00A27EED /* ARDJoinResponse+Internal.h */,
+				767655DA1B61EC6F00A27EED /* ARDMessageResponse.h */,
+				767655DB1B61EC6F00A27EED /* ARDMessageResponse.m */,
+				767655DC1B61EC6F00A27EED /* ARDMessageResponse+Internal.h */,
+				767655DD1B61EC6F00A27EED /* ARDRoomServerClient.h */,
+				767655DE1B61EC6F00A27EED /* ARDSignalingChannel.h */,
+				767655DF1B61EC6F00A27EED /* ARDSignalingMessage.h */,
+				767655E01B61EC6F00A27EED /* ARDSignalingMessage.m */,
+				767655E11B61EC6F00A27EED /* ARDTURNClient.h */,
+				767655E21B61EC6F00A27EED /* ARDUtilities.h */,
+				767655E31B61EC6F00A27EED /* ARDUtilities.m */,
+				767655E41B61EC6F00A27EED /* ARDWebSocketChannel.h */,
+				767655E51B61EC6F00A27EED /* ARDWebSocketChannel.m */,
+				767655E61B61EC6F00A27EED /* RTCICECandidate+JSON.h */,
+				767655E71B61EC6F00A27EED /* RTCICECandidate+JSON.m */,
+				767655E81B61EC6F00A27EED /* RTCICEServer+JSON.h */,
+				767655E91B61EC6F00A27EED /* RTCICEServer+JSON.m */,
+				767655EA1B61EC6F00A27EED /* RTCMediaConstraints+JSON.h */,
+				767655EB1B61EC6F00A27EED /* RTCMediaConstraints+JSON.m */,
+				767655EC1B61EC6F00A27EED /* RTCSessionDescription+JSON.h */,
+				767655ED1B61EC6F00A27EED /* RTCSessionDescription+JSON.m */,
+				765E1B701B75183F009F8F09 /* RTCDataChannelSync.h */,
+				765E1B711B7518E8009F8F09 /* RTCDataChannelSync.mm */,
+			);
+			name = AppRTC;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		764195E51B5E78CC00CB8087 /* SmtRTC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7641960C1B5E78CC00CB8087 /* Build configuration list for PBXNativeTarget "SmtRTC" */;
+			buildPhases = (
+				36CFBF37449B3B44757B9E43 /* Check Pods Manifest.lock */,
+				764195E21B5E78CC00CB8087 /* Sources */,
+				764195E31B5E78CC00CB8087 /* Frameworks */,
+				764195E41B5E78CC00CB8087 /* Resources */,
+				189ABC45273CBAD68D4B1985 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SmtRTC;
+			productName = SmtRTC;
+			productReference = 764195E61B5E78CC00CB8087 /* SmtRTC.app */;
+			productType = "com.apple.product-type.application";
+		};
+		764196011B5E78CC00CB8087 /* SmtRTCTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7641960F1B5E78CC00CB8087 /* Build configuration list for PBXNativeTarget "SmtRTCTests" */;
+			buildPhases = (
+				D5348F5486D39397C98BA2A7 /* Check Pods Manifest.lock */,
+				764195FE1B5E78CC00CB8087 /* Sources */,
+				764195FF1B5E78CC00CB8087 /* Frameworks */,
+				764196001B5E78CC00CB8087 /* Resources */,
+				78F7C7797D4887EA5E884F10 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				764196041B5E78CC00CB8087 /* PBXTargetDependency */,
+			);
+			name = SmtRTCTests;
+			productName = SmtRTCTests;
+			productReference = 764196021B5E78CC00CB8087 /* SmtRTCTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		764195DE1B5E78CC00CB8087 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = "Heberth Braga";
+				TargetAttributes = {
+					764195E51B5E78CC00CB8087 = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					764196011B5E78CC00CB8087 = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = 764195E51B5E78CC00CB8087;
+					};
+				};
+			};
+			buildConfigurationList = 764195E11B5E78CC00CB8087 /* Build configuration list for PBXProject "SmtRTC" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 764195DD1B5E78CC00CB8087;
+			productRefGroup = 764195E71B5E78CC00CB8087 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				764195E51B5E78CC00CB8087 /* SmtRTC */,
+				764196011B5E78CC00CB8087 /* SmtRTCTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		764195E41B5E78CC00CB8087 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7649BC351B7BB45E0017EA0B /* ic_call_end_black_24dp@2x.png in Resources */,
+				7649BC3A1B7BB45E0017EA0B /* Roboto-Regular.ttf in Resources */,
+				7649BC331B7BB45E0017EA0B /* Default-568h.png in Resources */,
+				764195F81B5E78CC00CB8087 /* Main.storyboard in Resources */,
+				7649BC361B7BB45E0017EA0B /* ic_clear_black_24dp.png in Resources */,
+				7649BC391B7BB45E0017EA0B /* ic_switch_video_black_24dp@2x.png in Resources */,
+				764195FD1B5E78CC00CB8087 /* LaunchScreen.xib in Resources */,
+				7649BC341B7BB45E0017EA0B /* ic_call_end_black_24dp.png in Resources */,
+				7649BC381B7BB45E0017EA0B /* ic_switch_video_black_24dp.png in Resources */,
+				7649BC371B7BB45E0017EA0B /* ic_clear_black_24dp@2x.png in Resources */,
+				764195FA1B5E78CC00CB8087 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		764196001B5E78CC00CB8087 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		189ABC45273CBAD68D4B1985 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		36CFBF37449B3B44757B9E43 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		78F7C7797D4887EA5E884F10 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D5348F5486D39397C98BA2A7 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		764195E21B5E78CC00CB8087 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				767655EF1B61EC6F00A27EED /* ARDAppEngineClient.m in Sources */,
+				767655F91B61EC6F00A27EED /* RTCSessionDescription+JSON.m in Sources */,
+				765E1B721B7518E8009F8F09 /* RTCDataChannelSync.mm in Sources */,
+				767655F81B61EC6F00A27EED /* RTCMediaConstraints+JSON.m in Sources */,
+				76C25C431B60663E00960BB5 /* UIImage+ARDUtilities.m in Sources */,
+				765E1B761B7A363F009F8F09 /* CmxCodec.mm in Sources */,
+				767655F31B61EC6F00A27EED /* ARDSignalingMessage.m in Sources */,
+				763F243C1B603D1B00657F88 /* ARDVideoCallView.m in Sources */,
+				763F243D1B603D1B00657F88 /* ARDVideoCallViewController.mm in Sources */,
+				763F24381B603D1B00657F88 /* ARDMainViewController.m in Sources */,
+				764195F21B5E78CC00CB8087 /* SmtRTC.xcdatamodeld in Sources */,
+				767655F51B61EC6F00A27EED /* ARDWebSocketChannel.m in Sources */,
+				767655F41B61EC6F00A27EED /* ARDUtilities.m in Sources */,
+				763F24331B603D1B00657F88 /* ARDAppDelegate.mm in Sources */,
+				767655EE1B61EC6F00A27EED /* ARDAppClient.mm in Sources */,
+				764195EC1B5E78CC00CB8087 /* main.m in Sources */,
+				767655F01B61EC6F00A27EED /* ARDCEODTURNClient.m in Sources */,
+				767655F21B61EC6F00A27EED /* ARDMessageResponse.m in Sources */,
+				767655F61B61EC6F00A27EED /* RTCICECandidate+JSON.m in Sources */,
+				767655F11B61EC6F00A27EED /* ARDJoinResponse.m in Sources */,
+				767655F71B61EC6F00A27EED /* RTCICEServer+JSON.m in Sources */,
+				763F24371B603D1B00657F88 /* ARDMainView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		764195FE1B5E78CC00CB8087 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				764196091B5E78CC00CB8087 /* SmtRTCTests.m in Sources */,
+				765E1B781B7A3E98009F8F09 /* CmxCodecTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		764196041B5E78CC00CB8087 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 764195E51B5E78CC00CB8087 /* SmtRTC */;
+			targetProxy = 764196031B5E78CC00CB8087 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		764195F61B5E78CC00CB8087 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				764195F71B5E78CC00CB8087 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		764195FB1B5E78CC00CB8087 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				764195FC1B5E78CC00CB8087 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7641960A1B5E78CC00CB8087 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7641960B1B5E78CC00CB8087 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7641960D1B5E78CC00CB8087 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0EE783DEB9274085CD1070BE /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "${PROJECT_DIR}/SmtRTC/SmtRTC-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${SRCROOT}\"/**",
+				);
+				INFOPLIST_FILE = SmtRTC/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 arm64 armv7s";
+			};
+			name = Debug;
+		};
+		7641960E1B5E78CC00CB8087 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5CBB29105B8DD36A9523A88C /* Pods.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "${PROJECT_DIR}/SmtRTC/SmtRTC-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${SRCROOT}\"/**",
+				);
+				INFOPLIST_FILE = SmtRTC/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 arm64 armv7s";
+			};
+			name = Release;
+		};
+		764196101B5E78CC00CB8087 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0EE783DEB9274085CD1070BE /* Pods.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SmtRTCTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SmtRTC.app/SmtRTC";
+				VALID_ARCHS = "arm64 armv7 armv7s i386";
+			};
+			name = Debug;
+		};
+		764196111B5E78CC00CB8087 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5CBB29105B8DD36A9523A88C /* Pods.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SmtRTCTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SmtRTC.app/SmtRTC";
+				VALID_ARCHS = "arm64 armv7 armv7s i386";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		764195E11B5E78CC00CB8087 /* Build configuration list for PBXProject "SmtRTC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7641960A1B5E78CC00CB8087 /* Debug */,
+				7641960B1B5E78CC00CB8087 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7641960C1B5E78CC00CB8087 /* Build configuration list for PBXNativeTarget "SmtRTC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7641960D1B5E78CC00CB8087 /* Debug */,
+				7641960E1B5E78CC00CB8087 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7641960F1B5E78CC00CB8087 /* Build configuration list for PBXNativeTarget "SmtRTCTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				764196101B5E78CC00CB8087 /* Debug */,
+				764196111B5E78CC00CB8087 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		764195F01B5E78CC00CB8087 /* SmtRTC.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				764195F11B5E78CC00CB8087 /* SmtRTC.xcdatamodel */,
+			);
+			currentVersion = 764195F11B5E78CC00CB8087 /* SmtRTC.xcdatamodel */;
+			path = SmtRTC.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 764195DE1B5E78CC00CB8087 /* Project object */;
+}

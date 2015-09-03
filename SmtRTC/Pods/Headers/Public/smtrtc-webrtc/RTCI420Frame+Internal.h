@@ -1,0 +1,1 @@
+../../../smtrtc-webrtc/include/talk/app/webrtc/objc/RTCI420Frame+Internal.h

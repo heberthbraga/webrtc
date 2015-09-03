@@ -1,0 +1,26 @@
+PODS:
+  - smtrtc-webrtc (1.17.0):
+    - smtrtc-webrtc/cmx (= 1.17.0)
+  - smtrtc-webrtc/cmx (1.17.0)
+  - SocketRocket (0.4)
+
+DEPENDENCIES:
+  - smtrtc-webrtc (from `./smtrtc-webrtc.podspec`)
+  - SocketRocket (from `https://github.com/square/SocketRocket.git`)
+
+EXTERNAL SOURCES:
+  smtrtc-webrtc:
+    :podspec: "./smtrtc-webrtc.podspec"
+  SocketRocket:
+    :git: https://github.com/square/SocketRocket.git
+
+CHECKOUT OPTIONS:
+  SocketRocket:
+    :commit: f534e2967d7ceb6cca8efe8ceaa6edb1b0f9ad40
+    :git: https://github.com/square/SocketRocket.git
+
+SPEC CHECKSUMS:
+  smtrtc-webrtc: c4cd874135e883a97a555d58f5677e3a7f1464e4
+  SocketRocket: 01443933b7bc362621325f4607b80b4286a99707
+
+COCOAPODS: 0.38.0
