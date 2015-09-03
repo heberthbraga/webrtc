@@ -1,1 +1,0 @@
-../../../smtrtc-webrtc/include/webrtc/modules/video_capture/ios/rtc_video_capture_ios_objc.h

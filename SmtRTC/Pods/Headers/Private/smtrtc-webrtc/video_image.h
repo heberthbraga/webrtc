@@ -1,1 +1,0 @@
-../../../smtrtc-webrtc/include/webrtc/common_video/interface/video_image.h

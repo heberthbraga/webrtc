@@ -1,1 +1,0 @@
-../../../smtrtc-webrtc/include/webrtc/p2p/client/socketmonitor.h

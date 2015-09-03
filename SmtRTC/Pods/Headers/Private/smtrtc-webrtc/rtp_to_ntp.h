@@ -1,1 +1,0 @@
-../../../smtrtc-webrtc/include/webrtc/system_wrappers/interface/rtp_to_ntp.h

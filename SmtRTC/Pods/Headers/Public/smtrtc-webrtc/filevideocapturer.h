@@ -1,1 +1,0 @@
-../../../smtrtc-webrtc/include/talk/media/devices/filevideocapturer.h

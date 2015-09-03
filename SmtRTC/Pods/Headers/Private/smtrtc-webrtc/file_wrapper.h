@@ -1,1 +1,0 @@
-../../../smtrtc-webrtc/include/webrtc/system_wrappers/interface/file_wrapper.h

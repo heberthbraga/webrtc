@@ -1,1 +1,0 @@
-../../../smtrtc-webrtc/include/talk/app/webrtc/videosource.h

@@ -1,1 +1,0 @@
-../../../smtrtc-webrtc/include/webrtc/modules/video_coding/utility/include/moving_average.h

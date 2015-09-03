@@ -1,1 +1,0 @@
-../../../smtrtc-webrtc/include/webrtc/modules/video_capture/windows/device_info_mf.h

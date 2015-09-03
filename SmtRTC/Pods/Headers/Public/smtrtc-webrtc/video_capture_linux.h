@@ -1,1 +1,0 @@
-../../../smtrtc-webrtc/include/webrtc/modules/video_capture/linux/video_capture_linux.h

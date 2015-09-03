@@ -1,1 +1,0 @@
-../../../smtrtc-webrtc/include/webrtc/modules/video_coding/codecs/vp8/temporal_layers.h

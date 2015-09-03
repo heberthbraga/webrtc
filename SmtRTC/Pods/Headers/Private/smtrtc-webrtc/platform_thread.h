@@ -1,1 +1,0 @@
-../../../smtrtc-webrtc/include/webrtc/base/platform_thread.h
