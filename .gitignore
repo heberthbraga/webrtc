@@ -1,7 +1,10 @@
 .gclient
 *.DS_Store
 *.idea
-src/*.idea
+src/.project
+src/.idea
+src/all.ninja.xcodeproj/**
+src/all.ninja.xcworkspace/**
 .gclient_entries
 src/out_ios_x86/*
 src/out_ios_x64/*
